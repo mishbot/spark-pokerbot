@@ -6,3 +6,25 @@ __pycache__/
 uv.lock
 traces/
 harness/runs/
+
+# macOS
+.DS_Store
+
+# Secrets: AC2 API keys, connector credentials, harness tokens
+.env
+.env.*
+*.pem
+*.key
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Editors and notebooks
+.vscode/
+.idea/
+.ipynb_checkpoints/
+
+# Local logs and scratch data
+*.log
