@@ -7,12 +7,13 @@ import pytest
 from ac2.runtime import FunctionCall, Message, Reasoning
 
 from vals_tools.score import summarize
-from vals_tools.tasks import SPLITS, Opponents, datasets
+from vals_tools.tasks import GAME_SPLITS, SPLITS, Opponents, datasets, game_datasets
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path[:0] = [str(ROOT / "opsd")]
+sys.path[:0] = [str(ROOT / "opsd"), str(ROOT / "analysis")]
 
 import build_dataset  # noqa: E402
+import game_stats  # noqa: E402
 import train as opsd_train  # noqa: E402
 
 OPPONENT = Opponents("my-project/opponent")
@@ -31,6 +32,31 @@ def test_splits_share_no_deal_and_cycle_every_seat() -> None:
     assert params["total_hands"] == 1 and "chat_template_kwargs" not in params  # thinking comes from the preset
     assert "policy_seats" not in built["p-table-smoke"][0].env_params  # every seat is the evaluated model
 
+
+
+def test_game_splits_are_full_event_games_on_their_own_deals() -> None:
+    games = game_datasets("p", OPPONENT)
+    hands = {t.env_params["seed"] for tasks in datasets("p", OPPONENT).values() for t in tasks}
+    seeds = [t.env_params["seed"] for tasks in games.values() for t in tasks]
+    assert len(seeds) == len(set(seeds)) == sum(n for n, _ in GAME_SPLITS.values())
+    assert not hands & set(seeds)  # no game replays a single-hand deal
+    tasks = games["p-games"]
+    assert [t.env_params["policy_seats"][0] for t in tasks[:6]] == list(range(6))
+    params = tasks[0].env_params
+    assert params["preset"] == "event" and params["total_hands"] == 30
+    # Only the game length differs from the preset: stacks carry over, the scratchpad persists, seats can bust.
+    assert "reset_stacks" not in params and "scratchpad" not in params and "ranking" not in params
+
+
+def test_game_place_follows_elimination_ranking() -> None:
+    stacks = game_stats.parse_stacks("Pot: seat2 won 40.\nStacks now: seat0 0 (out), seat1 300, seat2 300, seat3 600.")
+    assert stacks == {"seat0": 0, "seat1": 300, "seat2": 300, "seat3": 600}
+    assert game_stats.place("seat1", [(30, stacks)]) == (2, None)  # tied survivors share the better place
+    before = {"seat0": 50, "seat1": 0, "seat2": 90, "seat3": 100}
+    after = {"seat0": 0, "seat1": 0, "seat2": 0, "seat3": 240}
+    # seat0 and seat2 bust on the same hand: the bigger stack before it ranks higher; survivors rank above both
+    assert game_stats.place("seat0", [(11, before), (12, after)]) == (3, 12)
+    assert game_stats.place("seat2", [(11, before), (12, after)]) == (2, 12)
 
 def row(ev: float) -> dict:
     return {"ev_bb": ev, "realized_bb": ev, "policy_format_errors": 0}
