@@ -6,3 +6,6 @@ __pycache__/
 uv.lock
 traces/
 harness/runs/
+videos/transcripts/
+.env
+.env.*
