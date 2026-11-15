@@ -91,6 +91,56 @@ def table_smoke_tasks(seats: int = SEATS) -> list[Task]:
     ]
 
 
+# Full event games: carried stacks, busting and a live scratchpad, as the arena plays them. Each split is
+# (games, hands per game, base seed); every split has its own base seed, unused by the single-hand splits, so no game
+# shares a deal with another split. The arena plays 30 hands; 10-hand games are a quicker, rougher check.
+EVENT_HANDS = 30
+GAME_SPLITS = {
+    "games": (60, EVENT_HANDS, 6_660_006),
+    "games-smoke": (2, EVENT_HANDS, 6_670_007),
+    "games-10x10h": (10, 10, 6_680_008),
+    "games-10x30h": (10, EVENT_HANDS, 6_690_009),
+}
+
+
+def game_task(seed: int, policy_seat: int, opponents: Opponents, seats: int = SEATS, hands: int = EVENT_HANDS) -> Task:
+    """One event game with the policy in `policy_seat`. Only `total_hands` differs from the preset's own rules, so
+    stacks carry over, busted seats are out, and the scratchpad written after each hand is read in the next."""
+    return Task(
+        input=[
+            Message(
+                role="user",
+                content=f"Play a {hands}-hand game of {seats}-seat no-limit hold'em from seat {policy_seat}.",
+            )
+        ],
+        env_params=TABLE_RULES
+        | {
+            "seed": seed,
+            "seats": seats,
+            "total_hands": hands,
+            "policy_seats": [policy_seat],
+            "ev_labels": True,
+            "ev_runouts": 64,
+            **opponents.env_params(),
+        },
+    )
+
+
+def game_tasks(
+    count: int, base_seed: int, opponents: Opponents, seats: int = SEATS, hands: int = EVENT_HANDS
+) -> list[Task]:
+    """Fresh 48-bit seeds; the policy seat cycles so every starting seat is equally represented."""
+    rng = random.Random(base_seed)
+    return [game_task(rng.getrandbits(48), i % seats, opponents, seats, hands) for i in range(count)]
+
+
+def game_datasets(prefix: str, opponents: Opponents, seats: int = SEATS) -> dict[str, list[Task]]:
+    return {
+        f"{prefix}-{split}": game_tasks(n, seed, opponents, seats, hands)
+        for split, (n, hands, seed) in GAME_SPLITS.items()
+    }
+
+
 def datasets(prefix: str, opponents: Opponents, seats: int = SEATS) -> dict[str, list[Task]]:
     out = {f"{prefix}-{split}": hand_tasks(n, seed, opponents, seats) for split, (n, seed) in SPLITS.items()}
     out[f"{prefix}-table-smoke"] = table_smoke_tasks(seats)
