@@ -50,6 +50,18 @@ def test_plays_the_board_is_air():  # Opus FAIL #11
     assert tier == "air" and price == 0.0
 
 
+def test_flush_graded_by_strength():  # the flush-tier leak fix (graded by higher cards still unseen)
+    # we made our OWN flush (board shows only 3 of the suit) -> strong, even on a paired board
+    assert t(["9s", "8s"], ["2c", "4s", "2s", "6s"])[0] == "strong"
+    # low flush on a FOUR-flush board (many higher clubs unseen) -> weak
+    tier, _, capped = t(["3c", "6s"], ["8c", "9c", "7c", "Jc"])
+    assert tier == "weak" and capped, (tier, capped)
+    # four-flush board with A,K on board + our Q = nut flush (0 higher unseen) -> strong
+    assert t(["Qc", "6s"], ["Ac", "Kc", "2c", "7c"])[0] == "strong"
+    # four-flush board, A on board but K unseen, we hold Q (1 higher unseen) -> medium
+    assert t(["Qc", "6s"], ["Ac", "2c", "7c", "9c"])[0] == "medium"
+
+
 def test_nut_hand_not_capped_on_dangerous_board():
     # we HAVE the flush on a four-flush board -> strong, not capped
     tier, _, capped = t(["Ah", "Qc"], ["Ac", "Kc", "2c", "7c"])

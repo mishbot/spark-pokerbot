@@ -118,6 +118,18 @@ def test_pot_raise_to_amount():  # Opus re-vet #2: pot-sized raise-to = my_bet +
     assert p.action.kind == ActionKind.RAISE and p.action.amount == 46, p.action
 
 
+def test_made_flush_does_not_overfold():  # flush-tier leak: a real flush getting a price must not fold
+    p = decide(_obs("turn", "BTN", ["9s", "8s"], ["2c", "4s", "2s", "6s"], pot=40, to_call=20,
+                    min_raise=40, max_raise=200))
+    assert p.action.kind in (ActionKind.CALL, ActionKind.RAISE) and p.tier == "strong", (p.action, p.tier)
+
+
+def test_low_flush_on_four_flush_board_checks():  # flush-tier leak: junk flush is not value-bet
+    p = decide(_obs("turn", "BTN", ["3c", "6s"], ["8c", "9c", "7c", "Jc"], pot=40, to_call=0,
+                    min_raise=4, max_raise=200))
+    assert p.action.kind == ActionKind.CHECK and p.tier == "weak", (p.action, p.tier)
+
+
 def test_no_weak_all_in():  # #3: a non-strong tier never bets all-in
     # top pair, checked to, but the only legal raise is all-in (min_raise == max == stack)
     p = decide(_obs("flop", "BTN", ["Ah", "Kd"], ["Ac", "7s", "2h"], pot=60, to_call=0,

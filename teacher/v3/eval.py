@@ -62,6 +62,9 @@ class HandInfo:
     dangerous: bool               # the board carries a threat that out-ranks a plain made hand
     max_threat: int = -1          # CAT_RANK of the best hand the board threatens (-1 = none)
     plays_board: bool = False     # river: the hole cards do not improve on the board (can only chop)
+    flush_board_count: int = 0    # how many of the flush suit are already on the board
+    flush_hole_high: int = -1     # highest rank (0..12) of our hole card in the flush suit (-1 = none)
+    flush_better_count: int = 0   # higher flush cards still unseen (opponents could hold them to beat us)
     draw_text: str = field(default="")
 
     @property
@@ -221,7 +224,8 @@ def analyze(hole: list[str], board: list[str]) -> HandInfo:
     dangerous = max_threat >= 0
     plays_board = len(board) == 5 and evaluate_cards(*hole, *board) == evaluate_cards(*board)
 
-    def info(category, made, pair_rank, uses_hole):
+    def info(category, made, pair_rank, uses_hole, flush_board_count=0, flush_hole_high=-1,
+             flush_better_count=0):
         fd, oesd, gut = _draws(hole, board, category)
         dt = []
         if fd: dt.append("flush draw")
@@ -229,7 +233,9 @@ def analyze(hole: list[str], board: list[str]) -> HandInfo:
         elif gut: dt.append("gutshot")
         return HandInfo(category=category, made=made, uses_hole=uses_hole, pair_rank=pair_rank,
                         flush_draw=fd, oesd=oesd, gutshot=gut, board_tag=tag, dangerous=dangerous,
-                        max_threat=max_threat, plays_board=plays_board, draw_text=", ".join(dt))
+                        max_threat=max_threat, plays_board=plays_board, draw_text=", ".join(dt),
+                        flush_board_count=flush_board_count, flush_hole_high=flush_hole_high,
+                        flush_better_count=flush_better_count)
 
     if straight_flush_high is not None:
         return info("straight_flush", "straight flush", None, True)
@@ -239,8 +245,14 @@ def analyze(hole: list[str], board: list[str]) -> HandInfo:
     if counts[0] == 3 and len(counts) > 1 and counts[1] >= 2:
         return info("full_house", "full house", None, True)
     if flush_suit is not None:
-        uses = any(suit_of(c) == flush_suit for c in hole)
-        return info("flush", "flush", None, uses)
+        bcount = sum(1 for c in board if suit_of(c) == flush_suit)
+        board_suit_ranks = {rank_of(c) for c in board if suit_of(c) == flush_suit}
+        hole_suit = [rank_of(c) for c in hole if suit_of(c) == flush_suit]
+        hi = max(hole_suit) if hole_suit else -1
+        # higher flush cards an opponent could still hold (not on the board) = hands that beat us
+        better = sum(1 for r in range(hi + 1, 13) if r not in board_suit_ranks)
+        return info("flush", "flush", None, bool(hole_suit),
+                    flush_board_count=bcount, flush_hole_high=hi, flush_better_count=better)
     if straight_high is not None:
         window = {straight_high, straight_high - 1, straight_high - 2, straight_high - 3, straight_high - 4}
         window = {12 if r == -1 else r for r in window}

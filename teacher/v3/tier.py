@@ -42,12 +42,29 @@ def _lower(tier: str) -> str:
     return TIERS[min(_ORDER[tier] + 1, len(TIERS) - 1)]
 
 
+def _flush_tier(info: HandInfo) -> tuple[str, float, bool]:
+    """Grade a made flush by whether it is really OURS or just the board's. If the board already shows
+    4+ of the suit, our flush is board+our one card, so only our card's rank matters: K/A-high is
+    strong, Q/J medium, anything lower is weak (it can only be called by a better flush). If the board
+    shows <=3 of the suit, we made the flush with our hole cards -> strong (call a price, value-bet)."""
+    if info.flush_board_count >= 4:
+        b = info.flush_better_count   # higher flush cards still unseen = hands that beat us
+        if b == 0:
+            return "strong", PRICE["strong"], False   # nut flush (higher cards are on the board)
+        if b <= 1:
+            return "medium", PRICE["medium"], True
+        return "weak", PRICE["weak"], True             # a low flush on a 4-flush board: only better calls
+    return "strong", PRICE["strong"], False            # we made the flush with our hole cards
+
+
 def tier_and_price(info: HandInfo) -> tuple[str, float, bool]:
     """(tier, price, capped). Cap when the board threatens a hand our made hand does not beat:
     our category must be >= the board's max threat (flush on a 3-flush board, straight on a
     four-straight board, full house on a paired board), else we lower one tier."""
     if info.plays_board:   # the hole cards do not improve on the board -> can only chop, never value
         return "air", PRICE["air"], False
+    if info.category == "flush":   # graded by flush strength, not the generic threat cap
+        return _flush_tier(info)
     base = _base_tier(info)
     threatened = info.max_threat >= 0 and CAT_RANK[info.category] < info.max_threat
     if threatened and base != "air":
