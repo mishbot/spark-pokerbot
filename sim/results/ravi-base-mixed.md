@@ -5,7 +5,7 @@ uv run --project harness python sim/simulate.py --games 10 --hands 30 --seed 1 -
   --out harness/runs/sim/ravi-base-mixed
 ```
 
-Setup: seat 0 is `vals-hackathon/base_mihail`. Seats 1–5 are `tag, shover, maniac, nit, calling_station`, and the lineup moves one seat each game. Event rules apply. The full numbers are in `ravi-base-mixed.summary.json`; the raw logs stay local (3.5 MB).
+Setup: seat 0 is `vals-hackathon/base_mihail`. Seats 1–5 are `tag, shover, maniac, nit, calling_station`, and the lineup moves one seat each game. Event rules apply. The full numbers are in `ravi-base-mixed.summary.json`. The raw game logs are in `ravi-base-mixed/`, one JSON per game with every action, the model's reasoning and its scratchpad. Rescore them with `uv run --project harness python sim/simulate.py --report sim/results/ravi-base-mixed`.
 
 ## Scorecard
 

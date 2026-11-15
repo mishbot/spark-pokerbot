@@ -1,0 +1,5235 @@
+{
+ "game_id": "sim-004-214192146929019",
+ "hands": [
+  {
+   "hand_number": 1,
+   "button_seat": 5,
+   "starting_state": {
+    "seat0": {
+     "hole_cards": [
+      "2d",
+      "3d"
+     ],
+     "position": 0,
+     "seat": 0,
+     "starting_stack": 200
+    },
+    "seat1": {
+     "hole_cards": [
+      "Qd",
+      "9s"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 200
+    },
+    "seat2": {
+     "hole_cards": [
+      "4c",
+      "4h"
+     ],
+     "position": 2,
+     "seat": 2,
+     "starting_stack": 200
+    },
+    "seat3": {
+     "hole_cards": [
+      "5d",
+      "Ad"
+     ],
+     "position": 3,
+     "seat": 3,
+     "starting_stack": 200
+    },
+    "seat4": {
+     "hole_cards": [
+      "2h",
+      "6c"
+     ],
+     "position": 4,
+     "seat": 4,
+     "starting_stack": 200
+    },
+    "seat5": {
+     "hole_cards": [
+      "Ah",
+      "3s"
+     ],
+     "position": 5,
+     "seat": 5,
+     "starting_stack": 200
+    }
+   },
+   "actions": [
+    {
+     "timestep": 0,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 194,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 1,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 200
+     },
+     "chip_change": -200,
+     "stack_after": 0,
+     "pot_before": 9,
+     "call_amount": 6,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 200
+    },
+    {
+     "timestep": 2,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -200,
+     "stack_after": 0,
+     "pot_before": 209,
+     "call_amount": 200,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 200
+    },
+    {
+     "timestep": 3,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 200,
+     "pot_before": 409,
+     "call_amount": 200,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 4,
+     "player": "seat0",
+     "seat": 0,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -199,
+     "stack_after": 0,
+     "pot_before": 409,
+     "call_amount": 199,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 1,
+      "latency_seconds": 4.267,
+      "in_tokens": 1371,
+      "out_tokens": 706,
+      "reasoning_tokens": 678,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "folded\n- I'm in the small blind, having already posted 1 chip\n\nCurrent actions:\n- Seat 2 raised to 6 (this includes the 2 chip big blind, so they put in 4 more)\n- Seat 3 went all-in for 200\n- Seat 4 called 200 (also went all-in)\n- I need to decide: fold or call 199 (to match the all-in)\n\nLet me think about my situation:\n- I have 2d 3d - a very weak hand, but suited convex gap connectors\n- I'm already invested 1 chip in the pot as the small blind\n- The pot is 409 chips\n- If I call, I put in 199 more to win a pot of 409 + 199 = 608 chips\n- So I'm getting 199:608 odds, which is about 3.05:1 odds, meaning I need about 25% equity to break even\n\nWith 2d 3d against two all-in hands, I'm a significant underdog. But the pot odds are very good. Let me think about whether I should call.\n\nActually wait, the situation is:\n- I've put in 1 (small blind)\n- To call, I need to put in 199 more (total 200)\n- The pot before my action is 409\n- If I call, the pot becomes 409 + 199 = 608 (not including the all-in bets already in)\n\nActually, let me recount. The all-in bets are already in the pot. So:\n- Seat 2 has bet 6 (includes their big blind of 2)\n\n\n- Seat 3 is all-in for 200\n- Seat 4 is all-in for 200\n\nThe pot contains 409 chips total. To call, I must match the all-in amount, meaning 199 more chips on top of my 1 chip already in. The pot odds are 608:199, giving me approximately 32% to call.\n\nI need around 24-25% equity. My 2-3 suited hand likely has about 25-30% equity against random ranges, though two specific all-in hands might be stronger. The math suggests calling could be marginally profitable, but it's close.\n\nWith 2-3 suited, I'm a slight underdog against two random hands pre-flop, but the pot odds make the call reasonable. I'll call with this weak hand given the favorable pot situation.\n\nThe key consideration is whether my suited connectors have enough equity against two all-in players. I'll calculate my equity, considering the specific matchup and potential tile interactions.\n",
+       "read": ""
+      }
+     },
+     "put_in": 199
+    },
+    {
+     "timestep": 5,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -198,
+     "stack_after": 0,
+     "pot_before": 608,
+     "call_amount": 198,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 198
+    },
+    {
+     "timestep": 6,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 194,
+     "pot_before": 806,
+     "call_amount": 194,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 194,
+    "seat3": 0,
+    "seat4": 806,
+    "seat5": 200
+   },
+   "final_board": [
+    "Ac",
+    "Kc",
+    "6s",
+    "2c",
+    "9c"
+   ],
+   "showdown": true,
+   "shown_hole_cards": {
+    "seat3": [
+     "5d",
+     "Ad"
+    ],
+    "seat4": [
+     "2h",
+     "6c"
+    ],
+    "seat0": [
+     "2d",
+     "3d"
+    ],
+    "seat1": [
+     "Qd",
+     "9s"
+    ]
+   },
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat0": 200,
+    "seat1": 200,
+    "seat2": 200,
+    "seat3": 200,
+    "seat4": 200,
+    "seat5": 200
+   },
+   "blinds_posted": {
+    "seat0": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat4": 806
+   },
+   "eliminated": [
+    "seat0",
+    "seat1",
+    "seat3"
+   ]
+  },
+  {
+   "hand_number": 2,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "Jh",
+      "8d"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 806
+    },
+    "seat5": {
+     "hole_cards": [
+      "Tc",
+      "7d"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 200
+    },
+    "seat2": {
+     "hole_cards": [
+      "Qs",
+      "Ah"
+     ],
+     "position": 2,
+     "seat": 2,
+     "starting_stack": 194
+    }
+   },
+   "actions": [
+    {
+     "timestep": 7,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 188,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 8,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 18
+     },
+     "chip_change": -17,
+     "stack_after": 788,
+     "pot_before": 9,
+     "call_amount": 5,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 17
+    },
+    {
+     "timestep": 9,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 198,
+     "pot_before": 26,
+     "call_amount": 16,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 10,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -12,
+     "stack_after": 176,
+     "pot_before": 26,
+     "call_amount": 12,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 12
+    },
+    {
+     "timestep": 11,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 788,
+     "pot_before": 38,
+     "call_amount": 0,
+     "board": [
+      "4h",
+      "Qc",
+      "Td"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 12,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "bet",
+      "amount": 19
+     },
+     "chip_change": -19,
+     "stack_after": 157,
+     "pot_before": 38,
+     "call_amount": 0,
+     "board": [
+      "4h",
+      "Qc",
+      "Td"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 19
+    },
+    {
+     "timestep": 13,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -19,
+     "stack_after": 769,
+     "pot_before": 57,
+     "call_amount": 19,
+     "board": [
+      "4h",
+      "Qc",
+      "Td"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 19
+    },
+    {
+     "timestep": 14,
+     "player": "seat4",
+     "seat": 4,
+     "street": "turn",
+     "action": {
+      "type": "bet",
+      "amount": 152
+     },
+     "chip_change": -152,
+     "stack_after": 617,
+     "pot_before": 76,
+     "call_amount": 0,
+     "board": [
+      "4h",
+      "Qc",
+      "Td",
+      "Kd"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 152
+    },
+    {
+     "timestep": 15,
+     "player": "seat2",
+     "seat": 2,
+     "street": "turn",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 157,
+     "pot_before": 228,
+     "call_amount": 152,
+     "board": [
+      "4h",
+      "Qc",
+      "Td",
+      "Kd"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 157,
+    "seat3": 0,
+    "seat4": 845,
+    "seat5": 198
+   },
+   "final_board": [
+    "4h",
+    "Qc",
+    "Td",
+    "Kd"
+   ],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 194,
+    "seat4": 806,
+    "seat5": 200
+   },
+   "blinds_posted": {
+    "seat4": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat4": 76
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 3,
+   "button_seat": 4,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "9h",
+      "4c"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 198
+    },
+    "seat2": {
+     "hole_cards": [
+      "2d",
+      "9s"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 157
+    },
+    "seat4": {
+     "hole_cards": [
+      "6c",
+      "4d"
+     ],
+     "position": 2,
+     "seat": 4,
+     "starting_stack": 845
+    }
+   },
+   "actions": [
+    {
+     "timestep": 16,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -2,
+     "stack_after": 843,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 2
+    },
+    {
+     "timestep": 17,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 197,
+     "pot_before": 5,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 18,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 155,
+     "pot_before": 5,
+     "call_amount": 0,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 19,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 155,
+     "pot_before": 5,
+     "call_amount": 0,
+     "board": [
+      "6h",
+      "2c",
+      "Qd"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 20,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "bet",
+      "amount": 10
+     },
+     "chip_change": -10,
+     "stack_after": 833,
+     "pot_before": 5,
+     "call_amount": 0,
+     "board": [
+      "6h",
+      "2c",
+      "Qd"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 10
+    },
+    {
+     "timestep": 21,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 155,
+     "pot_before": 15,
+     "call_amount": 10,
+     "board": [
+      "6h",
+      "2c",
+      "Qd"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 155,
+    "seat3": 0,
+    "seat4": 848,
+    "seat5": 197
+   },
+   "final_board": [
+    "6h",
+    "2c",
+    "Qd"
+   ],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 157,
+    "seat4": 845,
+    "seat5": 198
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat2": 2
+   },
+   "pot_won": {
+    "seat4": 5
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 4,
+   "button_seat": 5,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "8s",
+      "3d"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 155
+    },
+    "seat4": {
+     "hole_cards": [
+      "4c",
+      "4s"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 848
+    },
+    "seat5": {
+     "hole_cards": [
+      "Ks",
+      "6c"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 197
+    }
+   },
+   "actions": [
+    {
+     "timestep": 22,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 197,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 23,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 154,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 154,
+    "seat3": 0,
+    "seat4": 849,
+    "seat5": 197
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 155,
+    "seat4": 848,
+    "seat5": 197
+   },
+   "blinds_posted": {
+    "seat2": 1,
+    "seat4": 2
+   },
+   "pot_won": {
+    "seat4": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 5,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "2c",
+      "9s"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 849
+    },
+    "seat5": {
+     "hole_cards": [
+      "5h",
+      "8c"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 197
+    },
+    "seat2": {
+     "hole_cards": [
+      "Qs",
+      "Ts"
+     ],
+     "position": 2,
+     "seat": 2,
+     "starting_stack": 154
+    }
+   },
+   "actions": [
+    {
+     "timestep": 24,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 154,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 25,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -5,
+     "stack_after": 843,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 26,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 195,
+     "pot_before": 8,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 154,
+    "seat3": 0,
+    "seat4": 851,
+    "seat5": 195
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 154,
+    "seat4": 849,
+    "seat5": 197
+   },
+   "blinds_posted": {
+    "seat4": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat4": 2
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 6,
+   "button_seat": 4,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "Jc",
+      "9s"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 195
+    },
+    "seat2": {
+     "hole_cards": [
+      "9h",
+      "2h"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 154
+    },
+    "seat4": {
+     "hole_cards": [
+      "4s",
+      "2s"
+     ],
+     "position": 2,
+     "seat": 4,
+     "starting_stack": 851
+    }
+   },
+   "actions": [
+    {
+     "timestep": 27,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 845,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 28,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 194,
+     "pot_before": 9,
+     "call_amount": 5,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 29,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 152,
+     "pot_before": 9,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 152,
+    "seat3": 0,
+    "seat4": 854,
+    "seat5": 194
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 154,
+    "seat4": 851,
+    "seat5": 195
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat2": 2
+   },
+   "pot_won": {
+    "seat4": 3
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 7,
+   "button_seat": 5,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "3s",
+      "Qs"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 152
+    },
+    "seat4": {
+     "hole_cards": [
+      "7s",
+      "7c"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 854
+    },
+    "seat5": {
+     "hole_cards": [
+      "Qh",
+      "Kc"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 194
+    }
+   },
+   "actions": [
+    {
+     "timestep": 30,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 194,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 31,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 151,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 151,
+    "seat3": 0,
+    "seat4": 855,
+    "seat5": 194
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 152,
+    "seat4": 854,
+    "seat5": 194
+   },
+   "blinds_posted": {
+    "seat2": 1,
+    "seat4": 2
+   },
+   "pot_won": {
+    "seat4": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 8,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "6c",
+      "Ac"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 855
+    },
+    "seat5": {
+     "hole_cards": [
+      "7s",
+      "7d"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 194
+    },
+    "seat2": {
+     "hole_cards": [
+      "Kd",
+      "5d"
+     ],
+     "position": 2,
+     "seat": 2,
+     "starting_stack": 151
+    }
+   },
+   "actions": [
+    {
+     "timestep": 32,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 151,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 33,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -5,
+     "stack_after": 849,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 34,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 192,
+     "pot_before": 8,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 151,
+    "seat3": 0,
+    "seat4": 857,
+    "seat5": 192
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 151,
+    "seat4": 855,
+    "seat5": 194
+   },
+   "blinds_posted": {
+    "seat4": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat4": 2
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 9,
+   "button_seat": 4,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "7c",
+      "Kc"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 192
+    },
+    "seat2": {
+     "hole_cards": [
+      "Ah",
+      "4s"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 151
+    },
+    "seat4": {
+     "hole_cards": [
+      "As",
+      "7d"
+     ],
+     "position": 2,
+     "seat": 4,
+     "starting_stack": 857
+    }
+   },
+   "actions": [
+    {
+     "timestep": 35,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 851,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 36,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 191,
+     "pot_before": 9,
+     "call_amount": 5,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 37,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 149,
+     "pot_before": 9,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 149,
+    "seat3": 0,
+    "seat4": 860,
+    "seat5": 191
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 151,
+    "seat4": 857,
+    "seat5": 192
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat2": 2
+   },
+   "pot_won": {
+    "seat4": 3
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 10,
+   "button_seat": 5,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "8h",
+      "9d"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 149
+    },
+    "seat4": {
+     "hole_cards": [
+      "Ks",
+      "4d"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 860
+    },
+    "seat5": {
+     "hole_cards": [
+      "Kd",
+      "6c"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 191
+    }
+   },
+   "actions": [
+    {
+     "timestep": 38,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 191,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 39,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 148,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 148,
+    "seat3": 0,
+    "seat4": 861,
+    "seat5": 191
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 149,
+    "seat4": 860,
+    "seat5": 191
+   },
+   "blinds_posted": {
+    "seat2": 1,
+    "seat4": 2
+   },
+   "pot_won": {
+    "seat4": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 11,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "3h",
+      "Kh"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 861
+    },
+    "seat5": {
+     "hole_cards": [
+      "Th",
+      "Kd"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 191
+    },
+    "seat2": {
+     "hole_cards": [
+      "Qd",
+      "Ac"
+     ],
+     "position": 2,
+     "seat": 2,
+     "starting_stack": 148
+    }
+   },
+   "actions": [
+    {
+     "timestep": 40,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 142,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 41,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 18
+     },
+     "chip_change": -17,
+     "stack_after": 843,
+     "pot_before": 9,
+     "call_amount": 5,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 17
+    },
+    {
+     "timestep": 42,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 189,
+     "pot_before": 26,
+     "call_amount": 16,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 43,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -12,
+     "stack_after": 130,
+     "pot_before": 26,
+     "call_amount": 12,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 12
+    },
+    {
+     "timestep": 44,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 843,
+     "pot_before": 38,
+     "call_amount": 0,
+     "board": [
+      "Ah",
+      "Js",
+      "Kc"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 45,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "bet",
+      "amount": 19
+     },
+     "chip_change": -19,
+     "stack_after": 111,
+     "pot_before": 38,
+     "call_amount": 0,
+     "board": [
+      "Ah",
+      "Js",
+      "Kc"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 19
+    },
+    {
+     "timestep": 46,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "raise",
+      "amount": 114
+     },
+     "chip_change": -114,
+     "stack_after": 729,
+     "pot_before": 57,
+     "call_amount": 19,
+     "board": [
+      "Ah",
+      "Js",
+      "Kc"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 114
+    },
+    {
+     "timestep": 47,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 111,
+     "pot_before": 171,
+     "call_amount": 95,
+     "board": [
+      "Ah",
+      "Js",
+      "Kc"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 111,
+    "seat3": 0,
+    "seat4": 900,
+    "seat5": 189
+   },
+   "final_board": [
+    "Ah",
+    "Js",
+    "Kc"
+   ],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 148,
+    "seat4": 861,
+    "seat5": 191
+   },
+   "blinds_posted": {
+    "seat4": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat4": 57
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 12,
+   "button_seat": 4,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "7h",
+      "Kc"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 189
+    },
+    "seat2": {
+     "hole_cards": [
+      "5s",
+      "Kd"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 111
+    },
+    "seat4": {
+     "hole_cards": [
+      "3c",
+      "9s"
+     ],
+     "position": 2,
+     "seat": 4,
+     "starting_stack": 900
+    }
+   },
+   "actions": [
+    {
+     "timestep": 48,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 894,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 49,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 188,
+     "pot_before": 9,
+     "call_amount": 5,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 50,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 109,
+     "pot_before": 9,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 109,
+    "seat3": 0,
+    "seat4": 903,
+    "seat5": 188
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 111,
+    "seat4": 900,
+    "seat5": 189
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat2": 2
+   },
+   "pot_won": {
+    "seat4": 3
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 13,
+   "button_seat": 5,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "8s",
+      "5h"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 109
+    },
+    "seat4": {
+     "hole_cards": [
+      "9s",
+      "3h"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 903
+    },
+    "seat5": {
+     "hole_cards": [
+      "3c",
+      "Kc"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 188
+    }
+   },
+   "actions": [
+    {
+     "timestep": 51,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 188,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 52,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 108,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 108,
+    "seat3": 0,
+    "seat4": 904,
+    "seat5": 188
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 109,
+    "seat4": 903,
+    "seat5": 188
+   },
+   "blinds_posted": {
+    "seat2": 1,
+    "seat4": 2
+   },
+   "pot_won": {
+    "seat4": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 14,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "Ks",
+      "6d"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 904
+    },
+    "seat5": {
+     "hole_cards": [
+      "Js",
+      "3h"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 188
+    },
+    "seat2": {
+     "hole_cards": [
+      "As",
+      "Qs"
+     ],
+     "position": 2,
+     "seat": 2,
+     "starting_stack": 108
+    }
+   },
+   "actions": [
+    {
+     "timestep": 53,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 102,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 54,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -5,
+     "stack_after": 898,
+     "pot_before": 9,
+     "call_amount": 5,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 55,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 186,
+     "pot_before": 14,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 56,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 898,
+     "pot_before": 14,
+     "call_amount": 0,
+     "board": [
+      "Jd",
+      "3s",
+      "Qh"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 57,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "bet",
+      "amount": 7
+     },
+     "chip_change": -7,
+     "stack_after": 95,
+     "pot_before": 14,
+     "call_amount": 0,
+     "board": [
+      "Jd",
+      "3s",
+      "Qh"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 7
+    },
+    {
+     "timestep": 58,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "raise",
+      "amount": 42
+     },
+     "chip_change": -42,
+     "stack_after": 856,
+     "pot_before": 21,
+     "call_amount": 7,
+     "board": [
+      "Jd",
+      "3s",
+      "Qh"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 42
+    },
+    {
+     "timestep": 59,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 95,
+     "pot_before": 63,
+     "call_amount": 35,
+     "board": [
+      "Jd",
+      "3s",
+      "Qh"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 95,
+    "seat3": 0,
+    "seat4": 919,
+    "seat5": 186
+   },
+   "final_board": [
+    "Jd",
+    "3s",
+    "Qh"
+   ],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 108,
+    "seat4": 904,
+    "seat5": 188
+   },
+   "blinds_posted": {
+    "seat4": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat4": 21
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 15,
+   "button_seat": 4,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "Qd",
+      "4s"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 186
+    },
+    "seat2": {
+     "hole_cards": [
+      "7s",
+      "7d"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 95
+    },
+    "seat4": {
+     "hole_cards": [
+      "7h",
+      "Ah"
+     ],
+     "position": 2,
+     "seat": 4,
+     "starting_stack": 919
+    }
+   },
+   "actions": [
+    {
+     "timestep": 60,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 913,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 61,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 185,
+     "pot_before": 9,
+     "call_amount": 5,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 62,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -4,
+     "stack_after": 89,
+     "pot_before": 9,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 4
+    },
+    {
+     "timestep": 63,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 89,
+     "pot_before": 13,
+     "call_amount": 0,
+     "board": [
+      "3h",
+      "Td",
+      "2s"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 64,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 913,
+     "pot_before": 13,
+     "call_amount": 0,
+     "board": [
+      "3h",
+      "Td",
+      "2s"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 65,
+     "player": "seat2",
+     "seat": 2,
+     "street": "turn",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 89,
+     "pot_before": 13,
+     "call_amount": 0,
+     "board": [
+      "3h",
+      "Td",
+      "2s",
+      "8d"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 66,
+     "player": "seat4",
+     "seat": 4,
+     "street": "turn",
+     "action": {
+      "type": "bet",
+      "amount": 26
+     },
+     "chip_change": -26,
+     "stack_after": 887,
+     "pot_before": 13,
+     "call_amount": 0,
+     "board": [
+      "3h",
+      "Td",
+      "2s",
+      "8d"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 26
+    },
+    {
+     "timestep": 67,
+     "player": "seat2",
+     "seat": 2,
+     "street": "turn",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 89,
+     "pot_before": 39,
+     "call_amount": 26,
+     "board": [
+      "3h",
+      "Td",
+      "2s",
+      "8d"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 89,
+    "seat3": 0,
+    "seat4": 926,
+    "seat5": 185
+   },
+   "final_board": [
+    "3h",
+    "Td",
+    "2s",
+    "8d"
+   ],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 95,
+    "seat4": 919,
+    "seat5": 186
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat2": 2
+   },
+   "pot_won": {
+    "seat4": 13
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 16,
+   "button_seat": 5,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "Ks",
+      "4c"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 89
+    },
+    "seat4": {
+     "hole_cards": [
+      "Jh",
+      "9s"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 926
+    },
+    "seat5": {
+     "hole_cards": [
+      "Ac",
+      "8d"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 185
+    }
+   },
+   "actions": [
+    {
+     "timestep": 68,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 185,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 69,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 88,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 88,
+    "seat3": 0,
+    "seat4": 927,
+    "seat5": 185
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 89,
+    "seat4": 926,
+    "seat5": 185
+   },
+   "blinds_posted": {
+    "seat2": 1,
+    "seat4": 2
+   },
+   "pot_won": {
+    "seat4": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 17,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "5d",
+      "8d"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 927
+    },
+    "seat5": {
+     "hole_cards": [
+      "Ah",
+      "Qc"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 185
+    },
+    "seat2": {
+     "hole_cards": [
+      "6c",
+      "Qs"
+     ],
+     "position": 2,
+     "seat": 2,
+     "starting_stack": 88
+    }
+   },
+   "actions": [
+    {
+     "timestep": 70,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 88,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 71,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -5,
+     "stack_after": 921,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 72,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 10
+     },
+     "chip_change": -8,
+     "stack_after": 175,
+     "pot_before": 8,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 8
+    },
+    {
+     "timestep": 73,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -4,
+     "stack_after": 917,
+     "pot_before": 16,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 4
+    },
+    {
+     "timestep": 74,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "bet",
+      "amount": 40
+     },
+     "chip_change": -40,
+     "stack_after": 877,
+     "pot_before": 20,
+     "call_amount": 0,
+     "board": [
+      "6h",
+      "5h",
+      "7d"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 40
+    },
+    {
+     "timestep": 75,
+     "player": "seat5",
+     "seat": 5,
+     "street": "flop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -40,
+     "stack_after": 135,
+     "pot_before": 60,
+     "call_amount": 40,
+     "board": [
+      "6h",
+      "5h",
+      "7d"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 40
+    },
+    {
+     "timestep": 76,
+     "player": "seat4",
+     "seat": 4,
+     "street": "turn",
+     "action": {
+      "type": "bet",
+      "amount": 200
+     },
+     "chip_change": -200,
+     "stack_after": 677,
+     "pot_before": 100,
+     "call_amount": 0,
+     "board": [
+      "6h",
+      "5h",
+      "7d",
+      "Ts"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 200
+    },
+    {
+     "timestep": 77,
+     "player": "seat5",
+     "seat": 5,
+     "street": "turn",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -135,
+     "stack_after": 0,
+     "pot_before": 300,
+     "call_amount": 135,
+     "board": [
+      "6h",
+      "5h",
+      "7d",
+      "Ts"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 135
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 88,
+    "seat3": 0,
+    "seat4": 1112,
+    "seat5": 0
+   },
+   "final_board": [
+    "6h",
+    "5h",
+    "7d",
+    "Ts",
+    "8c"
+   ],
+   "showdown": true,
+   "shown_hole_cards": {
+    "seat4": [
+     "5d",
+     "8d"
+    ],
+    "seat5": [
+     "Ah",
+     "Qc"
+    ]
+   },
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 88,
+    "seat4": 927,
+    "seat5": 185
+   },
+   "blinds_posted": {
+    "seat4": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat4": 370
+   },
+   "eliminated": [
+    "seat5"
+   ]
+  },
+  {
+   "hand_number": 18,
+   "button_seat": 4,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "5h",
+      "6s"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 88
+    },
+    "seat4": {
+     "hole_cards": [
+      "8d",
+      "Kh"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 1112
+    }
+   },
+   "actions": [
+    {
+     "timestep": 78,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -5,
+     "stack_after": 1106,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 79,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 86,
+     "pot_before": 8,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 86,
+    "seat3": 0,
+    "seat4": 1114,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 88,
+    "seat4": 1112
+   },
+   "blinds_posted": {
+    "seat2": 2,
+    "seat4": 1
+   },
+   "pot_won": {
+    "seat4": 2
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 19,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "4c",
+      "9d"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 1114
+    },
+    "seat2": {
+     "hole_cards": [
+      "2s",
+      "Qd"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 86
+    }
+   },
+   "actions": [
+    {
+     "timestep": 80,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 85,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 85,
+    "seat3": 0,
+    "seat4": 1115,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 86,
+    "seat4": 1114
+   },
+   "blinds_posted": {
+    "seat4": 2,
+    "seat2": 1
+   },
+   "pot_won": {
+    "seat4": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 20,
+   "button_seat": 4,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "4d",
+      "Js"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 85
+    },
+    "seat4": {
+     "hole_cards": [
+      "2d",
+      "9d"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 1115
+    }
+   },
+   "actions": [
+    {
+     "timestep": 81,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -5,
+     "stack_after": 1109,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 82,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 83,
+     "pot_before": 8,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 83,
+    "seat3": 0,
+    "seat4": 1117,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 85,
+    "seat4": 1115
+   },
+   "blinds_posted": {
+    "seat2": 2,
+    "seat4": 1
+   },
+   "pot_won": {
+    "seat4": 2
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 21,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "2d",
+      "Jd"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 1117
+    },
+    "seat2": {
+     "hole_cards": [
+      "As",
+      "5s"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 83
+    }
+   },
+   "actions": [
+    {
+     "timestep": 83,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 82,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 82,
+    "seat3": 0,
+    "seat4": 1118,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 83,
+    "seat4": 1117
+   },
+   "blinds_posted": {
+    "seat4": 2,
+    "seat2": 1
+   },
+   "pot_won": {
+    "seat4": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 22,
+   "button_seat": 4,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "Ah",
+      "9c"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 82
+    },
+    "seat4": {
+     "hole_cards": [
+      "8h",
+      "6d"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 1118
+    }
+   },
+   "actions": [
+    {
+     "timestep": 84,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -1,
+     "stack_after": 1116,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 1
+    },
+    {
+     "timestep": 85,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 80,
+     "pot_before": 4,
+     "call_amount": 0,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 86,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 80,
+     "pot_before": 4,
+     "call_amount": 0,
+     "board": [
+      "6h",
+      "Jh",
+      "4c"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 87,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "bet",
+      "amount": 8
+     },
+     "chip_change": -8,
+     "stack_after": 1108,
+     "pot_before": 4,
+     "call_amount": 0,
+     "board": [
+      "6h",
+      "Jh",
+      "4c"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 8
+    },
+    {
+     "timestep": 88,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 80,
+     "pot_before": 12,
+     "call_amount": 8,
+     "board": [
+      "6h",
+      "Jh",
+      "4c"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 80,
+    "seat3": 0,
+    "seat4": 1120,
+    "seat5": 0
+   },
+   "final_board": [
+    "6h",
+    "Jh",
+    "4c"
+   ],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 82,
+    "seat4": 1118
+   },
+   "blinds_posted": {
+    "seat2": 2,
+    "seat4": 1
+   },
+   "pot_won": {
+    "seat4": 4
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 23,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "3h",
+      "Ad"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 1120
+    },
+    "seat2": {
+     "hole_cards": [
+      "Th",
+      "Jh"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 80
+    }
+   },
+   "actions": [
+    {
+     "timestep": 89,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -5,
+     "stack_after": 74,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 90,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 16
+     },
+     "chip_change": -14,
+     "stack_after": 1104,
+     "pot_before": 8,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 14
+    },
+    {
+     "timestep": 91,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 74,
+     "pot_before": 22,
+     "call_amount": 10,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 74,
+    "seat3": 0,
+    "seat4": 1126,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 80,
+    "seat4": 1120
+   },
+   "blinds_posted": {
+    "seat4": 2,
+    "seat2": 1
+   },
+   "pot_won": {
+    "seat4": 6
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 24,
+   "button_seat": 4,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "Td",
+      "Qs"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 74
+    },
+    "seat4": {
+     "hole_cards": [
+      "3d",
+      "Th"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 1126
+    }
+   },
+   "actions": [
+    {
+     "timestep": 92,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -5,
+     "stack_after": 1120,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 93,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 72,
+     "pot_before": 8,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 72,
+    "seat3": 0,
+    "seat4": 1128,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 74,
+    "seat4": 1126
+   },
+   "blinds_posted": {
+    "seat2": 2,
+    "seat4": 1
+   },
+   "pot_won": {
+    "seat4": 2
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 25,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "7s",
+      "7h"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 1128
+    },
+    "seat2": {
+     "hole_cards": [
+      "2c",
+      "6s"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 72
+    }
+   },
+   "actions": [
+    {
+     "timestep": 94,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 71,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 71,
+    "seat3": 0,
+    "seat4": 1129,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 72,
+    "seat4": 1128
+   },
+   "blinds_posted": {
+    "seat4": 2,
+    "seat2": 1
+   },
+   "pot_won": {
+    "seat4": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 26,
+   "button_seat": 4,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "Kd",
+      "5c"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 71
+    },
+    "seat4": {
+     "hole_cards": [
+      "Ac",
+      "5h"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 1129
+    }
+   },
+   "actions": [
+    {
+     "timestep": 95,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -1,
+     "stack_after": 1127,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 1
+    },
+    {
+     "timestep": 96,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 69,
+     "pot_before": 4,
+     "call_amount": 0,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 97,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 69,
+     "pot_before": 4,
+     "call_amount": 0,
+     "board": [
+      "2d",
+      "7h",
+      "Ah"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 98,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "bet",
+      "amount": 8
+     },
+     "chip_change": -8,
+     "stack_after": 1119,
+     "pot_before": 4,
+     "call_amount": 0,
+     "board": [
+      "2d",
+      "7h",
+      "Ah"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 8
+    },
+    {
+     "timestep": 99,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 69,
+     "pot_before": 12,
+     "call_amount": 8,
+     "board": [
+      "2d",
+      "7h",
+      "Ah"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 69,
+    "seat3": 0,
+    "seat4": 1131,
+    "seat5": 0
+   },
+   "final_board": [
+    "2d",
+    "7h",
+    "Ah"
+   ],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 71,
+    "seat4": 1129
+   },
+   "blinds_posted": {
+    "seat2": 2,
+    "seat4": 1
+   },
+   "pot_won": {
+    "seat4": 4
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 27,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "3d",
+      "Qh"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 1131
+    },
+    "seat2": {
+     "hole_cards": [
+      "Kh",
+      "Jd"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 69
+    }
+   },
+   "actions": [
+    {
+     "timestep": 100,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 68,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 68,
+    "seat3": 0,
+    "seat4": 1132,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 69,
+    "seat4": 1131
+   },
+   "blinds_posted": {
+    "seat4": 2,
+    "seat2": 1
+   },
+   "pot_won": {
+    "seat4": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 28,
+   "button_seat": 4,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "2c",
+      "8c"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 68
+    },
+    "seat4": {
+     "hole_cards": [
+      "Jd",
+      "8h"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 1132
+    }
+   },
+   "actions": [
+    {
+     "timestep": 101,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -5,
+     "stack_after": 1126,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 102,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 66,
+     "pot_before": 8,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 66,
+    "seat3": 0,
+    "seat4": 1134,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 68,
+    "seat4": 1132
+   },
+   "blinds_posted": {
+    "seat2": 2,
+    "seat4": 1
+   },
+   "pot_won": {
+    "seat4": 2
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 29,
+   "button_seat": 2,
+   "starting_state": {
+    "seat4": {
+     "hole_cards": [
+      "Kh",
+      "2d"
+     ],
+     "position": 0,
+     "seat": 4,
+     "starting_stack": 1134
+    },
+    "seat2": {
+     "hole_cards": [
+      "3h",
+      "7c"
+     ],
+     "position": 1,
+     "seat": 2,
+     "starting_stack": 66
+    }
+   },
+   "actions": [
+    {
+     "timestep": 103,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 65,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 65,
+    "seat3": 0,
+    "seat4": 1135,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 66,
+    "seat4": 1134
+   },
+   "blinds_posted": {
+    "seat4": 2,
+    "seat2": 1
+   },
+   "pot_won": {
+    "seat4": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 30,
+   "button_seat": 4,
+   "starting_state": {
+    "seat2": {
+     "hole_cards": [
+      "As",
+      "2s"
+     ],
+     "position": 0,
+     "seat": 2,
+     "starting_stack": 65
+    },
+    "seat4": {
+     "hole_cards": [
+      "4h",
+      "6c"
+     ],
+     "position": 1,
+     "seat": 4,
+     "starting_stack": 1135
+    }
+   },
+   "actions": [
+    {
+     "timestep": 104,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -5,
+     "stack_after": 1129,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 105,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 63,
+     "pot_before": 8,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 0,
+    "seat2": 63,
+    "seat3": 0,
+    "seat4": 1137,
+    "seat5": 0
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat2": 65,
+    "seat4": 1135
+   },
+   "blinds_posted": {
+    "seat2": 2,
+    "seat4": 1
+   },
+   "pot_won": {
+    "seat4": 2
+   },
+   "eliminated": []
+  }
+ ],
+ "session_info": {
+  "player_names": [
+   "seat0",
+   "seat1",
+   "seat2",
+   "seat3",
+   "seat4",
+   "seat5"
+  ],
+  "starting_stacks": [
+   200,
+   200,
+   200,
+   200,
+   200,
+   200
+  ],
+  "small_blind": 1,
+  "big_blind": 2,
+  "seed": 214192146929019,
+  "start_time": "2026-11-15T01:03:56.128870+00:00",
+  "end_time": "2026-11-15T01:04:08.999570+00:00",
+  "total_hands": 30,
+  "reset_stacks": false,
+  "table_talk": true,
+  "history": "current_hand"
+ },
+ "final_stacks": {
+  "seat0": 0,
+  "seat1": 0,
+  "seat2": 63,
+  "seat3": 0,
+  "seat4": 1137,
+  "seat5": 0
+ },
+ "eliminated_on_hand": {
+  "seat0": 1,
+  "seat1": 1,
+  "seat3": 1,
+  "seat5": 17
+ },
+ "complete": true,
+ "net_chips": {
+  "seat0": -200,
+  "seat1": -200,
+  "seat2": -137,
+  "seat3": -200,
+  "seat4": 937,
+  "seat5": -200
+ },
+ "ranking": {
+  "mode": "elimination",
+  "places": {
+   "seat4": 1,
+   "seat2": 2,
+   "seat5": 3,
+   "seat0": 4,
+   "seat1": 4,
+   "seat3": 4
+  }
+ },
+ "private": {
+  "seat0": {
+   "scratchpad": "Hand 1: SB 2d3d, called all-in behind two shoves. Lost. Busted on H1. Rank: Last among bustees.",
+   "hands": {
+    "1": {
+     "scratchpad_before": "",
+     "cleanup": {
+      "prompt": "## Hand 1 is over\nSince your last action:\n  preflop: seat1 (seat 1) call\n  preflop: seat2 (seat 2) fold\nFinal board: Ac Kc 6s 2c 9c\nShowdown: seat3 showed 5d Ad; seat4 showed 2h 6c; seat0 showed 2d 3d; seat1 showed Qd 9s. Mucked and folded hands stay hidden.\nPot: seat4 won 806.\nStacks now: seat0 0 (out), seat1 0 (out), seat2 194, seat3 0 (out), seat4 806, seat5 200.\nOut of the game this hand: seat0, seat1, seat3.\n\nNow call update_scratchpad exactly once with your scratchpad's full new contents (at most 5000 characters; they replace the old ones and are shown to you at the start of every later hand). Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.",
+      "attempts": [
+       {
+        "output": "\n\n",
+        "reasoning": "e:\n\"Hand 1: Blinded out in SB with 2d3d. Called all-in behind two pre-flop shoves (seat3, seat4). Lost at showdown. Rank: Last due to early bust. Strategy note: Forward players are aggressive ('seat3' and 'seat4' shove light or are on autopilot). Keep observing if I re-enter? No, only 30 hands total. Game over for me.\"\nThis is fine. \nProceed. \nActually, the prompt says \"update_scratchpad works only after a hand: calling it during a hand makes that turn invalid.\" I am doing it after the hand.\nI'll format it properly.\nDone. \nOutputting. \n[Self-Correction/Verification during thought]\nWait, is there any chance the game continues and I get re-entered? \"A player with zero chips is out for the rest of the game.\" So I'm done.\nI'll just keep the scratchpad empty or minimal. The instructions say I can just note it.\nI will call update_scratchpad now. \nAll good. \nProceeds. \n`update_scratchpad(contents=\"Busted H1 in SB with 2d3d. Out for rest of game. Rank: Last among bustees.\")`\nDone. \nWait, let's verify the tool schema: `{\"description\": \"...\", \"name\": \"update_scratchpad\", \"parameters\": {\"properties\": {\"contents\": {\"description\": \"The scratchpad's full new contents.\", \"type\": \"string\"}}, \"required\": [\"contents\"], \"type\": \"object\"}}`\nMatches.\nReady. \nOutput matches. \nProceeds. \n[Output Generation] -> `update_scratchpad` call. \n(Note: I'll just make a very brief note to save tokens, though not strictly necessary.)\n\"Hand 1: SB 2d3d, called all-in behind two shoves. Lost. Busted on H1. Rank: 6th/Last.\" \nDone. \nProceeds. \n[Final Check] The prompt says \"Now call update_scratchpad exactly once with your scratchpad's full new contents\". I will do exactly that.\nAll steps verified.\nOutput matches request.\nDone. \n(Self-Correction/Note during generation prep)\nI should ensure I don't include any extra text that might break parsing, but the system handles tool calls separately. I'll just output the tool call.\nProceeds. \n`update_scratchpad` with content.\nDone. \n[Output Generation] (Proceeds)\n",
+        "update_calls": [
+         "{\"contents\":\"Hand 1: SB 2d3d, called all-in behind two shoves. Lost. Busted on H1. Rank: Last among bustees.\"}"
+        ],
+        "ignored_calls": 0,
+        "truncated": false,
+        "out_tokens": 1749,
+        "outcome": "ok",
+        "contents": "Hand 1: SB 2d3d, called all-in behind two shoves. Lost. Busted on H1. Rank: Last among bustees."
+       }
+      ],
+      "result": "updated",
+      "error": null
+     },
+     "scratchpad_after": "Hand 1: SB 2d3d, called all-in behind two shoves. Lost. Busted on H1. Rank: Last among bustees."
+    }
+   }
+  },
+  "seat1": {
+   "scratchpad": "",
+   "hands": {}
+  },
+  "seat2": {
+   "scratchpad": "",
+   "hands": {}
+  },
+  "seat3": {
+   "scratchpad": "",
+   "hands": {}
+  },
+  "seat4": {
+   "scratchpad": "",
+   "hands": {}
+  },
+  "seat5": {
+   "scratchpad": "",
+   "hands": {}
+  }
+ },
+ "sim": {
+  "game": 4,
+  "model": "vals-hackathon/base_mihail",
+  "lineup": {
+   "seat1": "calling_station",
+   "seat2": "tag",
+   "seat3": "shover",
+   "seat4": "maniac",
+   "seat5": "nit"
+  }
+ }
+}
