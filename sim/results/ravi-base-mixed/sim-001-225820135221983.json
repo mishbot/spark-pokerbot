@@ -1,0 +1,5184 @@
+{
+ "game_id": "sim-001-225820135221983",
+ "hands": [
+  {
+   "hand_number": 1,
+   "button_seat": 5,
+   "starting_state": {
+    "seat0": {
+     "hole_cards": [
+      "4s",
+      "9s"
+     ],
+     "position": 0,
+     "seat": 0,
+     "starting_stack": 200
+    },
+    "seat1": {
+     "hole_cards": [
+      "Ts",
+      "Kc"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 200
+    },
+    "seat2": {
+     "hole_cards": [
+      "7h",
+      "9h"
+     ],
+     "position": 2,
+     "seat": 2,
+     "starting_stack": 200
+    },
+    "seat3": {
+     "hole_cards": [
+      "Kd",
+      "8s"
+     ],
+     "position": 3,
+     "seat": 3,
+     "starting_stack": 200
+    },
+    "seat4": {
+     "hole_cards": [
+      "Ad",
+      "2c"
+     ],
+     "position": 4,
+     "seat": 4,
+     "starting_stack": 200
+    },
+    "seat5": {
+     "hole_cards": [
+      "Th",
+      "2h"
+     ],
+     "position": 5,
+     "seat": 5,
+     "starting_stack": 200
+    }
+   },
+   "actions": [
+    {
+     "timestep": 0,
+     "player": "seat2",
+     "seat": 2,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -2,
+     "stack_after": 198,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 2
+    },
+    {
+     "timestep": 1,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 200,
+     "pot_before": 5,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 2,
+     "player": "seat4",
+     "seat": 4,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -2,
+     "stack_after": 198,
+     "pot_before": 5,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 2
+    },
+    {
+     "timestep": 3,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 200,
+     "pot_before": 7,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 4,
+     "player": "seat0",
+     "seat": 0,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -1,
+     "stack_after": 198,
+     "pot_before": 7,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 1,
+      "latency_seconds": 3.285,
+      "in_tokens": 1364,
+      "out_tokens": 418,
+      "reasoning_tokens": 378,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "Let me analyze the situation:\n\n- I'm in the small blind with 4s 9s (suited connectors)\n- The button (seat 5) and seat 3 have folded\n- Seats 1, 2, and 4 have posted big blind (2 chips each) and called\n- So there are 3 callers behind me plus me in the BB (1 chip)\n- Pot is 7 chips (1 from SB, 2 from BB, 2+2+2 from callers = 7)\n- I need to call 1 more chip to stay in (already posted 1 as SB)\n\nWith 4s 9s from the small blind in a multi-way pot, this is a marginal hand. The board is fresh, and we're in a 5-way pot (me + 3 callers + BB). \n\nOptions:\n1. Fold: Lose 1 chip (already posted)\n2. Call 1: Put in 1 more to see a flop in a 5-way pot with suited connectors\n3. Raise: Unlikely to be profitable here\n\nPre-flop strategy with 4s9s from SB in a multi-way pot:\n- Suited connectors have good implied odds, especially in multi-way pots\n- We're getting 7-1 odds (need to call 1 to win 7), which is decent\n- However, we're out of position with 4 more players left to act\n- 4s9s is not the strongest suited connector, but it has playability\n\nGiven the cheap call (just 1 more chip) and the multi-way nature which helps our implied odds, calling seems reasonable. Raising would only compound our problems, and folding seems too tight.\n\nLet me call and see a flop.\n",
+       "read": ""
+      }
+     },
+     "put_in": 1
+    },
+    {
+     "timestep": 5,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 198,
+     "pot_before": 8,
+     "call_amount": 0,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 6,
+     "player": "seat0",
+     "seat": 0,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 198,
+     "pot_before": 8,
+     "call_amount": 0,
+     "board": [
+      "Ks",
+      "Qh",
+      "Td"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 2,
+      "latency_seconds": 2.12,
+      "in_tokens": 1615,
+      "out_tokens": 340,
+      "reasoning_tokens": 312,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "I have 4s 9s on a Ks Qh Td flop. This is a partially connected hand with a gutshot straight draw and backdoor flush potential. Against three players who called preflop, this isn't a strong hand, but it has some playability.\n\nThe pot is 8 chips with 3 opponents. I'm in position after seat1 checked to me. Let me consider the options:\n\n1. Check - Cheap way to see a turn card. With a gutshot (needs a J for a straight) and backdoor flush, I can sometimes realize equity cheaply. However, I have very little equity right now - just ~5 outs for the straight.\n\n2. Bet - Could try to represent strength or fold out weaker hands, but I have very little equity backing that. Three players who called preflop are likely to have decent hands. A bet here would be a semi-bluff with minimal equity.\n\nGiven that I have 5 outs for a straight and no pair, check seems more prudent. I can realize some equity by seeing the turn cheaply. If I hit an Ace (gives me top kicker) or a pair of 4s or 9s, I can then decide whether to continue. Also, the backdoor flush draw adds a tiny bit of equity.\n\nLet me also consider ladder betting. If I check turn, the pot will still be small (8 or 9 chips), and I can evaluate then.\n\nI'll check behind.\n",
+       "read": ""
+      }
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 7,
+     "player": "seat1",
+     "seat": 1,
+     "street": "flop",
+     "action": {
+      "type": "bet",
+      "amount": 198
+     },
+     "chip_change": -198,
+     "stack_after": 0,
+     "pot_before": 8,
+     "call_amount": 0,
+     "board": [
+      "Ks",
+      "Qh",
+      "Td"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 198
+    },
+    {
+     "timestep": 8,
+     "player": "seat2",
+     "seat": 2,
+     "street": "flop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -198,
+     "stack_after": 0,
+     "pot_before": 206,
+     "call_amount": 198,
+     "board": [
+      "Ks",
+      "Qh",
+      "Td"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat2",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 198
+    },
+    {
+     "timestep": 9,
+     "player": "seat4",
+     "seat": 4,
+     "street": "flop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -198,
+     "stack_after": 0,
+     "pot_before": 404,
+     "call_amount": 198,
+     "board": [
+      "Ks",
+      "Qh",
+      "Td"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat4",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 198
+    },
+    {
+     "timestep": 10,
+     "player": "seat0",
+     "seat": 0,
+     "street": "flop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 198,
+     "pot_before": 602,
+     "call_amount": 198,
+     "board": [
+      "Ks",
+      "Qh",
+      "Td"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 3,
+      "latency_seconds": 2.171,
+      "in_tokens": 1888,
+      "out_tokens": 399,
+      "reasoning_tokens": 371,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "Let me analyze this situation:\n\n- Preflop: I called 1 with 4s 9s from small blind\n- Flop came: Ks Qh Td\n- Seat 1 went all-in for 198 (pot was 8, now 602)\n- Seat 2 called 198\n- Seat 4 called 198\n- Now I need to decide: fold or call 198\n\nMy hand is 4s 9s with Ks Qh Td on board. I have nothing here - no pair, no flush draw (only one spade), no straight draw. My cards are complete bluffs/draws with very little equity.\n\nWith 4 high, I'm essentially drawing dead except for backdoor draws. The board is K-high with a flush draw possibility (one spade), but I have the 4s which doesn't help much.\n\nActually, wait. I have the 4s. There's one spade on board (Ks). So if I have the 4s, I don't have a flush draw. I have no useful cards. My hand is essentially dead against three opponents who put all their money in.\n\nThe pot is 602 and I need to call 198. The pot odds are 602:198, which is about 3:1, meaning I need about 25% equity to break even.\n\nBut with 4s 9s on Ks Qh Td, my equity is extremely low - maybe 5-10% at best from backdoor draws (backdoor flush, backdoor straight). I definitely don't have the needed equity.\n\nI should fold.\n",
+       "read": ""
+      }
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 198,
+    "seat1": 602,
+    "seat2": 0,
+    "seat3": 200,
+    "seat4": 0,
+    "seat5": 200
+   },
+   "final_board": [
+    "Ks",
+    "Qh",
+    "Td",
+    "5c",
+    "Qc"
+   ],
+   "showdown": true,
+   "shown_hole_cards": {
+    "seat1": [
+     "Ts",
+     "Kc"
+    ],
+    "seat2": [
+     "7h",
+     "9h"
+    ],
+    "seat4": [
+     "Ad",
+     "2c"
+    ]
+   },
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat0": 200,
+    "seat1": 200,
+    "seat2": 200,
+    "seat3": 200,
+    "seat4": 200,
+    "seat5": 200
+   },
+   "blinds_posted": {
+    "seat0": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat1": 602
+   },
+   "eliminated": [
+    "seat2",
+    "seat4"
+   ]
+  },
+  {
+   "hand_number": 2,
+   "button_seat": 0,
+   "starting_state": {
+    "seat1": {
+     "hole_cards": [
+      "Js",
+      "7s"
+     ],
+     "position": 0,
+     "seat": 1,
+     "starting_stack": 602
+    },
+    "seat3": {
+     "hole_cards": [
+      "4c",
+      "Jc"
+     ],
+     "position": 1,
+     "seat": 3,
+     "starting_stack": 200
+    },
+    "seat5": {
+     "hole_cards": [
+      "2c",
+      "Kd"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 200
+    },
+    "seat0": {
+     "hole_cards": [
+      "7c",
+      "9s"
+     ],
+     "position": 3,
+     "seat": 0,
+     "starting_stack": 198
+    }
+   },
+   "actions": [
+    {
+     "timestep": 11,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 200,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 12,
+     "player": "seat0",
+     "seat": 0,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 198,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 4,
+      "latency_seconds": 9.573,
+      "in_tokens": 1458,
+      "out_tokens": 2063,
+      "reasoning_tokens": 1767,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "lculate. The initial pot contains 5 chips from the blinds and my stack, plus an additional 2 from an opponent bet, meaning after my call the pot would be 9 chips. That gives me roughly 4.5:1 pot odds.\n\nConsidering 79s, there's some implied value here since it can make both flushes and straights, which means I could extract more chips when I connect. But being out of position is a real issue\u2014I'll have to act first on post-flop streets. The tight fold-flop-round behavior of the preflop raiser might help with positioning, or maybe it doesn't matter since there's only one other player. I should check what thoughts are already noted in my scratchpad about this situation.\n\nI'm deciding between folding pre-flop or committing to see a flop. Folding makes sense given how playable 79s is\u2014I'd need to go all-in on almost every flop where I miss, which is risky. Calling seems better since I'll get a cheap flop, and 79s has nice playability if I hit something while maintaining fold equity. I think folding might be the more disciplined choice here.\n\n\n\n\nLooking at this spot:\n\n- I'm on the button with 7c 9s\n- Seat 1 is in the SB with 1 chip, Seat 3 is BB with 2 chips\n- Only 3 live players (me, seat1, seat3) - very short-handed\n- Seat 5 already folded\n\n79 suited is a marginal hand. I should consider:\n- I'm out of position post-flop (act before the BB)\n- But I'm on the button which helps\n- The pot is small with only blinds\n- I need to see a cheap flop to play this hand well\n\nGiven the short-handed table (only 3 players), there's plenty of dead money in the pot. 79s has good implied odds when it connects - it can make both flushes and open-ended (with 5-6) or gutshot (with 5-8, 6-8, 8-J, 9-J) straight draws. With Stack 1 being the dominant stack, playing tighter makes sense since our stacks are vulnerable.\n\nI'll take the disciplined fold here - 79s needs a favorable flop to be profitable, and folding preserves our stack for better spots. Against only 3 players I want to be selective.\n\n",
+       "read": ""
+      }
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 13,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 601,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 198,
+    "seat1": 601,
+    "seat2": 0,
+    "seat3": 201,
+    "seat4": 0,
+    "seat5": 200
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat0": 198,
+    "seat1": 602,
+    "seat3": 200,
+    "seat5": 200
+   },
+   "blinds_posted": {
+    "seat1": 1,
+    "seat3": 2
+   },
+   "pot_won": {
+    "seat3": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 3,
+   "button_seat": 1,
+   "starting_state": {
+    "seat3": {
+     "hole_cards": [
+      "Tc",
+      "3d"
+     ],
+     "position": 0,
+     "seat": 3,
+     "starting_stack": 201
+    },
+    "seat5": {
+     "hole_cards": [
+      "5c",
+      "2c"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 200
+    },
+    "seat0": {
+     "hole_cards": [
+      "8c",
+      "5d"
+     ],
+     "position": 2,
+     "seat": 0,
+     "starting_stack": 198
+    },
+    "seat1": {
+     "hole_cards": [
+      "Ah",
+      "9d"
+     ],
+     "position": 3,
+     "seat": 1,
+     "starting_stack": 601
+    }
+   },
+   "actions": [
+    {
+     "timestep": 14,
+     "player": "seat0",
+     "seat": 0,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 198,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 5,
+      "latency_seconds": 5.47,
+      "in_tokens": 1483,
+      "out_tokens": 1096,
+      "reasoning_tokens": 1068,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": " availability. Small blind or button position seems likely. With 8c 5d, a second hand off-suit hand, raising looks futile. Folding makes sense unless there's a strategic rationale for playing from this position. The table dynamics could influence the decision, suggesting a potential opportunity to play position dependent on others' actions. I'm carefully analyzing the game's layout and my position. As the small blind, I've already contributed 1 chip, creating a crucial pot odds scenario. The key factors are: 1 existing chip, 2 chips already paid, and facing a 2-chip call to stay in the hand. This translates to calling 2 to win a 5-chip pot, giving me a favorable 33% equity ratio. With potentially\u56f0\u96be\u7684 hand like 8c 5d, tournament poker demands flexibility in the small blind. A check option might work if no one else raises, but I need to consider opponents' potential aggressive actions.\n\nTesting a call reveals an unexpected reveal of seat 3's option to raise, which introduces complex strategic considerations about hand strength and table dynamics. My secondary motivation involves pot control, especially when a strong hand might be in play.\n\nIn the middle of my hand analysis, I'm questioning the recent shift in my approach - from tight play to potentially calling too broadly. My 2-fold starting strategy seems reasonable, but I'm weighing the implications of call vs. fold with a weak off-suit hand.\n\nIn the small blind with 8c 5d, the 1 chip already invested creates compelling pot odds. I'm recognizing that playing selectively could reveal opponents' tendencies, though my stack remains substantial compared to the big blind.\n\nThe key calculation centers on pot odds - calling 2 chips to potentially win 5 chips demands careful strategic consideration. While position is marginal, the implied odds seem premature given the weak hand of 8c 5d.\n\nI'm leaning towards folding after this preliminary analysis, acknowledging the uncomfortable balance between pot odds and hand strength.\n",
+       "read": ""
+      }
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 15,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 601
+     },
+     "chip_change": -601,
+     "stack_after": 0,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 601
+    },
+    {
+     "timestep": 16,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 200,
+     "pot_before": 604,
+     "call_amount": 200,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 17,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 198,
+     "pot_before": 604,
+     "call_amount": 198,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 198,
+    "seat1": 604,
+    "seat2": 0,
+    "seat3": 200,
+    "seat4": 0,
+    "seat5": 198
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat0": 198,
+    "seat1": 601,
+    "seat3": 201,
+    "seat5": 200
+   },
+   "blinds_posted": {
+    "seat3": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat1": 3
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 4,
+   "button_seat": 3,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "6d",
+      "5s"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 198
+    },
+    "seat0": {
+     "hole_cards": [
+      "7c",
+      "2s"
+     ],
+     "position": 1,
+     "seat": 0,
+     "starting_stack": 198
+    },
+    "seat1": {
+     "hole_cards": [
+      "As",
+      "5h"
+     ],
+     "position": 2,
+     "seat": 1,
+     "starting_stack": 604
+    },
+    "seat3": {
+     "hole_cards": [
+      "Ad",
+      "8h"
+     ],
+     "position": 3,
+     "seat": 3,
+     "starting_stack": 200
+    }
+   },
+   "actions": [
+    {
+     "timestep": 18,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 604
+     },
+     "chip_change": -604,
+     "stack_after": 0,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 604
+    },
+    {
+     "timestep": 19,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 200,
+     "pot_before": 607,
+     "call_amount": 200,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 20,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 197,
+     "pot_before": 607,
+     "call_amount": 197,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 21,
+     "player": "seat0",
+     "seat": 0,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -196,
+     "stack_after": 0,
+     "pot_before": 607,
+     "call_amount": 196,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 6,
+      "latency_seconds": 23.323,
+      "in_tokens": 1567,
+      "out_tokens": 4465,
+      "reasoning_tokens": 4179,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "4: SB (out)\n- seat5: BB (folded 1)\n- seat0: LP/CO\n- seat1: MP\n- seat2: EP (out)\n\nSo seat1 is in middle position. They went all-in to 604 (all-in). That's a strong move from MP.\n\nIn MP, a pushing range might be around top 20-30% of hands (depending on player style). My 72o has roughly 30% equity against a random hand, and probably less against a tight range.\n\nAgainst, say, AA-KK-QQ-JJ-1010-AK-AQ is about 30% of hands, 72o has about 28% equity.\n\nExpected stack if I call: 0.28 * 397 \u2248 111\n\nGiven that folding means I'm out with 0, and calling means I'm still in with a chance...\n\nI think I should call. The risk-reward doesn't make sense to fold when I'm a guaranteed bust otherwise.\n\nWait, actually do I need to worry about diminishing returns? With 397 chips, I'd be the favorite if I win. With 0 chips, I'm out. The difference between maybe 10% chance of having 397 and 90% chance of being out vs certain 0...\n\nActually this is more nuanced. Since I'll have 30 hands total and have played 3, I'm at hand 4. In a tournament-like setting ( Increasing blinds not stated but no rebuys), survival is important. But here with 0 chips you're out, so calling is the only way to play.\n\nI'm going to call 196.\n\n\n\n\nLooking at this hand:\n\n- I'm in the small blind with 7c 2s, 196 chips remaining after posting 2\n- seat1 has shove all-in for 604\n- seat3 and seat5 have folded\n- The pot is 607 (604 from seat1 + 2 from me + 1 from BB seat5)\n\nIf I fold, I'm out of the game with 0 chips (my SB is dead money).\nIf I call 196, I go all-in and can win the pot (~397 effective chips, since side pots give back seat1's excess over my call).\n\nWith 72o against seat1's all-in range, I roughly 28-32% equity. My expected value calling: ~0.30 \u00d7 397 \u2248 119 chips vs 0 if I fold. Since folding means certain elimination and calling gives me a real shot at doubling up and staying in the game, I should call.\n\nThe risk-reward strongly favors calling - my only alternative is elimination, so I have nothing to lose anyway.\n\n",
+       "read": ""
+      }
+     },
+     "put_in": 196
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 397,
+    "seat1": 406,
+    "seat2": 0,
+    "seat3": 200,
+    "seat4": 0,
+    "seat5": 197
+   },
+   "final_board": [
+    "7d",
+    "9s",
+    "4h",
+    "Jd",
+    "Js"
+   ],
+   "showdown": true,
+   "shown_hole_cards": {
+    "seat1": [
+     "As",
+     "5h"
+    ],
+    "seat0": [
+     "7c",
+     "2s"
+    ]
+   },
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat0": 198,
+    "seat1": 604,
+    "seat3": 200,
+    "seat5": 198
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat0": 2
+   },
+   "pot_won": {
+    "seat0": 397
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 5,
+   "button_seat": 5,
+   "starting_state": {
+    "seat0": {
+     "hole_cards": [
+      "Qd",
+      "8d"
+     ],
+     "position": 0,
+     "seat": 0,
+     "starting_stack": 397
+    },
+    "seat1": {
+     "hole_cards": [
+      "7c",
+      "Tc"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 406
+    },
+    "seat3": {
+     "hole_cards": [
+      "9d",
+      "Jh"
+     ],
+     "position": 2,
+     "seat": 3,
+     "starting_stack": 200
+    },
+    "seat5": {
+     "hole_cards": [
+      "Qh",
+      "2s"
+     ],
+     "position": 3,
+     "seat": 5,
+     "starting_stack": 197
+    }
+   },
+   "actions": [
+    {
+     "timestep": 22,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 200,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 23,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 197,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 24,
+     "player": "seat0",
+     "seat": 0,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -1,
+     "stack_after": 395,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 7,
+      "latency_seconds": 2.58,
+      "in_tokens": 1582,
+      "out_tokens": 372,
+      "reasoning_tokens": 332,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "Let me analyze the situation:\n\n- I'm in the small blind with Qd8d\n- seat1 is in the big blind with some stack\n- seat3 and seat5 folded preflop (seats 2 and 4 are out)\n- So it's basically me vs seat1\n\nMy stack: 396 (but I've already posted 1, so I have 395 behind)\nseat1's stack: 404 (has posted 2 as big blind)\n\nThe pot is 3 (1 from my SB + 2 from seat1's BB).\n\nWith Qd8d in the small blind against one opponent in the big blind, this is a decent spot. Qd8d is a suited connector with decent playability. Since I'm in the SB, I've already invested 1 chip and need to call just 1 more to see the flop.\n\nOptions:\n- Call 1: See a flop with a suited gutter/distanced connector. Since we're heads-up and I'm already invested, calling is reasonable.\n- Raise: Could be interesting to steal the pot, but Qd8d isn't strong enough for an open-raise value-wise. A small raise could work as a bluff though.\n- Fold: Unplayable. I've already put in a blind and Qd8d has rescue equity.\n\nGiven I'm in a heads-up situation in the SB vs BB, calling for just 1 more chip to see a flop with suited connectors is standard and correct.\n\nLet me call 1.\n",
+       "read": ""
+      }
+     },
+     "put_in": 1
+    },
+    {
+     "timestep": 25,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 404,
+     "pot_before": 4,
+     "call_amount": 0,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 26,
+     "player": "seat0",
+     "seat": 0,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 395,
+     "pot_before": 4,
+     "call_amount": 0,
+     "board": [
+      "Td",
+      "5h",
+      "Js"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 8,
+      "latency_seconds": 1.5,
+      "in_tokens": 1832,
+      "out_tokens": 212,
+      "reasoning_tokens": 184,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "I have Qd 8d on Td 5h Js. The pot is 4. It's checked to me. I have backdoor flush draw and backdoor straight draw possibilities, but mostly just Queen-high. The board is relatively dry but has the ten-high connected cards. \n\nGiven that I'm in the small blind with a doubled stack (395 vs 404), I should try to build the pot with my Queen. However, Qx is usually not strong enough to bet for value here without a better kicker. Checking seems more prudent to control the pot and see a free card, or potentially bluff if seat1 checks again. \n\nActually, with Qd 8d and backdoor draws, a small bet could work as a semi-bluff, but Q-high isn't strong enough equity-wise. I'll check behind and see what happens on the turn.\n",
+       "read": ""
+      }
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 27,
+     "player": "seat1",
+     "seat": 1,
+     "street": "flop",
+     "action": {
+      "type": "check"
+     },
+     "chip_change": 0,
+     "stack_after": 404,
+     "pot_before": 4,
+     "call_amount": 0,
+     "board": [
+      "Td",
+      "5h",
+      "Js"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 28,
+     "player": "seat0",
+     "seat": 0,
+     "street": "turn",
+     "action": {
+      "type": "bet",
+      "amount": 10
+     },
+     "chip_change": -10,
+     "stack_after": 385,
+     "pot_before": 4,
+     "call_amount": 0,
+     "board": [
+      "Td",
+      "5h",
+      "Js",
+      "4d"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 9,
+      "latency_seconds": 2.724,
+      "in_tokens": 2070,
+      "out_tokens": 495,
+      "reasoning_tokens": 454,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "I have Qd 8d on a Td 5h Js 4d board. I have the nut flush draw and a backdoor straight draw. My opponent checked to me on the turn.\n\nThis is a good spot to bet semi-bluff. I have 9 clubs to the flush (actually 9 diamonds to the nut flush since I have Qd 8d and board is Td 5h Js 4d - wait, let me recount diamonds. Board: Td, 5h, Js, 4d. I have Qd, 8d. So I have 4 diamonds total on board+hand? No, board has Td and 4d. I have Qd and 8d. That's 4 diamonds. I need one more diamond for the flush. So I have 9 outs to the flush. Plus overcards Q and 8 could be good, but mostly it's a flush draw.\n\nGiven that I'm out of position and my opponent checked to me, betting here makes sense for multiple reasons:\n1. Semi-bluff with 9 outs to the nut flush\n2. Protect my hand\n3. Take the pot down now if they have air\n\nI'll bet small, maybe 3 into 4 (1.5x pot) or slightly more. Let's bet to 8-10 chips. Actually, since the pot is 4, betting to 8 means I'm putting in 4 more. That's pot odds of 2:1 for my opponent if they call. Let's bet to 8.\n\nWait, legal actions say \"bet to 2-395\". So minimum bet is 2 (which would just be a minbet). Let's bet to 10, which is a bit more than 2x the pot. This puts pressure on my opponent and allows me to continue bluffing on the river if needed.\n\nActually, let me think about this more carefully. My opponent checked the flop and checked the turn. This could indicate weakness. I have a strong draw here. Betting for value/protection makes sense. I'll bet to 10.\n",
+       "read": ""
+      }
+     },
+     "put_in": 10
+    },
+    {
+     "timestep": 29,
+     "player": "seat1",
+     "seat": 1,
+     "street": "turn",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 404,
+     "pot_before": 14,
+     "call_amount": 10,
+     "board": [
+      "Td",
+      "5h",
+      "Js",
+      "4d"
+     ],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 399,
+    "seat1": 404,
+    "seat2": 0,
+    "seat3": 200,
+    "seat4": 0,
+    "seat5": 197
+   },
+   "final_board": [
+    "Td",
+    "5h",
+    "Js",
+    "4d"
+   ],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat0": 397,
+    "seat1": 406,
+    "seat3": 200,
+    "seat5": 197
+   },
+   "blinds_posted": {
+    "seat0": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat0": 4
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 6,
+   "button_seat": 0,
+   "starting_state": {
+    "seat1": {
+     "hole_cards": [
+      "5h",
+      "Kd"
+     ],
+     "position": 0,
+     "seat": 1,
+     "starting_stack": 404
+    },
+    "seat3": {
+     "hole_cards": [
+      "7s",
+      "8s"
+     ],
+     "position": 1,
+     "seat": 3,
+     "starting_stack": 200
+    },
+    "seat5": {
+     "hole_cards": [
+      "Qd",
+      "6h"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 197
+    },
+    "seat0": {
+     "hole_cards": [
+      "5d",
+      "4c"
+     ],
+     "position": 3,
+     "seat": 0,
+     "starting_stack": 399
+    }
+   },
+   "actions": [
+    {
+     "timestep": 30,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 197,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 31,
+     "player": "seat0",
+     "seat": 0,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 399,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 10,
+      "latency_seconds": 2.994,
+      "in_tokens": 1527,
+      "out_tokens": 517,
+      "reasoning_tokens": 489,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "Let me analyze the situation:\n\n- I'm in the small blind with 5d 4c\n- Button is on seat 0 (me), so seats 1 and 3 are posting blinds (SB=1, BB=2)\n- Seat 5 has folded\n- Seat 1 has bet 1 (posted the small blind)\n- Seat 3 has bet 2 (posted the big blind)\n- I have 5d 4c in the small blind\n\nWait, let me re-read the seating. The button is at seat 0, so the players after the button (clockwise) post blinds:\n- Seat 1 is SB (bet 1)\n- Seat 3 is BB (bet 2)\n\nBut seat 2 is out, seat 4 is out. So the order around the table is: seat 0 (button), seat 1, seat 3, seat 5. \n\nActually wait, I'm confused. Let me re-read:\n\"Your seat: 0 (position 3; 0 = small blind)\"\n\nHmm, so I'm in seat 0, which is the small blind? But the description says \"The button moves one live seat clockwise every hand; the two live seats after the button post the small and big blind.\"\n\nIf the button is at seat 0, then the players after the button would be seats 1, 3, 5 (since 2 and 4 are out). So seat 1 would be SB and seat 3 would be BB.\n\nBut it says \"Your seat: 0 (position 3; 0 = small blind)\". This is confusing. Let me look at the actions:\n- seat5 folded\n- seat1 bet 1 (SB)\n- seat3 bet 2 (BB)\n\nAnd I'm in seat 0. So it seems like:\n- The button is... somewhere before seat 0? \n\nWait, the notation says \"0 = small blind\" in the header. Let me reconsider.\n\n\nI'm in the small blind with 5d 4c, facing a bet from the big blind. The preflop call is 2, and I need to make a strategic decision about my hand. My cards are weak, so I'll likely fold to minimize potential losses.\n",
+       "read": ""
+      }
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 32,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 403,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 399,
+    "seat1": 403,
+    "seat2": 0,
+    "seat3": 201,
+    "seat4": 0,
+    "seat5": 197
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat0": 399,
+    "seat1": 404,
+    "seat3": 200,
+    "seat5": 197
+   },
+   "blinds_posted": {
+    "seat1": 1,
+    "seat3": 2
+   },
+   "pot_won": {
+    "seat3": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 7,
+   "button_seat": 1,
+   "starting_state": {
+    "seat3": {
+     "hole_cards": [
+      "Jc",
+      "3c"
+     ],
+     "position": 0,
+     "seat": 3,
+     "starting_stack": 201
+    },
+    "seat5": {
+     "hole_cards": [
+      "8h",
+      "4c"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 197
+    },
+    "seat0": {
+     "hole_cards": [
+      "Ah",
+      "9h"
+     ],
+     "position": 2,
+     "seat": 0,
+     "starting_stack": 399
+    },
+    "seat1": {
+     "hole_cards": [
+      "5s",
+      "9s"
+     ],
+     "position": 3,
+     "seat": 1,
+     "starting_stack": 403
+    }
+   },
+   "actions": [
+    {
+     "timestep": 33,
+     "player": "seat0",
+     "seat": 0,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 12
+     },
+     "chip_change": -12,
+     "stack_after": 387,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "reraising to 12",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 11,
+      "latency_seconds": 5.327,
+      "in_tokens": 1495,
+      "out_tokens": 1187,
+      "reasoning_tokens": 1128,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "say": "reraising to 12",
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "clear table presence. A small standard raise might invite too many calls, so a more assertive move could advantage my strategy. Chips available range from 399 to 403, offering flexibility in decision-making.\n\nThe pot sits at 3, with the small blind at 1 chip and the big blind at 2. A raise to 6 would be a common approach, doubling the big blind. Checking if my ace is premium depends on the ace I hold actually an ace. I'll proceed with confidence about the hand quality.\n\nReraising to 12 looks like a strategic move, forcing a fold or calling decision from the big blind. This exploits the small blind's potential for a free or cheap card while applying pressure. If both opponents fold, I secure the pot and demonstrate proactive play.\n\nWith Ace-nine suited and 399 chip stack, I'm in an optimal position to either apply pressure or maintain flexibility depending on relative opponent stacks. The key is manipulating the pot size and action carefully.\n\nI'll calculate a precise raise to 12 chips, adjusting for the existing small blind and big blind contributions. This aggressive play puts maximum pressure on the remaining opponents while maintaining strategic position.\n\nIf both opponents fold, I win the 3-chip pot. However, I need to verify the exact mechanics of blinds - specifically how seat3's 1 chip and my potential raise interact in the betting structure.\n\nThe potential raises span 12 to 399 chips, with 12 representing the minimum raise needed. The big blind's 2-chip contribution suggests I can reraise to 12, taking advantage of the current betting dynamics.\n\nI'm considering a strategic raise that balances pot building with opponent reactions. My preferred approach involves a measured but firm raise to 12, which could secure the blinds or set up an interesting post-flop scenario.\n\nThe psychological implications of different raise sizes matter, and 12 seems like a calculated yet aggressive movement that puts pressure on remaining opponents without overcommitting my stack.\n",
+       "read": "",
+       "say_raw": "Reraising to 12"
+      }
+     },
+     "put_in": 12
+    },
+    {
+     "timestep": 34,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 403,
+     "pot_before": 15,
+     "call_amount": 12,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 35,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 200,
+     "pot_before": 15,
+     "call_amount": 11,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 36,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 195,
+     "pot_before": 15,
+     "call_amount": 10,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 402,
+    "seat1": 403,
+    "seat2": 0,
+    "seat3": 200,
+    "seat4": 0,
+    "seat5": 195
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat0": 399,
+    "seat1": 403,
+    "seat3": 201,
+    "seat5": 197
+   },
+   "blinds_posted": {
+    "seat3": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat0": 3
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 8,
+   "button_seat": 3,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "4s",
+      "Qh"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 195
+    },
+    "seat0": {
+     "hole_cards": [
+      "4h",
+      "Kd"
+     ],
+     "position": 1,
+     "seat": 0,
+     "starting_stack": 402
+    },
+    "seat1": {
+     "hole_cards": [
+      "6s",
+      "Qs"
+     ],
+     "position": 2,
+     "seat": 1,
+     "starting_stack": 403
+    },
+    "seat3": {
+     "hole_cards": [
+      "Qc",
+      "3d"
+     ],
+     "position": 3,
+     "seat": 3,
+     "starting_stack": 200
+    }
+   },
+   "actions": [
+    {
+     "timestep": 37,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 403,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 38,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 200,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 39,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 194,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 403,
+    "seat1": 403,
+    "seat2": 0,
+    "seat3": 200,
+    "seat4": 0,
+    "seat5": 194
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat0": 402,
+    "seat1": 403,
+    "seat3": 200,
+    "seat5": 195
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat0": 2
+   },
+   "pot_won": {
+    "seat0": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 9,
+   "button_seat": 5,
+   "starting_state": {
+    "seat0": {
+     "hole_cards": [
+      "Qc",
+      "Ks"
+     ],
+     "position": 0,
+     "seat": 0,
+     "starting_stack": 403
+    },
+    "seat1": {
+     "hole_cards": [
+      "7s",
+      "Ah"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 403
+    },
+    "seat3": {
+     "hole_cards": [
+      "3s",
+      "Jh"
+     ],
+     "position": 2,
+     "seat": 3,
+     "starting_stack": 200
+    },
+    "seat5": {
+     "hole_cards": [
+      "Ad",
+      "Td"
+     ],
+     "position": 3,
+     "seat": 5,
+     "starting_stack": 194
+    }
+   },
+   "actions": [
+    {
+     "timestep": 40,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 200,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 41,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 188,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 42,
+     "player": "seat0",
+     "seat": 0,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 18
+     },
+     "chip_change": -17,
+     "stack_after": 385,
+     "pot_before": 9,
+     "call_amount": 5,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 12,
+      "latency_seconds": 8.29,
+      "in_tokens": 1489,
+      "out_tokens": 1807,
+      "reasoning_tokens": 1569,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "Raise: I can raise to 10-403.\n\nI'm not sure if I should raise or call. Let me think about what makes sense:\n\n1. QK suited is a strong hand. I want to get it in if possible.\n2. The BB is still to act and has a 401 stack (pretty deep).\n3. If I just call, I'm\u7b2c\u4e00\u4e66\u8bb0 to act post-flop with the BB, which is not ideal.\n4. If I raise, I isolate and get heads-up with whoever calls.\n\nGiven I'm in the SB and the button has raised, raising here makes sense to:\n- Isolate the hand\n- Get value with a strong hand\n- Take advantage of position\n\nI'll raise to maybe 18 or 20. Actually, let me think about the effective stacks and what I want to accomplish:\n- Button has 188 chips. BB has 401.\n- If I raise to 20, button gets pot odds of 20:6 (roughly 3:1), BB gets similar.\n\nActually, I think a standard 3-bet here would be something like 3x or 4x the raise. Button raised to 6, so a 3-bet to around 18-20 is reasonable.\n\nI going to go with raising to 18. This is a solid 3-bet size that gives them the right pot odds while maturing my premium hand.\n\nLet me double check my reasoning. With QK suited in the SB, facing a button open... this is a classic spot for a 3-bet. I want to:\n1. Get value from worse hands\n2. Build the pot for post-flop play\n3. Sometimes get a fold or put the BB in a tough spot\n\nRaising to 18 is a good play.\n\n\n\n\nLooking at this spot:\n\n- **Hand**: Q\u2663K\u2660 (suited broadway - strong hand, top tier from the SB)\n- **Situation**: Button raised to 6, I'm in the SB, BB is still to act\n- **Pot**: 9 chips so far\n\nThis is a classic 3-bet spot. QK suited is a premium hand that wants to build the pot and get value. I'm facing a button open and want to:\n1. Isolate the hand (sometimes the BB folds, leaving me heads-up)\n2. Get value from worse holdings\n3. Take advantage of post-flop play\n\nA standard 3-bet size would be around 3x the open, so raising to around 18-20 is appropriate. This gives them reasonable pot odds while building the pot with my strong hand.\n\nRaising to 18 is a solid play here.\n\n",
+       "read": ""
+      }
+     },
+     "put_in": 17
+    },
+    {
+     "timestep": 43,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 403
+     },
+     "chip_change": -401,
+     "stack_after": 0,
+     "pot_before": 26,
+     "call_amount": 16,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 401
+    },
+    {
+     "timestep": 44,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 188,
+     "pot_before": 427,
+     "call_amount": 188,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 45,
+     "player": "seat0",
+     "seat": 0,
+     "street": "preflop",
+     "action": {
+      "type": "call"
+     },
+     "chip_change": -385,
+     "stack_after": 0,
+     "pot_before": 427,
+     "call_amount": 385,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "vals-hackathon/base_mihail",
+      "provider": "vals-hackathon",
+      "turn": 13,
+      "latency_seconds": 3.628,
+      "in_tokens": 1955,
+      "out_tokens": 680,
+      "reasoning_tokens": 465,
+      "cost": null,
+      "fallback_used": false,
+      "error": null,
+      "submitted_by_tool": true,
+      "format_error": false,
+      "private": {
+       "reasoning": "s seat 1 had enough chips to call and 3-bet/shove.\n\nNow I'm facing an all-in from the BB. My stack is 385 after the 3-bet, and I need to call 385 more to win the pot.\n\nPot is currently 427:\n- My 18 (3-bet)\n- Seat 1's 403 (all-in)\n- Seat 5's 6 (open)\n- Small blind (I apparently still had 1 in, but that's already counted in my 18)\n\nActually, let me recalculate:\n- I started with 402, put in 1 SB, then raised to 18 total, so I have 402 - 18 = 384 left... but it says 385. Let me just go with what's shown.\n\nPot = 427. I need to call 385 to win a pot that will be 427 + 385 = 812.\n\nEquity: QK vs BB range when they shover BB. The BB is likely shoving with a decent range when we 3-bet and they have flip or great folding equity. But they might shove with a wide range. QK is actually a favorite against most shoving ranges from the BB, especially since they'll be shoving for all their chips.\n\nAgainst what they can have:\n- They might shove with AQ+, KQ, AQs, some broadway combos, pairs, even weaker holdings\n- QK is roughly 55-60% equity against a typical shoving range\n\nThis is a huge pot and a big spot. With QK, I have a strong hand and should be willing to call. Folding dropped out would be terrible - we're putting a premium hand in with good equity against their shoving range.\n\nI should call.\n\nIt's a good spot with QK. Let me call.\n\n\n\n\nLooking at this situation:\n- I raised to 18 with Q\u2663K\u2660 from the SB\n- Button folded, but BB went all-in for 403 (their entire stack)\n- Pot is 427, I need to call 385 to win a pot of 812\n\nQK is a premium hand with strong equity against any reasonable shoving range. When the BB decides to shove instead of fold to a 3-bet, they're typically showing up with a stronger hand - but QK has good equity (roughly 55-60%) against their opening range which includes AA, KK, AK, and maybe some other hands.\n\nThe pot odds are about 2.2:1, which is very reasonable. With a premium hand and the chance to double up massively against a big stack, this is a clear call.\n\n",
+       "read": ""
+      }
+     },
+     "put_in": 385
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 200,
+    "seat4": 0,
+    "seat5": 188
+   },
+   "final_board": [
+    "Ts",
+    "4s",
+    "5s",
+    "Th",
+    "9c"
+   ],
+   "showdown": true,
+   "shown_hole_cards": {
+    "seat1": [
+     "7s",
+     "Ah"
+    ],
+    "seat0": [
+     "Qc",
+     "Ks"
+    ]
+   },
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat0": 403,
+    "seat1": 403,
+    "seat3": 200,
+    "seat5": 194
+   },
+   "blinds_posted": {
+    "seat0": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat1": 812
+   },
+   "eliminated": [
+    "seat0"
+   ]
+  },
+  {
+   "hand_number": 10,
+   "button_seat": 1,
+   "starting_state": {
+    "seat3": {
+     "hole_cards": [
+      "3h",
+      "Tc"
+     ],
+     "position": 0,
+     "seat": 3,
+     "starting_stack": 200
+    },
+    "seat5": {
+     "hole_cards": [
+      "8d",
+      "5h"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 188
+    },
+    "seat1": {
+     "hole_cards": [
+      "Ts",
+      "7c"
+     ],
+     "position": 2,
+     "seat": 1,
+     "starting_stack": 812
+    }
+   },
+   "actions": [
+    {
+     "timestep": 46,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 812,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 47,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 199,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 199,
+    "seat4": 0,
+    "seat5": 189
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 812,
+    "seat3": 200,
+    "seat5": 188
+   },
+   "blinds_posted": {
+    "seat3": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat5": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 11,
+   "button_seat": 3,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "5d",
+      "6d"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 189
+    },
+    "seat1": {
+     "hole_cards": [
+      "6s",
+      "Kh"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 812
+    },
+    "seat3": {
+     "hole_cards": [
+      "8d",
+      "Jd"
+     ],
+     "position": 2,
+     "seat": 3,
+     "starting_stack": 199
+    }
+   },
+   "actions": [
+    {
+     "timestep": 48,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 199,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 49,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 188,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 813,
+    "seat2": 0,
+    "seat3": 199,
+    "seat4": 0,
+    "seat5": 188
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 812,
+    "seat3": 199,
+    "seat5": 189
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat1": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 12,
+   "button_seat": 5,
+   "starting_state": {
+    "seat1": {
+     "hole_cards": [
+      "Th",
+      "Qc"
+     ],
+     "position": 0,
+     "seat": 1,
+     "starting_stack": 813
+    },
+    "seat3": {
+     "hole_cards": [
+      "2c",
+      "2d"
+     ],
+     "position": 1,
+     "seat": 3,
+     "starting_stack": 199
+    },
+    "seat5": {
+     "hole_cards": [
+      "8s",
+      "Qd"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 188
+    }
+   },
+   "actions": [
+    {
+     "timestep": 50,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 188,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 51,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 812,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 200,
+    "seat4": 0,
+    "seat5": 188
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 813,
+    "seat3": 199,
+    "seat5": 188
+   },
+   "blinds_posted": {
+    "seat1": 1,
+    "seat3": 2
+   },
+   "pot_won": {
+    "seat3": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 13,
+   "button_seat": 1,
+   "starting_state": {
+    "seat3": {
+     "hole_cards": [
+      "Js",
+      "8s"
+     ],
+     "position": 0,
+     "seat": 3,
+     "starting_stack": 200
+    },
+    "seat5": {
+     "hole_cards": [
+      "Kc",
+      "Qs"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 188
+    },
+    "seat1": {
+     "hole_cards": [
+      "4s",
+      "3h"
+     ],
+     "position": 2,
+     "seat": 1,
+     "starting_stack": 812
+    }
+   },
+   "actions": [
+    {
+     "timestep": 52,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 812,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 53,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 199,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 199,
+    "seat4": 0,
+    "seat5": 189
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 812,
+    "seat3": 200,
+    "seat5": 188
+   },
+   "blinds_posted": {
+    "seat3": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat5": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 14,
+   "button_seat": 3,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "Ts",
+      "Kc"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 189
+    },
+    "seat1": {
+     "hole_cards": [
+      "7c",
+      "Tc"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 812
+    },
+    "seat3": {
+     "hole_cards": [
+      "6d",
+      "5h"
+     ],
+     "position": 2,
+     "seat": 3,
+     "starting_stack": 199
+    }
+   },
+   "actions": [
+    {
+     "timestep": 54,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 199,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 55,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 188,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 813,
+    "seat2": 0,
+    "seat3": 199,
+    "seat4": 0,
+    "seat5": 188
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 812,
+    "seat3": 199,
+    "seat5": 189
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat1": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 15,
+   "button_seat": 5,
+   "starting_state": {
+    "seat1": {
+     "hole_cards": [
+      "3s",
+      "Jc"
+     ],
+     "position": 0,
+     "seat": 1,
+     "starting_stack": 813
+    },
+    "seat3": {
+     "hole_cards": [
+      "Qs",
+      "6d"
+     ],
+     "position": 1,
+     "seat": 3,
+     "starting_stack": 199
+    },
+    "seat5": {
+     "hole_cards": [
+      "5h",
+      "5d"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 188
+    }
+   },
+   "actions": [
+    {
+     "timestep": 56,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 182,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 57,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 812,
+     "pot_before": 9,
+     "call_amount": 5,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 58,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 197,
+     "pot_before": 9,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 197,
+    "seat4": 0,
+    "seat5": 191
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 813,
+    "seat3": 199,
+    "seat5": 188
+   },
+   "blinds_posted": {
+    "seat1": 1,
+    "seat3": 2
+   },
+   "pot_won": {
+    "seat5": 3
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 16,
+   "button_seat": 1,
+   "starting_state": {
+    "seat3": {
+     "hole_cards": [
+      "4h",
+      "5s"
+     ],
+     "position": 0,
+     "seat": 3,
+     "starting_stack": 197
+    },
+    "seat5": {
+     "hole_cards": [
+      "4d",
+      "8d"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 191
+    },
+    "seat1": {
+     "hole_cards": [
+      "8s",
+      "7s"
+     ],
+     "position": 2,
+     "seat": 1,
+     "starting_stack": 812
+    }
+   },
+   "actions": [
+    {
+     "timestep": 59,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 812,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 60,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 196,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 196,
+    "seat4": 0,
+    "seat5": 192
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 812,
+    "seat3": 197,
+    "seat5": 191
+   },
+   "blinds_posted": {
+    "seat3": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat5": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 17,
+   "button_seat": 3,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "Jh",
+      "Th"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 192
+    },
+    "seat1": {
+     "hole_cards": [
+      "Qs",
+      "7h"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 812
+    },
+    "seat3": {
+     "hole_cards": [
+      "5c",
+      "7c"
+     ],
+     "position": 2,
+     "seat": 3,
+     "starting_stack": 196
+    }
+   },
+   "actions": [
+    {
+     "timestep": 61,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 196,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 62,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -5,
+     "stack_after": 186,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 5
+    },
+    {
+     "timestep": 63,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 810,
+     "pot_before": 8,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 810,
+    "seat2": 0,
+    "seat3": 196,
+    "seat4": 0,
+    "seat5": 194
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 812,
+    "seat3": 196,
+    "seat5": 192
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat5": 2
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 18,
+   "button_seat": 5,
+   "starting_state": {
+    "seat1": {
+     "hole_cards": [
+      "8c",
+      "4c"
+     ],
+     "position": 0,
+     "seat": 1,
+     "starting_stack": 810
+    },
+    "seat3": {
+     "hole_cards": [
+      "4s",
+      "Tc"
+     ],
+     "position": 1,
+     "seat": 3,
+     "starting_stack": 196
+    },
+    "seat5": {
+     "hole_cards": [
+      "2h",
+      "3c"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 194
+    }
+   },
+   "actions": [
+    {
+     "timestep": 64,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 194,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 65,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 809,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 809,
+    "seat2": 0,
+    "seat3": 197,
+    "seat4": 0,
+    "seat5": 194
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 810,
+    "seat3": 196,
+    "seat5": 194
+   },
+   "blinds_posted": {
+    "seat1": 1,
+    "seat3": 2
+   },
+   "pot_won": {
+    "seat3": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 19,
+   "button_seat": 1,
+   "starting_state": {
+    "seat3": {
+     "hole_cards": [
+      "Ah",
+      "Kh"
+     ],
+     "position": 0,
+     "seat": 3,
+     "starting_stack": 197
+    },
+    "seat5": {
+     "hole_cards": [
+      "5s",
+      "2h"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 194
+    },
+    "seat1": {
+     "hole_cards": [
+      "Th",
+      "2s"
+     ],
+     "position": 2,
+     "seat": 1,
+     "starting_stack": 809
+    }
+   },
+   "actions": [
+    {
+     "timestep": 66,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 809,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 67,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 4
+     },
+     "chip_change": -3,
+     "stack_after": 193,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 3
+    },
+    {
+     "timestep": 68,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 192,
+     "pot_before": 6,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 809,
+    "seat2": 0,
+    "seat3": 199,
+    "seat4": 0,
+    "seat5": 192
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 809,
+    "seat3": 197,
+    "seat5": 194
+   },
+   "blinds_posted": {
+    "seat3": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat3": 2
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 20,
+   "button_seat": 3,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "8s",
+      "Qh"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 192
+    },
+    "seat1": {
+     "hole_cards": [
+      "Th",
+      "5c"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 809
+    },
+    "seat3": {
+     "hole_cards": [
+      "9s",
+      "3s"
+     ],
+     "position": 2,
+     "seat": 3,
+     "starting_stack": 199
+    }
+   },
+   "actions": [
+    {
+     "timestep": 69,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 199,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 70,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 191,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 810,
+    "seat2": 0,
+    "seat3": 199,
+    "seat4": 0,
+    "seat5": 191
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 809,
+    "seat3": 199,
+    "seat5": 192
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat1": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 21,
+   "button_seat": 5,
+   "starting_state": {
+    "seat1": {
+     "hole_cards": [
+      "5d",
+      "2c"
+     ],
+     "position": 0,
+     "seat": 1,
+     "starting_stack": 810
+    },
+    "seat3": {
+     "hole_cards": [
+      "Jd",
+      "Qh"
+     ],
+     "position": 1,
+     "seat": 3,
+     "starting_stack": 199
+    },
+    "seat5": {
+     "hole_cards": [
+      "2d",
+      "Ac"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 191
+    }
+   },
+   "actions": [
+    {
+     "timestep": 71,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 191,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 72,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 809,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 809,
+    "seat2": 0,
+    "seat3": 200,
+    "seat4": 0,
+    "seat5": 191
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 810,
+    "seat3": 199,
+    "seat5": 191
+   },
+   "blinds_posted": {
+    "seat1": 1,
+    "seat3": 2
+   },
+   "pot_won": {
+    "seat3": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 22,
+   "button_seat": 1,
+   "starting_state": {
+    "seat3": {
+     "hole_cards": [
+      "5s",
+      "Ad"
+     ],
+     "position": 0,
+     "seat": 3,
+     "starting_stack": 200
+    },
+    "seat5": {
+     "hole_cards": [
+      "9s",
+      "8s"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 191
+    },
+    "seat1": {
+     "hole_cards": [
+      "8d",
+      "6d"
+     ],
+     "position": 2,
+     "seat": 1,
+     "starting_stack": 809
+    }
+   },
+   "actions": [
+    {
+     "timestep": 73,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 809,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 74,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 199,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 809,
+    "seat2": 0,
+    "seat3": 199,
+    "seat4": 0,
+    "seat5": 192
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 809,
+    "seat3": 200,
+    "seat5": 191
+   },
+   "blinds_posted": {
+    "seat3": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat5": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 23,
+   "button_seat": 3,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "Ac",
+      "7h"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 192
+    },
+    "seat1": {
+     "hole_cards": [
+      "6h",
+      "9h"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 809
+    },
+    "seat3": {
+     "hole_cards": [
+      "Td",
+      "Qc"
+     ],
+     "position": 2,
+     "seat": 3,
+     "starting_stack": 199
+    }
+   },
+   "actions": [
+    {
+     "timestep": 75,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 199,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 76,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 191,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 810,
+    "seat2": 0,
+    "seat3": 199,
+    "seat4": 0,
+    "seat5": 191
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 809,
+    "seat3": 199,
+    "seat5": 192
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat1": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 24,
+   "button_seat": 5,
+   "starting_state": {
+    "seat1": {
+     "hole_cards": [
+      "5d",
+      "Ah"
+     ],
+     "position": 0,
+     "seat": 1,
+     "starting_stack": 810
+    },
+    "seat3": {
+     "hole_cards": [
+      "8h",
+      "2c"
+     ],
+     "position": 1,
+     "seat": 3,
+     "starting_stack": 199
+    },
+    "seat5": {
+     "hole_cards": [
+      "2d",
+      "5c"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 191
+    }
+   },
+   "actions": [
+    {
+     "timestep": 77,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 191,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 78,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 810
+     },
+     "chip_change": -809,
+     "stack_after": 0,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 809
+    },
+    {
+     "timestep": 79,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 197,
+     "pot_before": 812,
+     "call_amount": 197,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 197,
+    "seat4": 0,
+    "seat5": 191
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 810,
+    "seat3": 199,
+    "seat5": 191
+   },
+   "blinds_posted": {
+    "seat1": 1,
+    "seat3": 2
+   },
+   "pot_won": {
+    "seat1": 2
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 25,
+   "button_seat": 1,
+   "starting_state": {
+    "seat3": {
+     "hole_cards": [
+      "Tc",
+      "7d"
+     ],
+     "position": 0,
+     "seat": 3,
+     "starting_stack": 197
+    },
+    "seat5": {
+     "hole_cards": [
+      "5d",
+      "Js"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 191
+    },
+    "seat1": {
+     "hole_cards": [
+      "4h",
+      "Kd"
+     ],
+     "position": 2,
+     "seat": 1,
+     "starting_stack": 812
+    }
+   },
+   "actions": [
+    {
+     "timestep": 80,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 812,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 81,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 196,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 196,
+    "seat4": 0,
+    "seat5": 192
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 812,
+    "seat3": 197,
+    "seat5": 191
+   },
+   "blinds_posted": {
+    "seat3": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat5": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 26,
+   "button_seat": 3,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "7h",
+      "8h"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 192
+    },
+    "seat1": {
+     "hole_cards": [
+      "9d",
+      "6s"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 812
+    },
+    "seat3": {
+     "hole_cards": [
+      "Kd",
+      "Jc"
+     ],
+     "position": 2,
+     "seat": 3,
+     "starting_stack": 196
+    }
+   },
+   "actions": [
+    {
+     "timestep": 82,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 196,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 83,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 191,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 813,
+    "seat2": 0,
+    "seat3": 196,
+    "seat4": 0,
+    "seat5": 191
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 812,
+    "seat3": 196,
+    "seat5": 192
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat1": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 27,
+   "button_seat": 5,
+   "starting_state": {
+    "seat1": {
+     "hole_cards": [
+      "Td",
+      "2d"
+     ],
+     "position": 0,
+     "seat": 1,
+     "starting_stack": 813
+    },
+    "seat3": {
+     "hole_cards": [
+      "Kd",
+      "Qs"
+     ],
+     "position": 1,
+     "seat": 3,
+     "starting_stack": 196
+    },
+    "seat5": {
+     "hole_cards": [
+      "7s",
+      "Ad"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 191
+    }
+   },
+   "actions": [
+    {
+     "timestep": 84,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 191,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 85,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 812,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 197,
+    "seat4": 0,
+    "seat5": 191
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 813,
+    "seat3": 196,
+    "seat5": 191
+   },
+   "blinds_posted": {
+    "seat1": 1,
+    "seat3": 2
+   },
+   "pot_won": {
+    "seat3": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 28,
+   "button_seat": 1,
+   "starting_state": {
+    "seat3": {
+     "hole_cards": [
+      "Jc",
+      "5d"
+     ],
+     "position": 0,
+     "seat": 3,
+     "starting_stack": 197
+    },
+    "seat5": {
+     "hole_cards": [
+      "Qh",
+      "5c"
+     ],
+     "position": 1,
+     "seat": 5,
+     "starting_stack": 191
+    },
+    "seat1": {
+     "hole_cards": [
+      "7c",
+      "2c"
+     ],
+     "position": 2,
+     "seat": 1,
+     "starting_stack": 812
+    }
+   },
+   "actions": [
+    {
+     "timestep": 86,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 812,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 87,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 196,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 196,
+    "seat4": 0,
+    "seat5": 192
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 812,
+    "seat3": 197,
+    "seat5": 191
+   },
+   "blinds_posted": {
+    "seat3": 1,
+    "seat5": 2
+   },
+   "pot_won": {
+    "seat5": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 29,
+   "button_seat": 3,
+   "starting_state": {
+    "seat5": {
+     "hole_cards": [
+      "2s",
+      "Td"
+     ],
+     "position": 0,
+     "seat": 5,
+     "starting_stack": 192
+    },
+    "seat1": {
+     "hole_cards": [
+      "Qh",
+      "9h"
+     ],
+     "position": 1,
+     "seat": 1,
+     "starting_stack": 812
+    },
+    "seat3": {
+     "hole_cards": [
+      "5c",
+      "9d"
+     ],
+     "position": 2,
+     "seat": 3,
+     "starting_stack": 196
+    }
+   },
+   "actions": [
+    {
+     "timestep": 88,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 196,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 89,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 191,
+     "pot_before": 3,
+     "call_amount": 1,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 813,
+    "seat2": 0,
+    "seat3": 196,
+    "seat4": 0,
+    "seat5": 191
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 812,
+    "seat3": 196,
+    "seat5": 192
+   },
+   "blinds_posted": {
+    "seat5": 1,
+    "seat1": 2
+   },
+   "pot_won": {
+    "seat1": 1
+   },
+   "eliminated": []
+  },
+  {
+   "hand_number": 30,
+   "button_seat": 5,
+   "starting_state": {
+    "seat1": {
+     "hole_cards": [
+      "Th",
+      "9c"
+     ],
+     "position": 0,
+     "seat": 1,
+     "starting_stack": 813
+    },
+    "seat3": {
+     "hole_cards": [
+      "Qh",
+      "5d"
+     ],
+     "position": 1,
+     "seat": 3,
+     "starting_stack": 196
+    },
+    "seat5": {
+     "hole_cards": [
+      "Ks",
+      "Js"
+     ],
+     "position": 2,
+     "seat": 5,
+     "starting_stack": 191
+    }
+   },
+   "actions": [
+    {
+     "timestep": 90,
+     "player": "seat5",
+     "seat": 5,
+     "street": "preflop",
+     "action": {
+      "type": "raise",
+      "amount": 6
+     },
+     "chip_change": -6,
+     "stack_after": 185,
+     "pot_before": 3,
+     "call_amount": 2,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat5",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 6
+    },
+    {
+     "timestep": 91,
+     "player": "seat1",
+     "seat": 1,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 812,
+     "pot_before": 9,
+     "call_amount": 5,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat1",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    },
+    {
+     "timestep": 92,
+     "player": "seat3",
+     "seat": 3,
+     "street": "preflop",
+     "action": {
+      "type": "fold"
+     },
+     "chip_change": 0,
+     "stack_after": 194,
+     "pot_before": 9,
+     "call_amount": 4,
+     "board": [],
+     "say": "",
+     "model_response": {
+      "model_name": "seat3",
+      "provider": "scripted",
+      "latency_seconds": 0.0,
+      "in_tokens": 0,
+      "out_tokens": 0,
+      "reasoning_tokens": 0,
+      "cost": 0.0,
+      "reasoning": "",
+      "fallback_used": false,
+      "error": null,
+      "private": {}
+     },
+     "put_in": 0
+    }
+   ],
+   "ending_stacks": {
+    "seat0": 0,
+    "seat1": 812,
+    "seat2": 0,
+    "seat3": 194,
+    "seat4": 0,
+    "seat5": 194
+   },
+   "final_board": [],
+   "showdown": false,
+   "shown_hole_cards": {},
+   "blinds": {
+    "small_blind": 1,
+    "big_blind": 2
+   },
+   "stacks_before": {
+    "seat1": 813,
+    "seat3": 196,
+    "seat5": 191
+   },
+   "blinds_posted": {
+    "seat1": 1,
+    "seat3": 2
+   },
+   "pot_won": {
+    "seat5": 3
+   },
+   "eliminated": []
+  }
+ ],
+ "session_info": {
+  "player_names": [
+   "seat0",
+   "seat1",
+   "seat2",
+   "seat3",
+   "seat4",
+   "seat5"
+  ],
+  "starting_stacks": [
+   200,
+   200,
+   200,
+   200,
+   200,
+   200
+  ],
+  "small_blind": 1,
+  "big_blind": 2,
+  "seed": 225820135221983,
+  "start_time": "2026-11-15T00:54:35.497836+00:00",
+  "end_time": "2026-11-15T00:56:23.751921+00:00",
+  "total_hands": 30,
+  "reset_stacks": false,
+  "table_talk": true,
+  "history": "current_hand"
+ },
+ "final_stacks": {
+  "seat0": 0,
+  "seat1": 812,
+  "seat2": 0,
+  "seat3": 194,
+  "seat4": 0,
+  "seat5": 194
+ },
+ "eliminated_on_hand": {
+  "seat2": 1,
+  "seat4": 1,
+  "seat0": 9
+ },
+ "complete": true,
+ "net_chips": {
+  "seat0": -200,
+  "seat1": 612,
+  "seat2": -200,
+  "seat3": -6,
+  "seat4": -200,
+  "seat5": -6
+ },
+ "ranking": {
+  "mode": "elimination",
+  "places": {
+   "seat1": 1,
+   "seat3": 2,
+   "seat5": 2,
+   "seat0": 4,
+   "seat2": 5,
+   "seat4": 5
+  }
+ },
+ "private": {
+  "seat0": {
+   "scratchpad": "Hand 9: Shoved QcKs preflop vs BB shove, lost to 7sAh on Ts4s5sTh9c. Bustout. Rank: 6/6. Stacks: seat1=812, seat3=200, seat5=188. Game continues to hand 30 or until 1 leader.",
+   "hands": {
+    "1": {
+     "scratchpad_before": "",
+     "cleanup": {
+      "prompt": "## Hand 1 is over\nSince your last action:\n  (no other actions)\nFinal board: Ks Qh Td 5c Qc\nShowdown: seat1 showed Ts Kc; seat2 showed 7h 9h; seat4 showed Ad 2c. Mucked and folded hands stay hidden.\nPot: seat1 won 602.\nStacks now: seat0 198, seat1 602, seat2 0 (out), seat3 200, seat4 0 (out), seat5 200.\nOut of the game this hand: seat2, seat4.\n\nNow call update_scratchpad exactly once with your scratchpad's full new contents (at most 5000 characters; they replace the old ones and are shown to you at the start of every later hand). Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.",
+      "attempts": [
+       {
+        "output": "\n\n",
+        "reasoning": "tion shows: seat2 calls, seat3 folds, seat4 calls, seat5 folds. Then seat1 checks (wait, seat1 is BB and should act before seat 2?). Hmm, this is confusing. Let me look again.\n- Oh wait, maybe the button placement affects who posts blinds. If button is at 5, then 0 is SB, 1 is BB. Action order should be 0 (SB), 1 (BB), 2, 3, 4, 5. But seat 1 checking? Maybe seat 1 checked initial? No, the description says \"Actions this hand: preflop: seat2 (seat 2) call, preflop: seat3 (seat 3) fold, preflop: seat4 (seat 4) call, preflop: seat5 (seat 5) fold\". This implies seat 0 acted first, I called. Then seat 1 checked. That would be odd since BB acts after SB if there are callers. Unless... maybe the game has a weird preflop structure or I misread.\n- Actually, looking at the table at the start: seat 0 bet 1 (SB), seat 1 bet 2 (BB), seat 2 bet 2, seat 4 bet 2. So 4 players saw the flop. I called to make 2. Section says seat 1 checked on the flop after the preflop betting. \n- I folded the flop because I had 4s9s on KsQhTd - I have a backdoor flush draw and a backdoor straight draw, but facing three all-in players with 602 in the pot, I only have ~4 outs (any 5, 6, 7, 8 for straight, or J for royal? Actually no, KQJT is Broadway, so I'd need a J or a straight? Wait, K-Q-J-T-9 is a straight, so I need a J. Or a 6-5-? No, K-Q-T on board, I have 9-4. Straight comes if board pairs or I get a J. Backdoor flush draw with hearts? No, 9s and 4s, board is Ks Qh Td. Only one spade on board. Not much equity.\n- Actually, with 3 players all-in, the pot is huge (602 to call 198). Even with a reflexive 20% equity, it's -EV to call. So folding is correct.\n\nNow for the scratchpad update, I should track:\n- Players out: seat 2, seat 4\n- Stack sizes: seat 1 has 602 (dominant), seat 3 200, seat 5 200, me 198\n- Game state: Late enough that 3 players are out. I'm still in. Need to be careful but can play aggressively if I have a stack advantage or identify weak players.\n\nI'll write a concise scratchpad.\n",
+        "update_calls": [
+         "{\"contents\":\"Hand 1 Summary: Folded on KsQhTd flop with 4s9s. Facing 3 players hotucked (seat1 had 2-pair KKQQ wins). Seat2 & Seat4 out.\\n\\nCurrent Stacks: seat1=602, seat3=200, seat5=200, me=198\\nOut: seat2, seat4\\n\\nNotes: seat1 is dominant stack now. Table is very short-handed (3 players left). Blinds 1/2 remain. Keep notes on player tendencies as we learn them. Skip marginal spots since pot odds are tricky with short stacks.\"}"
+        ],
+        "ignored_calls": 0,
+        "truncated": false,
+        "out_tokens": 1215,
+        "outcome": "ok",
+        "contents": "Hand 1 Summary: Folded on KsQhTd flop with 4s9s. Facing 3 players hotucked (seat1 had 2-pair KKQQ wins). Seat2 & Seat4 out.\n\nCurrent Stacks: seat1=602, seat3=200, seat5=200, me=198\nOut: seat2, seat4\n\nNotes: seat1 is dominant stack now. Table is very short-handed (3 players left). Blinds 1/2 remain. Keep notes on player tendencies as we learn them. Skip marginal spots since pot odds are tricky with short stacks."
+       }
+      ],
+      "result": "updated",
+      "error": null
+     },
+     "scratchpad_after": "Hand 1 Summary: Folded on KsQhTd flop with 4s9s. Facing 3 players hotucked (seat1 had 2-pair KKQQ wins). Seat2 & Seat4 out.\n\nCurrent Stacks: seat1=602, seat3=200, seat5=200, me=198\nOut: seat2, seat4\n\nNotes: seat1 is dominant stack now. Table is very short-handed (3 players left). Blinds 1/2 remain. Keep notes on player tendencies as we learn them. Skip marginal spots since pot odds are tricky with short stacks."
+    },
+    "2": {
+     "scratchpad_before": "Hand 1 Summary: Folded on KsQhTd flop with 4s9s. Facing 3 players hotucked (seat1 had 2-pair KKQQ wins). Seat2 & Seat4 out.\n\nCurrent Stacks: seat1=602, seat3=200, seat5=200, me=198\nOut: seat2, seat4\n\nNotes: seat1 is dominant stack now. Table is very short-handed (3 players left). Blinds 1/2 remain. Keep notes on player tendencies as we learn them. Skip marginal spots since pot odds are tricky with short stacks.",
+     "cleanup": {
+      "prompt": "## Hand 2 is over\nSince your last action:\n  preflop: seat1 (seat 1) fold\nFinal board: -\nNo showdown: hands that were not shown stay hidden.\nPot: seat3 won 1.\nStacks now: seat0 198, seat1 601, seat2 0 (out), seat3 201, seat4 0 (out), seat5 200.\n\nNow call update_scratchpad exactly once with your scratchpad's full new contents (at most 5000 characters; they replace the old ones and are shown to you at the start of every later hand). Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.",
+      "attempts": [
+       {
+        "output": "\n\n",
+        "reasoning": "Hand 2 ended quickly - everyone folded preflop, and seat3 won the 1 chip in the pot (the blinds). \n\nCurrent stacks:\n- seat0 (me): 198\n- seat1: 601 (dominant)\n- seat2: 0 (out)\n- seat3: 201\n- seat4: 0 (out)\n- seat5: 200\n\nStill 3 players left. Seat 1 is the big stack at 601, and I'm at 198. We're still short-handed.\n\nI should update my scratchpad to reflect that we played a very tight game so far, folding two hands. I recognized seat1 as the dominant stack. I'll keep tracking things and update the notes.\n\nLet me also consider the format for the update_scratchpad - I need to provide my full new scratchpad contents.\n",
+        "update_calls": [
+         "{\"contents\":\"Hand 1-2 Summary: Faced 2 hands, folded both (KsQhTd flop with 4s9s; 7c9s preflop). \\nCurrent Stacks: seat0=198(me), seat1=601, seat3=201, seat5=200\\nOut: seat2, seat4\\n\\nNotes: Same 3 players. seat1 dominant stack (601 chips). Playing tight so far - folding marginal hands. Still 28 hands remaining. Need to find good spots to play - get involved with premium hands or good suited connectors in position. Conserving chips isn't terrible but I need to be selective and wait for spots where I can win big pots. Blinds are 1/2 so not much pressure yet.\"}"
+        ],
+        "ignored_calls": 0,
+        "truncated": false,
+        "out_tokens": 393,
+        "outcome": "ok",
+        "contents": "Hand 1-2 Summary: Faced 2 hands, folded both (KsQhTd flop with 4s9s; 7c9s preflop). \nCurrent Stacks: seat0=198(me), seat1=601, seat3=201, seat5=200\nOut: seat2, seat4\n\nNotes: Same 3 players. seat1 dominant stack (601 chips). Playing tight so far - folding marginal hands. Still 28 hands remaining. Need to find good spots to play - get involved with premium hands or good suited connectors in position. Conserving chips isn't terrible but I need to be selective and wait for spots where I can win big pots. Blinds are 1/2 so not much pressure yet."
+       }
+      ],
+      "result": "updated",
+      "error": null
+     },
+     "scratchpad_after": "Hand 1-2 Summary: Faced 2 hands, folded both (KsQhTd flop with 4s9s; 7c9s preflop). \nCurrent Stacks: seat0=198(me), seat1=601, seat3=201, seat5=200\nOut: seat2, seat4\n\nNotes: Same 3 players. seat1 dominant stack (601 chips). Playing tight so far - folding marginal hands. Still 28 hands remaining. Need to find good spots to play - get involved with premium hands or good suited connectors in position. Conserving chips isn't terrible but I need to be selective and wait for spots where I can win big pots. Blinds are 1/2 so not much pressure yet."
+    },
+    "3": {
+     "scratchpad_before": "Hand 1-2 Summary: Faced 2 hands, folded both (KsQhTd flop with 4s9s; 7c9s preflop). \nCurrent Stacks: seat0=198(me), seat1=601, seat3=201, seat5=200\nOut: seat2, seat4\n\nNotes: Same 3 players. seat1 dominant stack (601 chips). Playing tight so far - folding marginal hands. Still 28 hands remaining. Need to find good spots to play - get involved with premium hands or good suited connectors in position. Conserving chips isn't terrible but I need to be selective and wait for spots where I can win big pots. Blinds are 1/2 so not much pressure yet.",
+     "cleanup": {
+      "prompt": "## Hand 3 is over\nSince your last action:\n  preflop: seat1 (seat 1) raise to 601\n  preflop: seat3 (seat 3) fold\n  preflop: seat5 (seat 5) fold\nFinal board: -\nNo showdown: hands that were not shown stay hidden.\nPot: seat1 won 3.\nStacks now: seat0 198, seat1 604, seat2 0 (out), seat3 200, seat4 0 (out), seat5 198.\n\nNow call update_scratchpad exactly once with your scratchpad's full new contents (at most 5000 characters; they replace the old ones and are shown to you at the start of every later hand). Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.",
+      "attempts": [
+       {
+        "output": "\n\n",
+        "reasoning": "Hand 3 is over. I folded 8c5d from the small blind. seat1 (button) raised to 601 (essentially pushing all-in given his stack of 601), and both seat3 and seat5 folded. So seat1 wins the blinds and antes (3 chips) without a fight.\n\nCurrent stacks:\n- seat0 (me): 198\n- seat1: 604 (dominant stack, aggressive)\n- seat3: 200\n- seat5: 198\n- seat2, seat4: out\n\nNotes to update:\n- Playing very tight, folding marginal hands.\n- seat1 is extremely aggressive - raise to 601 preflop from button when I was in SB. He's likely bolding a lot or has a strong hand.\n- Only 3 players left, blinds are 1/2.\n- 27 hands remaining.\n- I need to start playing more hands when the action is folded to me, especially in late position, or when I have a premium hand.\n- Being in the SB with 198 chips means I'll be forced to act preflop often. I should consider 3-betting light sometimes or defending better, but folding 8x is correct.\n- Let's keep the scratchpad concise.\n\nI'll update the scratchpad with the current status.\n",
+        "update_calls": [
+         "{\"contents\":\"Hand 1-3 Summary: Folded KsQh (flop), 7c9s (pfp), 8c5d (SB pfp). seat1 won blinds after raising to 601.\\nCurrent Stacks: seat0=198(me), seat1=604, seat3=200, seat5=198. Out: seat2, seat4.\\nNotes: seat1 is extremely aggressive (3x can-stack raiser). Only 3 players left. 27 hands remain. Playing tight/folding marginal hands is safe but passive. In SB with ~200 chips, I'll be posting 1 often. Need to find spots to steal blinds or play premium hands. When action folds to me in LP, I should open wider. In SB, consider limp/3-bet or 4-bet bluff vs seat1's aggression. seat3 and seat5 are short(er) but comparable to me. Watch seat1's push tendencies.\"}"
+        ],
+        "ignored_calls": 0,
+        "truncated": false,
+        "out_tokens": 542,
+        "outcome": "ok",
+        "contents": "Hand 1-3 Summary: Folded KsQh (flop), 7c9s (pfp), 8c5d (SB pfp). seat1 won blinds after raising to 601.\nCurrent Stacks: seat0=198(me), seat1=604, seat3=200, seat5=198. Out: seat2, seat4.\nNotes: seat1 is extremely aggressive (3x can-stack raiser). Only 3 players left. 27 hands remain. Playing tight/folding marginal hands is safe but passive. In SB with ~200 chips, I'll be posting 1 often. Need to find spots to steal blinds or play premium hands. When action folds to me in LP, I should open wider. In SB, consider limp/3-bet or 4-bet bluff vs seat1's aggression. seat3 and seat5 are short(er) but comparable to me. Watch seat1's push tendencies."
+       }
+      ],
+      "result": "updated",
+      "error": null
+     },
+     "scratchpad_after": "Hand 1-3 Summary: Folded KsQh (flop), 7c9s (pfp), 8c5d (SB pfp). seat1 won blinds after raising to 601.\nCurrent Stacks: seat0=198(me), seat1=604, seat3=200, seat5=198. Out: seat2, seat4.\nNotes: seat1 is extremely aggressive (3x can-stack raiser). Only 3 players left. 27 hands remain. Playing tight/folding marginal hands is safe but passive. In SB with ~200 chips, I'll be posting 1 often. Need to find spots to steal blinds or play premium hands. When action folds to me in LP, I should open wider. In SB, consider limp/3-bet or 4-bet bluff vs seat1's aggression. seat3 and seat5 are short(er) but comparable to me. Watch seat1's push tendencies."
+    },
+    "4": {
+     "scratchpad_before": "Hand 1-3 Summary: Folded KsQh (flop), 7c9s (pfp), 8c5d (SB pfp). seat1 won blinds after raising to 601.\nCurrent Stacks: seat0=198(me), seat1=604, seat3=200, seat5=198. Out: seat2, seat4.\nNotes: seat1 is extremely aggressive (3x can-stack raiser). Only 3 players left. 27 hands remain. Playing tight/folding marginal hands is safe but passive. In SB with ~200 chips, I'll be posting 1 often. Need to find spots to steal blinds or play premium hands. When action folds to me in LP, I should open wider. In SB, consider limp/3-bet or 4-bet bluff vs seat1's aggression. seat3 and seat5 are short(er) but comparable to me. Watch seat1's push tendencies.",
+     "cleanup": {
+      "prompt": "## Hand 4 is over\nSince your last action:\n  (no other actions)\nFinal board: 7d 9s 4h Jd Js\nShowdown: seat1 showed As 5h; seat0 showed 7c 2s. Mucked and folded hands stay hidden.\nPot: seat0 won 397.\nStacks now: seat0 397, seat1 406, seat2 0 (out), seat3 200, seat4 0 (out), seat5 197.\n\nNow call update_scratchpad exactly once with your scratchpad's full new contents (at most 5000 characters; they replace the old ones and are shown to you at the start of every later hand). Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.",
+      "attempts": [
+       {
+        "output": "\n\n",
+        "reasoning": "t 0. Unless seat1 had a different effective stack than what was shown in the action? Let me re-read the deal:\n\nActions: seat1 raised to 604. My bet was 2 (SB), seat5 bet 1 (BB), then folded. I called 196.\n\nSo pot was: seat1's 604 + my 2 + seat5's 1 = 607 from preflop betting. But wait, seat5 folded. So seat5's 1 is in the pot. Actually, seat5 folded in the middle of the hand but his bet of 1 stayed in the pot.\n\nWhen I called 196, the effective heads-up pot between me and seat1 would be: min(196 from me, 604 from seat1) = 196 effective. So main pot between us would be 196\u00d72 + 3 (blinds) = 395... but seat5 folded. So I won 397 (close enough, just math).\n\nBut why does seat1 show 406 after? Let me look again at the deal output:\n\n\"Actions this hand:\n  preflop: seat1 (seat 1) raise to 604\n  preflop: seat3 (seat 3) fold\n  preflop: seat5 (seat 5) fold\"\n\nAnd the table shows seat1 with \"stack 0, bet 604, all-in\". Then at the end: \"Stacks now: seat0 397, seat1 406...\"\n\nThis is confusing. If seat1 was all-in for 604, he should have 0 left. I wonder if there's some payout from a tournament structure, or if maybe I'm misunderstanding the situation. Let me just accept the numbers as given - seat1 has 406 after losing a hand that was all-in for him. Maybe there was a side pot or I'm misunderstanding the chip counts. Regardless, I'll update with current state.\n\nActually wait - maybe seat1 had more than 604 originally? He raised to 604 but maybe had more than 604 committed? No, it says \"all-in\" with bet 604 and stack 0, meaning he put 604 in.\n\nHmm, let me look at previous hand summaries: \"seat1 won blinds after raising to 601\" and his stack went from - to 604 in the summary. And the note says he's extremely aggressive. Maybe the game had some situation where he was put out and then got rebuy or something? No, it's heads-up (only 3 players).\n\nI'll just accept the final numbers: seat1=406, me=397, seat3=200, seat5=197. Only seat2 and seat4 are out. I doubled up with 72o which is nice.\n",
+        "update_calls": [
+         "{\"contents\":\"Hand 1-4 Summary: Folded KsQh (flop), 7c9s (pfp), 8c5d (SB pfp), 7c2s (call SA+5h, flop 7d9s4hJdJs, hit pair of 7s, won 397). seat1 won H1. \\nCurrent Stacks: seat0=397(me, doubled up!), seat1=406, seat3=200, seat5=198. Out: seat2, seat4.\\nNotes: Doubled up with 72o all-in, nice! seat1 still aggressive but slightly behind me now. Only 4 players left, 26 hands remain. In SB with doubled stack, can be more patient. Will still hit blinds often; need to steal more. Against seat1's aggression, consider 4-bet bluffing or calling wider since I showed I'll float. In 6hand: PFP opening range should dictate how I play. seat3 and seat5 are shorter - they may push light. More hands remaining, so position is still key.\"}"
+        ],
+        "ignored_calls": 0,
+        "truncated": false,
+        "out_tokens": 1270,
+        "outcome": "ok",
+        "contents": "Hand 1-4 Summary: Folded KsQh (flop), 7c9s (pfp), 8c5d (SB pfp), 7c2s (call SA+5h, flop 7d9s4hJdJs, hit pair of 7s, won 397). seat1 won H1. \nCurrent Stacks: seat0=397(me, doubled up!), seat1=406, seat3=200, seat5=198. Out: seat2, seat4.\nNotes: Doubled up with 72o all-in, nice! seat1 still aggressive but slightly behind me now. Only 4 players left, 26 hands remain. In SB with doubled stack, can be more patient. Will still hit blinds often; need to steal more. Against seat1's aggression, consider 4-bet bluffing or calling wider since I showed I'll float. In 6hand: PFP opening range should dictate how I play. seat3 and seat5 are shorter - they may push light. More hands remaining, so position is still key."
+       }
+      ],
+      "result": "updated",
+      "error": null
+     },
+     "scratchpad_after": "Hand 1-4 Summary: Folded KsQh (flop), 7c9s (pfp), 8c5d (SB pfp), 7c2s (call SA+5h, flop 7d9s4hJdJs, hit pair of 7s, won 397). seat1 won H1. \nCurrent Stacks: seat0=397(me, doubled up!), seat1=406, seat3=200, seat5=198. Out: seat2, seat4.\nNotes: Doubled up with 72o all-in, nice! seat1 still aggressive but slightly behind me now. Only 4 players left, 26 hands remain. In SB with doubled stack, can be more patient. Will still hit blinds often; need to steal more. Against seat1's aggression, consider 4-bet bluffing or calling wider since I showed I'll float. In 6hand: PFP opening range should dictate how I play. seat3 and seat5 are shorter - they may push light. More hands remaining, so position is still key."
+    },
+    "5": {
+     "scratchpad_before": "Hand 1-4 Summary: Folded KsQh (flop), 7c9s (pfp), 8c5d (SB pfp), 7c2s (call SA+5h, flop 7d9s4hJdJs, hit pair of 7s, won 397). seat1 won H1. \nCurrent Stacks: seat0=397(me, doubled up!), seat1=406, seat3=200, seat5=198. Out: seat2, seat4.\nNotes: Doubled up with 72o all-in, nice! seat1 still aggressive but slightly behind me now. Only 4 players left, 26 hands remain. In SB with doubled stack, can be more patient. Will still hit blinds often; need to steal more. Against seat1's aggression, consider 4-bet bluffing or calling wider since I showed I'll float. In 6hand: PFP opening range should dictate how I play. seat3 and seat5 are shorter - they may push light. More hands remaining, so position is still key.",
+     "cleanup": {
+      "prompt": "## Hand 5 is over\nSince your last action:\n  turn: seat1 (seat 1) fold\nFinal board: Td 5h Js 4d\nNo showdown: hands that were not shown stay hidden.\nPot: seat0 won 4.\nStacks now: seat0 399, seat1 404, seat2 0 (out), seat3 200, seat4 0 (out), seat5 197.\n\nNow call update_scratchpad exactly once with your scratchpad's full new contents (at most 5000 characters; they replace the old ones and are shown to you at the start of every later hand). Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.",
+      "attempts": [
+       {
+        "output": "\n\n",
+        "reasoning": "Hand 5 ended with me winning the pot on the turn with a bet of 10, and seat1 folded. My stack is now 399. Seat1 has 404, seat3 has 200, seat5 has 197.\n\nMy cards were Qd 8d, board read Td 5h Js 4d. I had backdoor flush draw and gutshot straight draw. Seat1 checked both flop and turn, then folded to my turn bet. Seems like seat1 had nothing or a weak hand.\n\nI should update my scratchpad with this hand result and current state.\n\nLet me craft the scratchpad update.\n",
+        "update_calls": [
+         "{\"contents\":\"Hand 1-5 Summary: H1 won 397 (72o). H5 Qd8d, flop Td5hJs, turn 4d. Checked flop, bet 10 turn, seat1 folded. Won 4 chips.\\nCurrent Stacks: seat0=399(me), seat1=404, seat3=200, seat5=197. Out: seat2, seat4.\\nNotes: Doubled up early, still maintaining lead. 25 hands remain. seat1 checked-folded turn vs my continuation -> passive/passive tendency. In SB mostly, need to exploit position on button/CO. Against seat1's checking, can bet larger for value/bluff. seat3/seat5 short stacks may special-flop or shove. Will keep stealing blinds and applying pressure on later streets, especially with backdoor equity plays like Td or 4d hitting flush draws.\\nSCRATCHPAD\"}"
+        ],
+        "ignored_calls": 0,
+        "truncated": false,
+        "out_tokens": 378,
+        "outcome": "ok",
+        "contents": "Hand 1-5 Summary: H1 won 397 (72o). H5 Qd8d, flop Td5hJs, turn 4d. Checked flop, bet 10 turn, seat1 folded. Won 4 chips.\nCurrent Stacks: seat0=399(me), seat1=404, seat3=200, seat5=197. Out: seat2, seat4.\nNotes: Doubled up early, still maintaining lead. 25 hands remain. seat1 checked-folded turn vs my continuation -> passive/passive tendency. In SB mostly, need to exploit position on button/CO. Against seat1's checking, can bet larger for value/bluff. seat3/seat5 short stacks may special-flop or shove. Will keep stealing blinds and applying pressure on later streets, especially with backdoor equity plays like Td or 4d hitting flush draws.\nSCRATCHPAD"
+       }
+      ],
+      "result": "updated",
+      "error": null
+     },
+     "scratchpad_after": "Hand 1-5 Summary: H1 won 397 (72o). H5 Qd8d, flop Td5hJs, turn 4d. Checked flop, bet 10 turn, seat1 folded. Won 4 chips.\nCurrent Stacks: seat0=399(me), seat1=404, seat3=200, seat5=197. Out: seat2, seat4.\nNotes: Doubled up early, still maintaining lead. 25 hands remain. seat1 checked-folded turn vs my continuation -> passive/passive tendency. In SB mostly, need to exploit position on button/CO. Against seat1's checking, can bet larger for value/bluff. seat3/seat5 short stacks may special-flop or shove. Will keep stealing blinds and applying pressure on later streets, especially with backdoor equity plays like Td or 4d hitting flush draws.\nSCRATCHPAD"
+    },
+    "6": {
+     "scratchpad_before": "Hand 1-5 Summary: H1 won 397 (72o). H5 Qd8d, flop Td5hJs, turn 4d. Checked flop, bet 10 turn, seat1 folded. Won 4 chips.\nCurrent Stacks: seat0=399(me), seat1=404, seat3=200, seat5=197. Out: seat2, seat4.\nNotes: Doubled up early, still maintaining lead. 25 hands remain. seat1 checked-folded turn vs my continuation -> passive/passive tendency. In SB mostly, need to exploit position on button/CO. Against seat1's checking, can bet larger for value/bluff. seat3/seat5 short stacks may special-flop or shove. Will keep stealing blinds and applying pressure on later streets, especially with backdoor equity plays like Td or 4d hitting flush draws.\nSCRATCHPAD",
+     "cleanup": {
+      "prompt": "## Hand 6 is over\nSince your last action:\n  preflop: seat1 (seat 1) fold\nFinal board: -\nNo showdown: hands that were not shown stay hidden.\nPot: seat3 won 1.\nStacks now: seat0 399, seat1 403, seat2 0 (out), seat3 201, seat4 0 (out), seat5 197.\n\nNow call update_scratchpad exactly once with your scratchpad's full new contents (at most 5000 characters; they replace the old ones and are shown to you at the start of every later hand). Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.",
+      "attempts": [
+       {
+        "output": "\n\n",
+        "reasoning": "The hand ended quickly. I folded 5d 4c from the small blind. Seat 1 also folded. Seat 3 (the big blind) won the pot of roughly 3 chips (SB + BB). I'll just update the scratchpad with the current status. No significant events to note other than my fold. 25 hands remain. Stacks are largely unchanged.\n\nCurrent Stacks: seat0=399(me), seat1=403, seat3=201, seat5=197. Out: seat2, seat4.\nNotes: Folded 5d4c in SB. Table will be heads up (me vs seat 1) soon if blinds hit me. Need to keep exploiting positional advantage. Will keep notes concise.\nLet's update scratchpad. \nI will summarize the outcome and keep track of remaining hands (24 left, hand 7 next).\nAll good.\nI'll call update_scratchpad. \nWait, let's count hands: Hand 6 just finished. Next is Hand 7. So 24 hands remain.\nUpdating now. \nProceeding. \n[Self-Correction/Verification]\nCheck stack sizes: seat0=399, seat1=403, seat3=201, seat5=197. Correct.\nOut players: 2, 4. Correct.\nNext hand: 7. Remaining: 24.\nNotes: folded 54o in SB. Will maintain tight but positionally aware strategy. Blinds are 1/2.\nReady. \nOutput matches requirements.\u2705\n",
+        "update_calls": [
+         "{\"contents\":\"Hand 1-6 Summary: H1 won 397 (72o). H6 folded 5s4c in SB. Both lead opponents folded preflop, seat3 took down pot.\\nCurrent Stacks: seat0=399(me), seat1=403, seat3=201, seat5=197. Out: seat2, seat4.\\nNotes: 24 hands remain. 3 live opponents. Maintaining lead. seat1 checked-folded preflop in H1, passive. Will continue exploiting position on BTN/CO when dealt playable hands. Folded 54o here in SB - correct fold. Will keep pressure high, specialize in stealing blinds and applying postflop pressure. Watch short stacks seat3/seat5 for shove/fold dynamics. Consider adjusting exposure when I have\u30b7\u30e7\u30fc\u30c8 \u30b9\u30bf\u30c3\u30af.\"}"
+        ],
+        "ignored_calls": 0,
+        "truncated": false,
+        "out_tokens": 560,
+        "outcome": "ok",
+        "contents": "Hand 1-6 Summary: H1 won 397 (72o). H6 folded 5s4c in SB. Both lead opponents folded preflop, seat3 took down pot.\nCurrent Stacks: seat0=399(me), seat1=403, seat3=201, seat5=197. Out: seat2, seat4.\nNotes: 24 hands remain. 3 live opponents. Maintaining lead. seat1 checked-folded preflop in H1, passive. Will continue exploiting position on BTN/CO when dealt playable hands. Folded 54o here in SB - correct fold. Will keep pressure high, specialize in stealing blinds and applying postflop pressure. Watch short stacks seat3/seat5 for shove/fold dynamics. Consider adjusting exposure when I have\u30b7\u30e7\u30fc\u30c8 \u30b9\u30bf\u30c3\u30af."
+       }
+      ],
+      "result": "updated",
+      "error": null
+     },
+     "scratchpad_after": "Hand 1-6 Summary: H1 won 397 (72o). H6 folded 5s4c in SB. Both lead opponents folded preflop, seat3 took down pot.\nCurrent Stacks: seat0=399(me), seat1=403, seat3=201, seat5=197. Out: seat2, seat4.\nNotes: 24 hands remain. 3 live opponents. Maintaining lead. seat1 checked-folded preflop in H1, passive. Will continue exploiting position on BTN/CO when dealt playable hands. Folded 54o here in SB - correct fold. Will keep pressure high, specialize in stealing blinds and applying postflop pressure. Watch short stacks seat3/seat5 for shove/fold dynamics. Consider adjusting exposure when I have\u30b7\u30e7\u30fc\u30c8 \u30b9\u30bf\u30c3\u30af."
+    },
+    "7": {
+     "scratchpad_before": "Hand 1-6 Summary: H1 won 397 (72o). H6 folded 5s4c in SB. Both lead opponents folded preflop, seat3 took down pot.\nCurrent Stacks: seat0=399(me), seat1=403, seat3=201, seat5=197. Out: seat2, seat4.\nNotes: 24 hands remain. 3 live opponents. Maintaining lead. seat1 checked-folded preflop in H1, passive. Will continue exploiting position on BTN/CO when dealt playable hands. Folded 54o here in SB - correct fold. Will keep pressure high, specialize in stealing blinds and applying postflop pressure. Watch short stacks seat3/seat5 for shove/fold dynamics. Consider adjusting exposure when I have\u30b7\u30e7\u30fc\u30c8 \u30b9\u30bf\u30c3\u30af.",
+     "cleanup": {
+      "prompt": "## Hand 7 is over\nSince your last action:\n  preflop: seat1 (seat 1) fold\n  preflop: seat3 (seat 3) fold\n  preflop: seat5 (seat 5) fold\nFinal board: -\nNo showdown: hands that were not shown stay hidden.\nPot: seat0 won 3.\nStacks now: seat0 402, seat1 403, seat2 0 (out), seat3 200, seat4 0 (out), seat5 195.\n\nNow call update_scratchpad exactly once with your scratchpad's full new contents (at most 5000 characters; they replace the old ones and are shown to you at the start of every later hand). Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.",
+      "attempts": [
+       {
+        "output": "\n\n",
+        "reasoning": "Hand 7 summary: I was in the small blind with Ah9h. I raised to 12, and everyone folded (seat1 on button, seat3, seat5). I won the blinds/antes (3 chips total). Stacks: seat0=402, seat1=403, seat3=200, seat5=195. Out: seat2, seat4.\n\nI need to update my scratchpad with this hand summary. I'm maintaining my lead slightly. The game is progressing well! 23 hands remain. I should note that my raise worked again. I'll continue the strategy of aggressive positioning play.\n\nLet me write up the scratchpad update.\n",
+        "update_calls": [
+         "{\"contents\":\"Hand 1-7 Summary: H7 won 3 (Ah9h) with SB steal, all folded to raise. H6 folded 54o in SB, both lead opponents folded preflop.\\nCurrent Stacks: seat0=402(me), seat1=403, seat3=200, seat5=195. Out: seat2, seat4.\\nNotes: 23 hands remain. 3 live opponents. Maintaining lead. Continues to be passive opponents preflop. Will keep pressure high, specialize in stealing blinds and applying postflop pressure against late-position folds. Short stacks seat3/seat5 will be vulnerable to shoves soon. Strategy: keep stealing, exploit passive players, maintain chip lead.\"}"
+        ],
+        "ignored_calls": 0,
+        "truncated": false,
+        "out_tokens": 340,
+        "outcome": "ok",
+        "contents": "Hand 1-7 Summary: H7 won 3 (Ah9h) with SB steal, all folded to raise. H6 folded 54o in SB, both lead opponents folded preflop.\nCurrent Stacks: seat0=402(me), seat1=403, seat3=200, seat5=195. Out: seat2, seat4.\nNotes: 23 hands remain. 3 live opponents. Maintaining lead. Continues to be passive opponents preflop. Will keep pressure high, specialize in stealing blinds and applying postflop pressure against late-position folds. Short stacks seat3/seat5 will be vulnerable to shoves soon. Strategy: keep stealing, exploit passive players, maintain chip lead."
+       }
+      ],
+      "result": "updated",
+      "error": null
+     },
+     "scratchpad_after": "Hand 1-7 Summary: H7 won 3 (Ah9h) with SB steal, all folded to raise. H6 folded 54o in SB, both lead opponents folded preflop.\nCurrent Stacks: seat0=402(me), seat1=403, seat3=200, seat5=195. Out: seat2, seat4.\nNotes: 23 hands remain. 3 live opponents. Maintaining lead. Continues to be passive opponents preflop. Will keep pressure high, specialize in stealing blinds and applying postflop pressure against late-position folds. Short stacks seat3/seat5 will be vulnerable to shoves soon. Strategy: keep stealing, exploit passive players, maintain chip lead."
+    },
+    "8": {
+     "scratchpad_before": "Hand 1-7 Summary: H7 won 3 (Ah9h) with SB steal, all folded to raise. H6 folded 54o in SB, both lead opponents folded preflop.\nCurrent Stacks: seat0=402(me), seat1=403, seat3=200, seat5=195. Out: seat2, seat4.\nNotes: 23 hands remain. 3 live opponents. Maintaining lead. Continues to be passive opponents preflop. Will keep pressure high, specialize in stealing blinds and applying postflop pressure against late-position folds. Short stacks seat3/seat5 will be vulnerable to shoves soon. Strategy: keep stealing, exploit passive players, maintain chip lead.",
+     "cleanup": {
+      "prompt": "## Hand 8 is over\nYou did not act this hand. Your seat: 0; your hole cards: 4h Kd.\nEverything that happened this hand:\n  preflop: seat1 (seat 1) fold\n  preflop: seat3 (seat 3) fold\n  preflop: seat5 (seat 5) fold\nFinal board: -\nNo showdown: hands that were not shown stay hidden.\nPot: seat0 won 1.\nStacks now: seat0 403, seat1 403, seat2 0 (out), seat3 200, seat4 0 (out), seat5 194.\n\nNow call update_scratchpad exactly once with your scratchpad's full new contents (at most 5000 characters; they replace the old ones and are shown to you at the start of every later hand). Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.",
+      "attempts": [
+       {
+        "output": "\n\n",
+        "reasoning": "remains focused on stealing blinds and maintaining chip lead\n\nChecking seat positions against the blind structure:\n- My stack at seat0 suggests I'm in the small blind\n- Seat1 must be the big blind\n- The button's position confirms the 2-2-1 blind rotation\n\nThe pot calculation reveals a discrepancy between expected and actual pot size. The final pot is only 3 chips, which conflicts with my understanding of the blind structure.\n\nMore likely, the button is on seat5, with me (seat0) in the small blind and seat1 in the big blind. When everyone folds, I win the small blind back, keeping my stack at 403.\n\nThe pot calculation checks out: my 1 small blind plus seat5's 2 big blind equals 3 chips, with no additional action since everyone folded. This means I haven't gained or lost any actual chips.\n\nI'm narrowing down the button placement by tracking chip movements and potential blind rotations. I'm analyzing the chip movements carefully. Seat5 likely started at 195, posted 2 chips in the big blind, and ended at 194, suggesting they won a small pot. My position seems to be the small blind, with seat1 as the big blind. The button placement remains unclear, but the chip tracking indicates a straightforward pot win for seat5.\n\nThe seating arrangement hinges on which seats are currently out - seat2 and seat4 being empty complicates the precise positioning. I'll need to trace the button movement carefully to understand the exact seating dynamics.\n\nMy analysis suggests the button sits with seat5, with me in the small blind and seat1 in the large blind. The pot structure reveals a straightforward scenario where I won the blinds after others folded.\n\nThe key observations point to a minimal pot interaction: I posted 1 chip, seat1 placed 2 chips, resulting in a 3-chip pot that I claimed when everyone else folded. This outcome leaves my chip count unchanged at 403.\n\nI'll maintain my strategic focus on action and pressure, tracking the evolving chip dynamics across these active positions.\n",
+        "update_calls": [
+         "{\"contents\":\"Hand 1-8 Summary: H7 won 3 (Ah9h) w/ SB steal, all folded to raise. H8 won small blind w/ 4hKd, all folded.\\nCurrent Stacks: seat0=403(me), seat1=403, seat3=200, seat5=194. Out: seat2, seat4.\\nNotes: 22 hands remain. 3 live opponents. Chip lead maintained. Passives preflop. Strategy: steal blinds, apply postflop pressure. Short stacks (seat3=200, seat5=194) vulnerable to shoves soon. Maintain aggressive position play.\\nSCRATCHPAD\"}"
+        ],
+        "ignored_calls": 0,
+        "truncated": false,
+        "out_tokens": 1169,
+        "outcome": "ok",
+        "contents": "Hand 1-8 Summary: H7 won 3 (Ah9h) w/ SB steal, all folded to raise. H8 won small blind w/ 4hKd, all folded.\nCurrent Stacks: seat0=403(me), seat1=403, seat3=200, seat5=194. Out: seat2, seat4.\nNotes: 22 hands remain. 3 live opponents. Chip lead maintained. Passives preflop. Strategy: steal blinds, apply postflop pressure. Short stacks (seat3=200, seat5=194) vulnerable to shoves soon. Maintain aggressive position play.\nSCRATCHPAD"
+       }
+      ],
+      "result": "updated",
+      "error": null
+     },
+     "scratchpad_after": "Hand 1-8 Summary: H7 won 3 (Ah9h) w/ SB steal, all folded to raise. H8 won small blind w/ 4hKd, all folded.\nCurrent Stacks: seat0=403(me), seat1=403, seat3=200, seat5=194. Out: seat2, seat4.\nNotes: 22 hands remain. 3 live opponents. Chip lead maintained. Passives preflop. Strategy: steal blinds, apply postflop pressure. Short stacks (seat3=200, seat5=194) vulnerable to shoves soon. Maintain aggressive position play.\nSCRATCHPAD"
+    },
+    "9": {
+     "scratchpad_before": "Hand 1-8 Summary: H7 won 3 (Ah9h) w/ SB steal, all folded to raise. H8 won small blind w/ 4hKd, all folded.\nCurrent Stacks: seat0=403(me), seat1=403, seat3=200, seat5=194. Out: seat2, seat4.\nNotes: 22 hands remain. 3 live opponents. Chip lead maintained. Passives preflop. Strategy: steal blinds, apply postflop pressure. Short stacks (seat3=200, seat5=194) vulnerable to shoves soon. Maintain aggressive position play.\nSCRATCHPAD",
+     "cleanup": {
+      "prompt": "## Hand 9 is over\nSince your last action:\n  (no other actions)\nFinal board: Ts 4s 5s Th 9c\nShowdown: seat1 showed 7s Ah; seat0 showed Qc Ks. Mucked and folded hands stay hidden.\nPot: seat1 won 812.\nStacks now: seat0 0 (out), seat1 812, seat2 0 (out), seat3 200, seat4 0 (out), seat5 188.\nOut of the game this hand: seat0.\n\nNow call update_scratchpad exactly once with your scratchpad's full new contents (at most 5000 characters; they replace the old ones and are shown to you at the start of every later hand). Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.",
+      "attempts": [
+       {
+        "output": "\n\n",
+        "reasoning": "200, Seat 5 has 188.\nThe game continues until one player has all chips or 30 hands are done.\nI should record the hand details and my rank.\nRank: 6th (4th out of 6, actually #4 rank if 1 is highest? Wait, 6 seats. I'm out. Rank 6/6.)\nI will just note the result.\n\nLet's craft the scratchpad update.\n\"Hand 9: Shoved QcKs preflop vs BB shove, lost to 7xAh on Ts4s5sTh9c. Bustout. Rank: 6/6. Stacks: S1=812, S3=200, S5=188. Game continues.\"\nKeep it concise.\nWait, seating: Seat 0 is me.\nI'll just write a brief summary.\nDone. \nI will call update_scratchpad.\nNo reasoning needed in the final output, just the tool call.\nBut the prompt says \"Reason first if you like. submit_action does nothing now. Without a call the scratchpad stays as it is.\"\nI'll just output the scratchpad update.\nChecking rules: \"After each hand you were dealt into you get a summary of how it ended and are asked to call the update_scratchpad tool exactly once\"\nAll good.\nProceed. \nWait, let's think if I should update with just a short note.\n\"Hand 9: Shoved QsKh vs BB shove, lost to 7sAh on Ts4s5sTh9c. Bustout. Rank: 6/6. Stacks: S1=812, S3=200, S5=188.\"\nDone. \nI will generate the tool call. \nActually, I should follow the exact format. \n`update_scratchpad(contents=\"...\")`\nReady. \nLet's produce it. \nWait, checking the prompt: \"Now call update_scratchpad exactly once with your scratchpad's full new contents\"\nI will do exactly that.\nDone. \nProceeding. \n(Self-Correction/Verification during thought)\nIs there anything else? No. I'm out of the game. Just need to update scratchpad.\nI'll write a concise summary.\n\"Hand 9: Flop played out QsKh vs 7sAh on Ts4s5sTh9c. Lost all-in preflop. Bustout. Rank: 6/6. Stacks: seat1=812, seat3=200, seat5=188. Game continues to hand 30 or until 1 leader.\"\nLooks good. \nOutput matches tool format. \nProceeds. \n[Output Generation] -> `update_scratchpad` tool call. \n(Note: The prompt says \"submit_action does nothing now\", so I only output the scratchpad update.)\nDone. \nLet's produce it. \n`\n",
+        "update_calls": [
+         "{\"contents\":\"Hand 9: Shoved QcKs preflop vs BB shove, lost to 7sAh on Ts4s5sTh9c. Bustout. Rank: 6/6. Stacks: seat1=812, seat3=200, seat5=188. Game continues to hand 30 or until 1 leader.\"}"
+        ],
+        "ignored_calls": 0,
+        "truncated": false,
+        "out_tokens": 814,
+        "outcome": "ok",
+        "contents": "Hand 9: Shoved QcKs preflop vs BB shove, lost to 7sAh on Ts4s5sTh9c. Bustout. Rank: 6/6. Stacks: seat1=812, seat3=200, seat5=188. Game continues to hand 30 or until 1 leader."
+       }
+      ],
+      "result": "updated",
+      "error": null
+     },
+     "scratchpad_after": "Hand 9: Shoved QcKs preflop vs BB shove, lost to 7sAh on Ts4s5sTh9c. Bustout. Rank: 6/6. Stacks: seat1=812, seat3=200, seat5=188. Game continues to hand 30 or until 1 leader."
+    }
+   }
+  },
+  "seat1": {
+   "scratchpad": "",
+   "hands": {}
+  },
+  "seat2": {
+   "scratchpad": "",
+   "hands": {}
+  },
+  "seat3": {
+   "scratchpad": "",
+   "hands": {}
+  },
+  "seat4": {
+   "scratchpad": "",
+   "hands": {}
+  },
+  "seat5": {
+   "scratchpad": "",
+   "hands": {}
+  }
+ },
+ "sim": {
+  "game": 1,
+  "model": "vals-hackathon/base_mihail",
+  "lineup": {
+   "seat1": "shover",
+   "seat2": "maniac",
+   "seat3": "nit",
+   "seat4": "calling_station",
+   "seat5": "tag"
+  }
+ }
+}

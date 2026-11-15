@@ -1,0 +1,501 @@
+{
+ "model": "vals-hackathon/base_mihail",
+ "summary": {
+  "games": 10,
+  "mean_place": 3,
+  "place_counts": {
+   "1": 3,
+   "3": 2,
+   "4": 4,
+   "5": 1
+  },
+  "busted": 3,
+  "mean_net_bb": 31.65,
+  "decisions": 462,
+  "failed": 8,
+  "opponent_mean_place": {
+   "calling_station": 4,
+   "maniac": 4.5,
+   "nit": 2.8,
+   "shover": 3.3,
+   "tag": 2.4
+  },
+  "all_in_called": [
+   "72o",
+   "KQo",
+   "87s",
+   "32s",
+   "98o",
+   "ATs",
+   "KK",
+   "AQo"
+  ],
+  "all_in_folded": [
+   "A9s",
+   "94s",
+   "77",
+   "Q3o",
+   "94o",
+   "J3o",
+   "A8o",
+   "75o",
+   "44",
+   "QJs"
+  ],
+  "net_bb_vs": {
+   "calling_station": 141.33333333333331,
+   "maniac": 171.75,
+   "nit": -26.999999999999996,
+   "shover": -55.083333333333336,
+   "tag": 85.5
+  }
+ },
+ "games": [
+  {
+   "game": 0,
+   "game_id": "sim-000-160215742132725",
+   "place": 4,
+   "busted_on": null,
+   "hands": 30,
+   "net_bb": -55.0,
+   "decisions": 86,
+   "failed": 1,
+   "errors": {
+    "reply hit the 5000-token cap": 1
+   },
+   "all_in_spots": [
+    {
+     "hand": 3,
+     "hole": "A9s",
+     "action": "fold"
+    }
+   ],
+   "chips_by_opponent": {
+    "maniac": -3.5,
+    "calling_station": -101.5,
+    "shover": -1.0,
+    "tag": -5.5,
+    "nit": 1.5
+   },
+   "lineup": {
+    "seat1": "tag",
+    "seat2": "shover",
+    "seat3": "maniac",
+    "seat4": "nit",
+    "seat5": "calling_station"
+   },
+   "places": {
+    "seat5": 1,
+    "seat1": 2,
+    "seat4": 3,
+    "seat0": 4,
+    "seat2": 5,
+    "seat3": 6
+   }
+  },
+  {
+   "game": 1,
+   "game_id": "sim-001-225820135221983",
+   "place": 4,
+   "busted_on": 9,
+   "hands": 30,
+   "net_bb": -100.0,
+   "decisions": 13,
+   "failed": 0,
+   "errors": {},
+   "all_in_spots": [
+    {
+     "hand": 1,
+     "hole": "94s",
+     "action": "fold"
+    },
+    {
+     "hand": 4,
+     "hole": "72o",
+     "action": "call"
+    },
+    {
+     "hand": 9,
+     "hole": "KQo",
+     "action": "call"
+    }
+   ],
+   "chips_by_opponent": {
+    "shover": -202.66666666666666,
+    "maniac": -0.6666666666666666,
+    "calling_station": -0.6666666666666666,
+    "nit": 1.9999999999999998,
+    "tag": 1.9999999999999998
+   },
+   "lineup": {
+    "seat1": "shover",
+    "seat2": "maniac",
+    "seat3": "nit",
+    "seat4": "calling_station",
+    "seat5": "tag"
+   },
+   "places": {
+    "seat1": 1,
+    "seat3": 2,
+    "seat5": 2,
+    "seat0": 4,
+    "seat2": 5,
+    "seat4": 5
+   }
+  },
+  {
+   "game": 2,
+   "game_id": "sim-002-17762970155972",
+   "place": 1,
+   "busted_on": null,
+   "hands": 30,
+   "net_bb": 201.5,
+   "decisions": 56,
+   "failed": 0,
+   "errors": {},
+   "all_in_spots": [
+    {
+     "hand": 1,
+     "hole": "87s",
+     "action": "call"
+    }
+   ],
+   "chips_by_opponent": {
+    "maniac": 200.0,
+    "calling_station": 200.0,
+    "shover": 200.0,
+    "nit": 4.5,
+    "tag": -201.5
+   },
+   "lineup": {
+    "seat1": "maniac",
+    "seat2": "nit",
+    "seat3": "calling_station",
+    "seat4": "tag",
+    "seat5": "shover"
+   },
+   "places": {
+    "seat0": 1,
+    "seat4": 2,
+    "seat2": 3,
+    "seat1": 4,
+    "seat3": 4,
+    "seat5": 4
+   }
+  },
+  {
+   "game": 4,
+   "game_id": "sim-004-214192146929019",
+   "place": 4,
+   "busted_on": 1,
+   "hands": 30,
+   "net_bb": -100.0,
+   "decisions": 1,
+   "failed": 0,
+   "errors": {},
+   "all_in_spots": [
+    {
+     "hand": 1,
+     "hole": "32s",
+     "action": "call"
+    }
+   ],
+   "chips_by_opponent": {
+    "calling_station": -66.66666666666667,
+    "shover": -66.66666666666667,
+    "maniac": -66.66666666666667
+   },
+   "lineup": {
+    "seat1": "calling_station",
+    "seat2": "tag",
+    "seat3": "shover",
+    "seat4": "maniac",
+    "seat5": "nit"
+   },
+   "places": {
+    "seat4": 1,
+    "seat2": 2,
+    "seat5": 3,
+    "seat0": 4,
+    "seat1": 4,
+    "seat3": 4
+   }
+  },
+  {
+   "game": 5,
+   "game_id": "sim-005-132926873393315",
+   "place": 5,
+   "busted_on": 11,
+   "hands": 30,
+   "net_bb": -100.0,
+   "decisions": 21,
+   "failed": 0,
+   "errors": {},
+   "all_in_spots": [
+    {
+     "hand": 9,
+     "hole": "77",
+     "action": "fold"
+    },
+    {
+     "hand": 11,
+     "hole": "98o",
+     "action": "call"
+    }
+   ],
+   "chips_by_opponent": {
+    "maniac": -142.33333333333334,
+    "calling_station": -1.0,
+    "shover": -28.333333333333332,
+    "nit": -28.333333333333332
+   },
+   "lineup": {
+    "seat1": "tag",
+    "seat2": "shover",
+    "seat3": "maniac",
+    "seat4": "nit",
+    "seat5": "calling_station"
+   },
+   "places": {
+    "seat2": 1,
+    "seat4": 2,
+    "seat1": 3,
+    "seat3": 4,
+    "seat0": 5,
+    "seat5": 6
+   }
+  },
+  {
+   "game": 3,
+   "game_id": "sim-003-33188307809340",
+   "place": 4,
+   "busted_on": null,
+   "hands": 30,
+   "net_bb": -12.5,
+   "decisions": 42,
+   "failed": 0,
+   "errors": {},
+   "all_in_spots": [
+    {
+     "hand": 10,
+     "hole": "Q3o",
+     "action": "fold"
+    },
+    {
+     "hand": 14,
+     "hole": "94o",
+     "action": "fold"
+    },
+    {
+     "hand": 18,
+     "hole": "ATs",
+     "action": "call"
+    },
+    {
+     "hand": 21,
+     "hole": "J3o",
+     "action": "fold"
+    },
+    {
+     "hand": 23,
+     "hole": "A8o",
+     "action": "fold"
+    },
+    {
+     "hand": 25,
+     "hole": "75o",
+     "action": "fold"
+    }
+   ],
+   "chips_by_opponent": {
+    "calling_station": -0.5,
+    "maniac": 12.5,
+    "tag": -3.0,
+    "shover": 3.4999999999999907,
+    "nit": -37.49999999999999
+   },
+   "lineup": {
+    "seat1": "nit",
+    "seat2": "calling_station",
+    "seat3": "tag",
+    "seat4": "shover",
+    "seat5": "maniac"
+   },
+   "places": {
+    "seat1": 1,
+    "seat4": 2,
+    "seat3": 3,
+    "seat0": 4,
+    "seat5": 5,
+    "seat2": 6
+   }
+  },
+  {
+   "game": 8,
+   "game_id": "sim-008-137319097511564",
+   "place": 1,
+   "busted_on": null,
+   "hands": 30,
+   "net_bb": 174.5,
+   "decisions": 39,
+   "failed": 2,
+   "errors": {
+    "reply hit the 5000-token cap": 2
+   },
+   "all_in_spots": [
+    {
+     "hand": 6,
+     "hole": "44",
+     "action": "fold"
+    },
+    {
+     "hand": 22,
+     "hole": "KK",
+     "action": "call"
+    }
+   ],
+   "chips_by_opponent": {
+    "calling_station": -0.5,
+    "maniac": 171.16666666666666,
+    "shover": -206.0,
+    "tag": 381.0,
+    "nit": 3.333333333333333
+   },
+   "lineup": {
+    "seat1": "nit",
+    "seat2": "calling_station",
+    "seat3": "tag",
+    "seat4": "shover",
+    "seat5": "maniac"
+   },
+   "places": {
+    "seat0": 1,
+    "seat4": 2,
+    "seat1": 3,
+    "seat3": 4,
+    "seat5": 5,
+    "seat2": 6
+   }
+  },
+  {
+   "game": 6,
+   "game_id": "sim-006-106852994960411",
+   "place": 3,
+   "busted_on": null,
+   "hands": 30,
+   "net_bb": 0.5,
+   "decisions": 78,
+   "failed": 3,
+   "errors": {
+    "reply hit the 5000-token cap": 2,
+    "check is not legal facing a bet": 1
+   },
+   "all_in_spots": [],
+   "chips_by_opponent": {
+    "shover": -0.3333333333333333,
+    "maniac": -0.3333333333333333,
+    "calling_station": 2.1666666666666643,
+    "tag": 0.0,
+    "nit": -0.5
+   },
+   "lineup": {
+    "seat1": "shover",
+    "seat2": "maniac",
+    "seat3": "nit",
+    "seat4": "calling_station",
+    "seat5": "tag"
+   },
+   "places": {
+    "seat4": 1,
+    "seat5": 2,
+    "seat0": 3,
+    "seat3": 4,
+    "seat1": 5,
+    "seat2": 5
+   }
+  },
+  {
+   "game": 9,
+   "game_id": "sim-009-251444687128488",
+   "place": 1,
+   "busted_on": null,
+   "hands": 30,
+   "net_bb": 280.0,
+   "decisions": 43,
+   "failed": 0,
+   "errors": {},
+   "all_in_spots": [
+    {
+     "hand": 2,
+     "hole": "AQo",
+     "action": "call"
+    }
+   ],
+   "chips_by_opponent": {
+    "calling_station": 179.66666666666666,
+    "maniac": 173.66666666666666,
+    "shover": 191.66666666666666,
+    "nit": 11.0,
+    "tag": 4.0
+   },
+   "lineup": {
+    "seat1": "calling_station",
+    "seat2": "tag",
+    "seat3": "shover",
+    "seat4": "maniac",
+    "seat5": "nit"
+   },
+   "places": {
+    "seat0": 1,
+    "seat2": 2,
+    "seat5": 3,
+    "seat3": 4,
+    "seat4": 5,
+    "seat1": 6
+   }
+  },
+  {
+   "game": 7,
+   "game_id": "sim-007-59097842566678",
+   "place": 3,
+   "busted_on": null,
+   "hands": 30,
+   "net_bb": 27.5,
+   "decisions": 83,
+   "failed": 2,
+   "errors": {
+    "reply hit the 5000-token cap": 1,
+    "check is not legal facing a bet": 1
+   },
+   "all_in_spots": [
+    {
+     "hand": 1,
+     "hole": "QJs",
+     "action": "fold"
+    }
+   ],
+   "chips_by_opponent": {
+    "maniac": -0.3333333333333333,
+    "calling_station": 71.66666666666667,
+    "shover": -0.3333333333333333,
+    "tag": -6.0,
+    "nit": -10.0
+   },
+   "lineup": {
+    "seat1": "maniac",
+    "seat2": "nit",
+    "seat3": "calling_station",
+    "seat4": "tag",
+    "seat5": "shover"
+   },
+   "places": {
+    "seat3": 1,
+    "seat4": 2,
+    "seat0": 3,
+    "seat2": 4,
+    "seat1": 5,
+    "seat5": 5
+   }
+  }
+ ]
+}
