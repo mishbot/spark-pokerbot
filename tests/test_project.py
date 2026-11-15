@@ -38,12 +38,14 @@ def test_game_splits_are_full_event_games_on_their_own_deals() -> None:
     games = game_datasets("p", OPPONENT)
     hands = {t.env_params["seed"] for tasks in datasets("p", OPPONENT).values() for t in tasks}
     seeds = [t.env_params["seed"] for tasks in games.values() for t in tasks]
-    assert len(seeds) == len(set(seeds)) == sum(n for n, _ in GAME_SPLITS.values())
+    assert len(seeds) == len(set(seeds)) == sum(n for n, _, _ in GAME_SPLITS.values())
     assert not hands & set(seeds)  # no game replays a single-hand deal
     tasks = games["p-games"]
     assert [t.env_params["policy_seats"][0] for t in tasks[:6]] == list(range(6))
     params = tasks[0].env_params
     assert params["preset"] == "event" and params["total_hands"] == 30
+    assert {t.env_params["total_hands"] for t in games["p-games-10x10h"]} == {10}
+    assert {t.env_params["total_hands"] for t in games["p-games-10x30h"]} == {30}
     # Only the game length differs from the preset: stacks carry over, the scratchpad persists, seats can bust.
     assert "reset_stacks" not in params and "scratchpad" not in params and "ranking" not in params
 
