@@ -53,25 +53,39 @@ TEACHER_SEAT = 0
 STREET_ORDER = {"preflop": 0, "flop": 1, "turn": 2, "river": 3}
 # per-batch street quota (B-balanced 35/25/22/18, scaled to 300)
 STREET_TARGET = {"preflop": 105, "flop": 75, "turn": 66, "river": 54}
+FOLD_CAP = 0.65   # at most ~65% of a batch are fold-ending samples (middle ground); prefer non-folds
 
 
 def select_quota(pool: list[dict], n: int, rng: random.Random) -> list[dict]:
-    """`pool` holds one sample per hand (its latest street). Fill each street to target, SCARCE street
-    first (river -> turn -> flop -> preflop) so rare late-street hands aren't lost, then backfill to n."""
+    """Fill each street to target, SCARCE street first (river->turn->flop->preflop); within a street
+    take NON-folds first and cap total folds at FOLD_CAP of n, then backfill (non-folds first)."""
     from collections import defaultdict
     by_street = defaultdict(list)
     for r in pool:
         by_street[r["meta"]["street"]].append(r)
     for s in by_street:
         rng.shuffle(by_street[s])
-    chosen = []
+    max_folds = int(FOLD_CAP * n)
+    chosen, folds, used = [], 0, set()
+
     for s in ("river", "turn", "flop", "preflop"):
-        tgt = STREET_TARGET[s]
-        chosen += by_street[s][:tgt]
-        by_street[s] = by_street[s][tgt:]
-    if len(chosen) < n:   # backfill from leftovers (preflop/flop are the deep buckets)
-        leftover = [r for s in ("preflop", "flop", "turn", "river") for r in by_street[s]]
-        chosen += leftover[: n - len(chosen)]
+        cands = by_street[s]
+        nonfold = [r for r in cands if r["meta"]["action"] != "fold"]
+        fold = [r for r in cands if r["meta"]["action"] == "fold"]
+        take = nonfold[: STREET_TARGET[s]]
+        for r in fold:   # fill the rest of the street with folds, under the global cap
+            if len(take) >= STREET_TARGET[s] or folds >= max_folds:
+                break
+            take.append(r)
+            folds += 1
+        chosen += take
+        used |= {id(r) for r in take}
+
+    if len(chosen) < n:   # backfill to n, non-folds first (folds only if non-folds run out)
+        rest = [r for r in pool if id(r) not in used]
+        rng.shuffle(rest)
+        rest.sort(key=lambda r: r["meta"]["action"] == "fold")
+        chosen += rest[: n - len(chosen)]
     rng.shuffle(chosen)
     return chosen[:n]
 
