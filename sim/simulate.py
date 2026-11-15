@@ -5,6 +5,7 @@ you choose, then a scorecard.
     uv run --project harness python sim/simulate.py --lineup shover,shover,shover,tag,nit  # stress-test all-in calls
     uv run --project harness python sim/simulate.py --lineup model,model,model,model,model --games 3  # vs base Qwen
     uv run --project harness python sim/simulate.py --lineup house,house,tag,tag,nit       # two house-model seats
+    uv run --project harness python sim/simulate.py --report harness/runs/sim               # rescore saved logs
 
 Each game uses the harness's own engine and "event" preset (6 seats, 30 hands, carried stacks, elimination ranking,
 scratchpad, talk, 5,000/10,000 token caps), so places come from the same ranking the arena uses. Seat 0 calls
@@ -108,7 +109,11 @@ async def play_game(
             players.append(model_seat(f"seat{i}", model, opponent_params(params | {"opponent_model": model})))
 
     log = await play_session(f"sim-{game:03d}-{seed}", seed, players, rules)
-    log["sim"] = {"game": game, "model": args.model, "lineup": dict(zip([f"seat{i}" for i in range(1, 6)], seats))}
+    log["sim"] = {
+        "game": game,
+        "model": args.model,
+        "lineup": dict(zip([f"seat{i}" for i in range(1, 6)], seats)),
+    }
     return log
 
 
@@ -124,6 +129,26 @@ def all_in_spots(log: dict[str, Any], player: str = POLICY) -> list[dict[str, An
             if a["call_amount"] >= stack_before:
                 spots.append({"hand": hand["hand_number"], "hole": hand_class(hole), "action": a["action"]["type"]})
     return spots
+
+
+def chips_by_opponent(log: dict[str, Any], player: str = POLICY) -> dict[str, float]:
+    """`player`'s net chips per hand, credited to the opponents it was playing against: those still in at the end,
+    or, when everyone folded to `player`, those who folded after putting chips in. Keyed by lineup entry."""
+    lineup = log["sim"]["lineup"]
+    out: dict[str, float] = defaultdict(float)
+    for hand in log["hands"]:
+        if player not in hand["stacks_before"]:
+            continue
+        net = hand["ending_stacks"][player] - hand["stacks_before"][player]
+        folded = {a["player"] for a in hand["actions"] if a["action"]["type"] == "fold"}
+        dealt = [p for p in hand["stacks_before"] if p != player and p in lineup]
+        rivals = [p for p in dealt if p not in folded]
+        if not rivals:
+            paid = {a["player"] for a in hand["actions"] if a.get("put_in")}
+            rivals = [p for p in dealt if p in paid] or dealt
+        for p in rivals:
+            out[lineup[p]] += net / len(rivals)
+    return dict(out)
 
 
 def game_row(log: dict[str, Any]) -> dict[str, Any]:
@@ -142,6 +167,7 @@ def game_row(log: dict[str, Any]) -> dict[str, Any]:
         "failed": sum(failed.values()),
         "errors": dict(failed),
         "all_in_spots": all_in_spots(log),
+        "chips_by_opponent": chips_by_opponent(log),
         "lineup": log["sim"]["lineup"],
         "places": log["ranking"]["places"],
     }
@@ -154,6 +180,10 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
         for seat, entry in r["lineup"].items():
             by_entry[entry].append(r["places"][seat])
     spots = [s for r in rows for s in r["all_in_spots"]]
+    versus: dict[str, float] = defaultdict(float)
+    for r in rows:
+        for entry, chips in r["chips_by_opponent"].items():
+            versus[entry] += chips
     return {
         "games": len(rows),
         "mean_place": statistics.mean(places),
@@ -165,6 +195,7 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "opponent_mean_place": {k: statistics.mean(v) for k, v in sorted(by_entry.items())},
         "all_in_called": [s["hole"] for s in spots if s["action"] != "fold"],
         "all_in_folded": [s["hole"] for s in spots if s["action"] == "fold"],
+        "net_bb_vs": {k: v / 2 for k, v in sorted(versus.items())},  # big blind 2
     }
 
 
@@ -183,6 +214,7 @@ def report(rows: list[dict[str, Any]], summary: dict[str, Any], model: str) -> N
     print(f"  failed decisions {s['failed']}/{s['decisions']}")
     print(f"  facing all-in: called {len(s['all_in_called'])} {s['all_in_called']}")
     print(f"                 folded {len(s['all_in_folded'])} {s['all_in_folded']}")
+    print("  seat 0 net BB vs each: " + ", ".join(f"{k} {v:+.1f}" for k, v in s["net_bb_vs"].items()))
     print("  opponents' mean place: " + ", ".join(f"{k} {v:.2f}" for k, v in s["opponent_mean_place"].items()))
 
 
@@ -222,7 +254,16 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=1, help="seeds the games' deals; same seed, same deals")
     parser.add_argument("--parallel", type=int, default=2, help="games played at once")
     parser.add_argument("--out", type=Path, default=Path("harness/runs/sim"))
+    parser.add_argument("--report", type=Path, metavar="DIR", help="only rescore the game logs already in DIR")
     args = parser.parse_args()
+
+    if args.report:
+        logs = [json.loads(p.read_text()) for p in sorted(args.report.glob("sim-*.json"))]
+        if not logs:
+            parser.error(f"no sim-*.json logs in {args.report}")
+        rows = [game_row(log) for log in logs]
+        report(rows, summarize(rows), logs[0]["sim"]["model"])
+        return
 
     lineup = [e.strip() for e in args.lineup.split(",") if e.strip()]
     if len(lineup) != 5:

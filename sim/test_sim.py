@@ -131,3 +131,11 @@ def test_simulate_runs_games_and_writes_a_scorecard(monkeypatch, tmp_path, capsy
     saved = json.loads((tmp_path / "summary.json").read_text())
     assert saved["summary"]["games"] == 3 and len(list(tmp_path.glob("sim-*.json"))) == 3
     assert {g["lineup"]["seat1"] for g in saved["games"]} == {"shover", "tag", "model"}  # rotated
+
+    for g in saved["games"]:  # chips credited to opponents add up to seat 0's net
+        assert sum(g["chips_by_opponent"].values()) == pytest.approx(g["net_bb"] * 2)
+
+    capsys.readouterr()
+    monkeypatch.setattr(sys, "argv", ["simulate.py", "--report", str(tmp_path)])
+    simulate.main()
+    assert "p/entry over 3 games" in capsys.readouterr().out
