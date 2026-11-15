@@ -24,6 +24,18 @@ def prompt_hash(messages) -> str:
     parts = [m.get("content", "") for m in messages if m["role"] in ("system", "user", "tool")]
     return hashlib.sha1("\n".join(parts).encode()).hexdigest()
 
+
+def has_cleanup(record) -> bool:
+    """True iff the sample's final assistant turn is update_scratchpad(contents="") — the cleanup we
+    require in EVERY sample (keeps the scratchpad empty, no context pollution)."""
+    for m in reversed(record["messages"]):
+        if m["role"] == "assistant":
+            for c in m.get("tool_calls") or []:
+                if c["function"]["name"] == "update_scratchpad" and '"contents": ""' in c["function"]["arguments"]:
+                    return True
+            return False
+    return False
+
 from poker_harness.completions import table_rules, with_preset
 from poker_harness.engine import ScriptedPlayer
 from poker_harness.engine.table import Decision
@@ -98,28 +110,31 @@ class LeadBettor:
         return d
 
 
-# Field with real aggression: lead-bettors create facing-a-bet spots, a maniac adds raises, a
-# station adds passive calls, a shover adds deep all-ins (A1 coverage).
-def _villains(seed, rng):
-    plan = {1: "bettor", 2: "bettor", 3: "maniac", 4: "calling_station", 5: "shover"}
+# A field that does NOT bust fast, to match the arena's 6-max table sizes: lead-bettors (postflop
+# bets), a nit (some preflop raises), calling-stations (keep pots alive). No shover/maniac that would
+# bust the table in a few hands and leave the teacher playing short-handed.
+VILLAIN_ARCHES = ["bettor", "bettor", "nit", "calling_station", "calling_station"]
+
+
+def _villains(teacher_seat: int, seed: int) -> dict:
+    arches = iter(VILLAIN_ARCHES)
     seats = {}
-    for i, arch in plan.items():
-        if arch == "bettor":
-            seats[i] = LeadBettor(f"seat{i}", seed)
-        elif arch == "shover" and ShoverPlayer is not None:
-            seats[i] = ShoverPlayer(f"seat{i}")
-        else:
-            seats[i] = ScriptedPlayer(f"seat{i}", arch if arch != "shover" else "maniac", seed)
+    for i in range(6):
+        if i == teacher_seat:
+            continue
+        arch = next(arches)
+        seats[i] = LeadBettor(f"seat{i}", seed) if arch == "bettor" else ScriptedPlayer(f"seat{i}", arch, seed)
     return seats
 
 
 async def _play(seed, records):
     params = with_preset({"preset": "event", "seed": seed, "submit_fields": ["action", "amount"]})
     rules = table_rules(params)
-    villains = _villains(seed, random.Random(seed + 1))
+    teacher_seat = seed % rules.seats   # rotate the teacher's seat so it is not always seat 0
+    villains = _villains(teacher_seat, seed)
     players = []
     for i in range(rules.seats):
-        if i == TEACHER_SEAT:
+        if i == teacher_seat:
             players.append(make_v3_seat(f"seat{i}", i, rules, rules.big_blind, rules.small_blind, seed, records))
         else:
             players.append(villains[i])
@@ -143,29 +158,21 @@ async def main():
 
     # Collect a POOL of one-per-hand samples (each hand's LATEST-street decision), deduped across
     # batches, until the pool is large enough to quota-select from (or we run out of games).
-    pool: list[dict] = []          # decision samples (one per hand, latest street)
-    cleanup_pool: list[dict] = []  # after-hand update_scratchpad="" samples
+    # The seat emits ONE record per hand (final decision + the empty cleanup turn). Collect, dedup,
+    # require the cleanup turn in every sample, then quota-select by street.
+    pool: list[dict] = []
     pool_hashes: set[str] = set()
-    seed, games, dup = args.seed_start, 0, 0
+    seed, games, dup, nocleanup = args.seed_start, 0, 0, 0
     pool_target = 5 * args.n
     while len(pool) < pool_target and games < args.max_games:
         recs: list[dict] = []
         await _play(seed, recs)
         seed += 1
         games += 1
-        by_hand: dict = {}
         for r in recs:
-            h = prompt_hash(r["messages"])
-            if r["meta"]["street"] == "cleanup":
-                if h in seen or h in pool_hashes:
-                    dup += 1
-                    continue
-                cleanup_pool.append(r)
-                pool_hashes.add(h)
-            else:
-                by_hand.setdefault(r["meta"]["hand"], []).append(r)
-        for vlist in by_hand.values():
-            r = max(vlist, key=lambda x: STREET_ORDER[x["meta"]["street"]])
+            if not has_cleanup(r):   # guarantee cleanup in every sample, no matter what
+                nocleanup += 1
+                continue
             h = prompt_hash(r["messages"])
             if h in seen or h in pool_hashes:
                 dup += 1
@@ -173,12 +180,7 @@ async def main():
             pool.append(r)
             pool_hashes.add(h)
 
-    rng = random.Random(args.seed_start)
-    cleanup_n = max(1, round(0.05 * args.n))   # ~5% cleanup rows (Fable)
-    batch = select_quota(pool, args.n - cleanup_n, rng)
-    rng.shuffle(cleanup_pool)
-    batch += cleanup_pool[:cleanup_n]
-    rng.shuffle(batch)
+    batch = select_quota(pool, args.n, random.Random(args.seed_start))
     batch_hashes = {prompt_hash(r["messages"]) for r in batch}
 
     # GATE: validate every sample. Abort on any violation (nothing written).
@@ -209,12 +211,12 @@ async def main():
             for r in sample:
                 f.write(json.dumps(r) + "\n")
 
-    spots = Counter(r["meta"]["spot"] for r in batch)
     streets = Counter(r["meta"]["street"] for r in batch)
     actions = Counter(r["meta"]["action"] for r in batch)
-    print(f"BATCH OK: {len(batch)} unique samples, 0 violations. seeds {args.seed_start}..{seed-1} "
-          f"({games} games, {dup} dups skipped). Wrote {out}"
-          + (f" + verify {args.verify_out}" if args.verify_out else ""))
+    with_cleanup = sum(1 for r in batch if has_cleanup(r))
+    print(f"BATCH OK: {len(batch)} unique samples, 0 violations, {with_cleanup}/{len(batch)} with a cleanup "
+          f"turn. seeds {args.seed_start}..{seed-1} ({games} games, {dup} dups, {nocleanup} no-cleanup skipped). "
+          f"Wrote {out}" + (f" + verify {args.verify_out}" if args.verify_out else ""))
     print(f"  streets: {dict(streets)}")
     print(f"  actions: {dict(actions)}")
 

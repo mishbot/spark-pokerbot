@@ -19,7 +19,9 @@ from v3.eval import HandInfo, CAT_RANK
 
 # tier -> price (max need% to continue for value), strongest first
 TIERS = ("strong", "medium", "weak", "air")
-PRICE = {"strong": 0.55, "medium": 0.30, "weak": 0.15, "air": 0.0}
+# price = the highest need% this tier calls as "clear". Medium (top pair / overpair) must call a
+# half-pot bet (need 33%): with EDGE_MARGIN 0.08, that needs price >= 0.41, so medium = 0.45.
+PRICE = {"strong": 0.60, "medium": 0.45, "weak": 0.25, "air": 0.0}
 _ORDER = {t: i for i, t in enumerate(TIERS)}
 
 

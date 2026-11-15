@@ -1,8 +1,8 @@
-"""A harness seat that decides with the V3 rule-based teacher and records one SFT example per
-decision, with the V3 trace as the assistant <think> content and a submit_action call.
-
-Each record also carries `trace`, `truth`, and `action` so the independent validator can gate it.
-Phase 1: cleanup is a no-op (empty scratchpad).
+"""A harness seat that decides with the V3 rule-based teacher and records ONE SFT example per hand:
+the hand's conversation through the hero's final decision (V3 trace + submit_action) followed by the
+after-hand cleanup turn that calls update_scratchpad(""). So every sample contains BOTH a decision
+and its empty-scratchpad cleanup (keeps the pad empty, no context pollution). The record carries the
+final decision's `trace`/`truth`/`action` for the validator; `meta.street` is that decision's street.
 """
 
 from __future__ import annotations
@@ -50,11 +50,11 @@ class V3Seat(ModelSeat):
                      min_raise=obs.legal.min_raise_to, max_raise=obs.legal.max_raise_to,
                      me_seat=ctx.seat, live_order=live_order,
                      chips={v.seat: v.stack + v.bet for v in obs.seats})
-        self._records.append({
-            "messages": copy.deepcopy(self.messages),
-            "trace": trace,
-            "truth": truth,
-            "action": [decision.type, decision.amount],
+        # collect this decision; the hand's ONE record is finalized at cleanup (with the full
+        # conversation + the empty-scratchpad cleanup turn). The last decision collected is the
+        # hero's latest-street action, which is what the sample is labeled by.
+        self._hand_decisions.append({
+            "trace": trace, "truth": truth, "action": [decision.type, decision.amount],
             "meta": {"seed": self._seed, "hand": ctx.hand_number, "street": obs.street,
                      "position": obs.position, "spot": plan.spot, "action": decision.type},
         })
@@ -72,18 +72,19 @@ class V3Seat(ModelSeat):
         return Completion(text="", tool_calls=[call])
 
     async def cleanup(self, summary):
-        # Run the real after-hand turn (builds the arena cleanup prompt), answer it with an EMPTY
-        # update, and record it as a training row. Keeps the scratchpad empty (phase-1 A-minimal).
+        # Run the real after-hand turn (builds the arena cleanup prompt + the tool result for the
+        # hero's last action), answer it with an EMPTY update, then record ONE sample for the hand:
+        # the full conversation (ending with that empty cleanup) + the final decision's labels.
         self.cleanup_complete = self._empty_update
         result = await super().cleanup(summary)
-        self._records.append({
-            "messages": copy.deepcopy(self.messages),
-            "trace": "",
-            "action": ["update_scratchpad", ""],
-            "truth": {"street": "cleanup"},
-            "meta": {"seed": self._seed, "hand": summary.get("hand_number"), "street": "cleanup",
-                     "position": "-", "spot": "cleanup", "action": "update_scratchpad"},
-        })
+        if self._hand_decisions:
+            last = self._hand_decisions[-1]   # the hero's latest-street (final) action this hand
+            self._records.append({
+                "messages": copy.deepcopy(self.messages),   # decision(s) + the empty cleanup turn
+                "trace": last["trace"], "truth": last["truth"],
+                "action": last["action"], "meta": last["meta"],
+            })
+        self._hand_decisions = []
         return result
 
 
@@ -93,6 +94,7 @@ def make_v3_seat(name, seat_index, rules, big_blind, small_blind, seed, records)
 
     seat = V3Seat(name=name, complete=_unused, rules=rules, model="v3-teacher")
     seat._records = records
+    seat._hand_decisions = []
     seat._big_blind = big_blind
     seat._small_blind = small_blind
     seat._seed = seed

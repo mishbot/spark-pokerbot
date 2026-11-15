@@ -148,7 +148,10 @@ def _preflop(obs, pos, tight, reason) -> Plan:
         excess = sum(max(v.bet - hero_total, 0) for v in obs.seats if v.seat != obs.seat)
         eff_pot = max(obs.pot - excess, 0)
         need = eff_call / (eff_pot + eff_call) if (eff_pot + eff_call) > 0 else 0.0
-        call, rule = allin_call(h, tight, need)
+        live_opp = sum(1 for v in obs.seats if v.seat != obs.seat and v.in_hand)
+        heads_up = live_opp == 1
+        short = eff_call <= 0.4 * max(me_v.stack + me_v.bet, 1)   # we risk <=40% of our stack
+        call, rule = allin_call(h, tight, heads_up, short)
         action = Action(ActionKind.CALL) if call else Action(ActionKind.FOLD)
         risked = eff_call if call else 0
         cls, stack = _risk(obs, risked)
@@ -158,15 +161,24 @@ def _preflop(obs, pos, tight, reason) -> Plan:
                     sizing_text=("call all-in" if call else ""), **base)
 
     opens = _opened_preflop(obs)
-    if opens == 0:  # unopened
+    if opens == 0:  # no raise yet: either a fresh pot or a LIMPED pot
         spec, summ = open_range(pos, tight)
+        limpers = sum(1 for r in obs.history if r.street == "preflop" and r.kind == "call")
+        if limpers > 0:   # limped pot: iso-raise 2.5bb + 1bb per limper, or check/fold
+            spot, rule = "preflop limped pot", f"{pre}limped pot; {pos} iso-raises {summ}"
+            if spec.contains(h):
+                target = round(2.5 * bb + limpers * bb)
+                action, text, _ = _size(obs, target, f"2.5x{bb}+{limpers}", "raise")
+                return Plan(action=action, spot=spot, rule_text=rule, in_range=True, sizing_text=text, **base)
+            return Plan(action=check_or_fold(legal), spot=spot, rule_text=rule, in_range=False,
+                        sizing_text="", **base)
+        # truly unopened
         if spec.contains(h):
             target = round(2.5 * bb)
             action, text, _ = _size(obs, target, f"2.5x{bb}", "raise")
             return Plan(action=action, spot="preflop unopened", rule_text=f"{pre}{pos} opens {summ}",
                         in_range=True, sizing_text=text, **base)
-        action = check_or_fold(legal)
-        return Plan(action=action, spot="preflop unopened", rule_text=f"{pre}{pos} opens {summ}",
+        return Plan(action=check_or_fold(legal), spot="preflop unopened", rule_text=f"{pre}{pos} opens {summ}",
                     in_range=False, sizing_text="", **base)
 
     # facing a raise (or 3bet+)

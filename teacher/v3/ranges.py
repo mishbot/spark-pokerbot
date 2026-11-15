@@ -129,7 +129,11 @@ _THREEBET = RangeSpec(pair_min=RVAL["T"], axs_min=RVAL["Q"], axo_min=RVAL["K"], 
                       kxo_min=None, qxs_min=None, qxo_min=None, jxs_min=None, suited_conn_min=None)
 
 
+_POS_ALIAS = {"early": "EP"}  # the adapter labels UTG and earlier "early"; the range tables key them "EP"
+
+
 def open_range(position: str, tight: bool = False) -> tuple[RangeSpec, str]:
+    position = _POS_ALIAS.get(position, position)
     spec = (TIGHT_OPEN if tight else OPEN).get(position, _T_MID if tight else _MID)
     return spec, summary(spec)
 
@@ -143,22 +147,20 @@ def threebet_range() -> tuple[RangeSpec, str]:
     return _THREEBET, summary(_THREEBET)
 
 
-SMALL_SHOVE_NEED = 0.33  # a shove this cheap (good pot odds) is called wide, regardless of tightness
-
-
 # --- all-in call range (A1), the single source for decision and trace --------
-def allin_call(h: Hole, tight: bool, need: float) -> tuple[bool, str]:
-    """Decide a preflop all-in CALL. A small shove (good price) is called wide; a deep shove is
-    called by HAND TYPE and NEVER KQ/KJ/KT/QJ/QT (the field is ace-heavy and dominates high cards).
-    When tight (early or chip-leading) the deep-shove range is only TT+/AK. Returns (call, rule_text)."""
+def allin_call(h: Hole, tight: bool, heads_up: bool, short: bool) -> tuple[bool, str]:
+    """Decide a preflop all-in CALL. Only a SHORT shove HEADS-UP (we risk little of our stack, one
+    opponent) is called wide; everything else (deep, or multiway where dead money only makes the
+    price look cheap) is called by HAND TYPE and NEVER KQ/KJ/KT/QJ/QT (the field is ace-heavy).
+    When tight (early or chip-leading) the hand-type range is only TT+/AK. Returns (call, rule_text)."""
     pairs_ge = lambda letter: h.pair and h.hi >= RVAL[letter]
     is_ak = (not h.pair) and h.hi == RVAL["A"] and h.lo == RVAL["K"]
     is_aq = (not h.pair) and h.hi == RVAL["A"] and h.lo == RVAL["Q"]
     both_broadway = (not h.pair) and h.lo >= RVAL["T"]
 
-    if need <= SMALL_SHOVE_NEED:   # cheap shove: the price justifies a wide call
-        rule = f"the shove is small (need {round(need * 100)}%), so call a wide range: any pair, any ace, any two broadway"
-        return (h.pair or h.hi == RVAL["A"] or both_broadway), rule
+    if heads_up and short:   # a genuinely short shove, one opponent: the price justifies a wide call
+        return (h.pair or h.hi == RVAL["A"] or both_broadway), \
+               "a short shove heads-up, so call a wide range: any pair, any ace, any two broadway"
 
     if tight:
         return (pairs_ge("T") or is_ak), "early or leading, so call only TT+/AK"

@@ -169,10 +169,19 @@ def test_allin_need_excludes_uncallable_overshove():  # Opus: price must exclude
     assert 0.45 <= p.need <= 0.52, f"true price ~49%, got {p.need} (naive off the full pot ~14%)"
 
 
-def test_small_shove_calls_wide():  # price-aware all-in: a cheap shove is called wide
-    p = decide(_obs("preflop", "BTN", ["Kh", "Jd"], pot=30, to_call=10, stack=200, opp_all_in=True,
-                    hand=15, history=(*POSTS, ActionRecord("preflop", 1, "raise", 12))))
-    assert p.action.kind == ActionKind.CALL, (p.action, p.need)
+def test_short_heads_up_shove_calls_wide():  # wide call only heads-up + short
+    me = SeatView(0, "BB", 200, 0, True, False)
+    villain = SeatView(1, "SB", 0, 40, True, True)   # short shove (40) into our 200 stack, heads-up
+    legal = LegalActions(can_fold=True, to_call=40, min_raise_to=None, max_raise_to=None)
+    obs = Observation(15, 30, 0, "BB", ("Kh", "Jd"), (), "preflop", 46, 2, (me, villain),
+                      (ActionRecord("preflop", 1, "raise", 40),), legal)
+    assert decide(obs).action.kind == ActionKind.CALL  # KJo is wide-called short+HU
+
+    # the SAME KJo multiway (a 3rd live player) is NOT a wide call -> fold
+    opp2 = SeatView(2, "CO", 200, 0, True, False)
+    obs_mw = Observation(15, 30, 0, "BB", ("Kh", "Jd"), (), "preflop", 46, 2, (me, villain, opp2),
+                         (ActionRecord("preflop", 1, "raise", 40),), legal)
+    assert decide(obs_mw).action.kind == ActionKind.FOLD
 
 
 def test_tight_checks_medium_no_thin_bet():  # tight: value only, no thin protection bets

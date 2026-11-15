@@ -5,6 +5,8 @@ Run: PYTHONPATH=teacher uv run python teacher/v3/tests/test_ranges.py
 
 from __future__ import annotations
 
+from adapter import position_words
+
 from v3.ranges import hole_facts, open_range, continue_range, allin_call, OPEN
 
 
@@ -36,22 +38,27 @@ def test_open_tighter_ep_than_btn():
     assert btn.contains(k7s) and not ep.contains(k7s)
 
 
+def _ac(combo, tight=False, heads_up=False, short=False):
+    return allin_call(hole_facts(combo), tight, heads_up, short)[0]
+
+
 def test_allin_call_hand_types():
-    deep = 0.45   # a deep shove (> SMALL_SHOVE_NEED) -> the hand-type range applies
-    # never KQ/KJ/KT/QJ/QT against a deep shove, even when not tight
+    # deep / multiway (NOT a short heads-up shove) -> hand-type range, never KQ/KJ/KT/QJ/QT
     for combo in (["Kh", "Qd"], ["Kh", "Jd"], ["Kh", "Td"], ["Qh", "Jd"], ["Qh", "Td"]):
-        assert not allin_call(hole_facts(combo), False, deep)[0], f"{combo} should never call a deep all-in"
-    # premiums call a deep shove
-    assert allin_call(hole_facts(["Ah", "Kd"]), False, deep)[0]    # AK
-    assert allin_call(hole_facts(["Ah", "Qd"]), False, deep)[0]    # AQ
-    assert allin_call(hole_facts(["8h", "8d"]), False, deep)[0]    # 88
-    assert allin_call(hole_facts(["Ah", "Jh"]), False, deep)[0]    # AJs marginal
-    # tight (early or leading) tightens the deep-shove range: AQ folds, TT+/AK only
-    assert not allin_call(hole_facts(["Ah", "Qd"]), True, deep)[0]
-    assert allin_call(hole_facts(["Th", "Td"]), True, deep)[0]
-    assert allin_call(hole_facts(["Ah", "Kd"]), True, deep)[0]
-    # a small shove (good price) is called wide, even KJo, even when tight
-    assert allin_call(hole_facts(["Kh", "Jd"]), True, 0.25)[0]
+        assert not _ac(combo), f"{combo} should never call a deep/multiway all-in"
+    assert _ac(["Ah", "Kd"]) and _ac(["Ah", "Qd"]) and _ac(["8h", "8d"]) and _ac(["Ah", "Jh"])
+    # tight: TT+/AK only
+    assert not _ac(["Ah", "Qd"], tight=True) and _ac(["Th", "Td"], tight=True) and _ac(["Ah", "Kd"], tight=True)
+    # a SHORT shove HEADS-UP -> wide (even KJo); but NOT multiway and NOT deep
+    assert _ac(["Kh", "Jd"], heads_up=True, short=True)
+    assert not _ac(["Kh", "Jd"], heads_up=False, short=True)   # multiway -> not wide
+    assert not _ac(["Kh", "Jd"], heads_up=True, short=False)   # deep -> not wide
+
+
+def test_early_maps_to_ep_range():  # #4: the adapter emits "early"; it must hit the EP table, not MID
+    assert "early" in position_words(6)
+    assert open_range("early")[0] is open_range("EP")[0]
+    assert open_range("early")[0] is not open_range("HJ")[0]
 
 
 def test_summary_matches_spec_roundtrip():
