@@ -143,7 +143,8 @@ async def main():
 
     # Collect a POOL of one-per-hand samples (each hand's LATEST-street decision), deduped across
     # batches, until the pool is large enough to quota-select from (or we run out of games).
-    pool: list[dict] = []
+    pool: list[dict] = []          # decision samples (one per hand, latest street)
+    cleanup_pool: list[dict] = []  # after-hand update_scratchpad="" samples
     pool_hashes: set[str] = set()
     seed, games, dup = args.seed_start, 0, 0
     pool_target = 5 * args.n
@@ -154,9 +155,17 @@ async def main():
         games += 1
         by_hand: dict = {}
         for r in recs:
-            by_hand.setdefault(r["meta"]["hand"], []).append(r)
-        for v in by_hand.values():
-            r = max(v, key=lambda x: STREET_ORDER[x["meta"]["street"]])
+            h = prompt_hash(r["messages"])
+            if r["meta"]["street"] == "cleanup":
+                if h in seen or h in pool_hashes:
+                    dup += 1
+                    continue
+                cleanup_pool.append(r)
+                pool_hashes.add(h)
+            else:
+                by_hand.setdefault(r["meta"]["hand"], []).append(r)
+        for vlist in by_hand.values():
+            r = max(vlist, key=lambda x: STREET_ORDER[x["meta"]["street"]])
             h = prompt_hash(r["messages"])
             if h in seen or h in pool_hashes:
                 dup += 1
@@ -164,7 +173,12 @@ async def main():
             pool.append(r)
             pool_hashes.add(h)
 
-    batch = select_quota(pool, args.n, random.Random(args.seed_start))
+    rng = random.Random(args.seed_start)
+    cleanup_n = max(1, round(0.05 * args.n))   # ~5% cleanup rows (Fable)
+    batch = select_quota(pool, args.n - cleanup_n, rng)
+    rng.shuffle(cleanup_pool)
+    batch += cleanup_pool[:cleanup_n]
+    rng.shuffle(batch)
     batch_hashes = {prompt_hash(r["messages"]) for r in batch}
 
     # GATE: validate every sample. Abort on any violation (nothing written).

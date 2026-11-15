@@ -49,6 +49,10 @@ def check(truth: dict, trace: str, action: tuple[str, int | None]) -> list[str]:
     v: list[str] = []
     kind, amount = action
 
+    # cleanup rows: the only valid after-hand action is update_scratchpad with EMPTY contents (A-minimal)
+    if kind == "update_scratchpad":
+        return [] if amount == "" else ["cleanup: update_scratchpad contents must be empty"]
+
     # I1 hole cards (preflop only: the postflop Hand line states the made hand, not the cards;
     # postflop hole correctness is covered by I2, which uses the real cards via phevaluator).
     if truth["street"] == "preflop":

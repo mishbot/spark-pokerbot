@@ -12,7 +12,7 @@ import json
 
 from adapter import observation_from_ctx, seat_positions, sb_bb_seats, to_harness_decision
 
-from poker_harness.seat import ModelSeat
+from poker_harness.seat import Completion, ModelSeat
 
 from v3.policy import decide
 from v3.trace import render
@@ -65,8 +65,26 @@ class V3Seat(ModelSeat):
         }
         return decision
 
+    async def _empty_update(self, messages):
+        """The teacher's cleanup 'reply': one update_scratchpad call with empty contents (A-minimal)."""
+        call = {"id": f"cu-{self.name}-{self.turn}", "type": "function",
+                "function": {"name": "update_scratchpad", "arguments": json.dumps({"contents": ""})}}
+        return Completion(text="", tool_calls=[call])
+
     async def cleanup(self, summary):
-        return {"result": "unchanged", "error": None}
+        # Run the real after-hand turn (builds the arena cleanup prompt), answer it with an EMPTY
+        # update, and record it as a training row. Keeps the scratchpad empty (phase-1 A-minimal).
+        self.cleanup_complete = self._empty_update
+        result = await super().cleanup(summary)
+        self._records.append({
+            "messages": copy.deepcopy(self.messages),
+            "trace": "",
+            "action": ["update_scratchpad", ""],
+            "truth": {"street": "cleanup"},
+            "meta": {"seed": self._seed, "hand": summary.get("hand_number"), "street": "cleanup",
+                     "position": "-", "spot": "cleanup", "action": "update_scratchpad"},
+        })
+        return result
 
 
 def make_v3_seat(name, seat_index, rules, big_blind, small_blind, seed, records):
