@@ -22,10 +22,10 @@ def _case(street, pos, hole, board=(), *, pot, to_call, min_raise=None, max_rais
           stack=200, my_bet=0, opp_all_in=False, history=(), deriv=None):
     me = SeatView(0, pos, stack, my_bet, True, False)
     opp = SeatView(1, "BB", 0 if opp_all_in else 150, 0, True, opp_all_in)
-    opp2 = SeatView(2, "SB", 180, 0, True, False)
+    opp2 = SeatView(2, "SB", 400, 0, True, False)   # hero not chip-leader
     legal = LegalActions(to_call > 0, to_call, min_raise, max_raise)
-    obs = Observation(1, 30, 0, pos, tuple(hole), tuple(board), street, pot, 2, (me, opp, opp2),
-                      tuple(history), legal)
+    obs = Observation(15, 30, 0, pos, tuple(hole), tuple(board), street, pot, 2, (me, opp, opp2),
+                      tuple(history), legal)   # hand 15 -> not early -> not tight by default
     p = decide(obs)
     deriv = deriv or dict(button=0, me=0, sb_seat=1, bb_seat=2, n=3)
     trace = render(p, **deriv)

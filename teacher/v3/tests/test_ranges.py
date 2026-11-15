@@ -37,19 +37,21 @@ def test_open_tighter_ep_than_btn():
 
 
 def test_allin_call_hand_types():
-    # never KQ/KJ/KT/QJ/QT, even offsuit, even when not leading
+    deep = 0.45   # a deep shove (> SMALL_SHOVE_NEED) -> the hand-type range applies
+    # never KQ/KJ/KT/QJ/QT against a deep shove, even when not tight
     for combo in (["Kh", "Qd"], ["Kh", "Jd"], ["Kh", "Td"], ["Qh", "Jd"], ["Qh", "Td"]):
-        call, _ = allin_call(hole_facts(combo), leader_or_safe=False)
-        assert not call, f"{combo} should never call an all-in"
-    # premiums call
-    assert allin_call(hole_facts(["Ah", "Kd"]), False)[0]    # AK
-    assert allin_call(hole_facts(["Ah", "Qd"]), False)[0]    # AQ
-    assert allin_call(hole_facts(["8h", "8d"]), False)[0]    # 88
-    assert allin_call(hole_facts(["Ah", "Jh"]), False)[0]    # AJs marginal
-    # leader tightens: AQ folds, TT+ / AK only
-    assert not allin_call(hole_facts(["Ah", "Qd"]), True)[0]
-    assert allin_call(hole_facts(["Th", "Td"]), True)[0]
-    assert allin_call(hole_facts(["Ah", "Kd"]), True)[0]
+        assert not allin_call(hole_facts(combo), False, deep)[0], f"{combo} should never call a deep all-in"
+    # premiums call a deep shove
+    assert allin_call(hole_facts(["Ah", "Kd"]), False, deep)[0]    # AK
+    assert allin_call(hole_facts(["Ah", "Qd"]), False, deep)[0]    # AQ
+    assert allin_call(hole_facts(["8h", "8d"]), False, deep)[0]    # 88
+    assert allin_call(hole_facts(["Ah", "Jh"]), False, deep)[0]    # AJs marginal
+    # tight (early or leading) tightens the deep-shove range: AQ folds, TT+/AK only
+    assert not allin_call(hole_facts(["Ah", "Qd"]), True, deep)[0]
+    assert allin_call(hole_facts(["Th", "Td"]), True, deep)[0]
+    assert allin_call(hole_facts(["Ah", "Kd"]), True, deep)[0]
+    # a small shove (good price) is called wide, even KJo, even when tight
+    assert allin_call(hole_facts(["Kh", "Jd"]), True, 0.25)[0]
 
 
 def test_summary_matches_spec_roundtrip():

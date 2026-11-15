@@ -32,12 +32,19 @@ except Exception:  # pragma: no cover
 TEACHER_SEAT = 0
 
 
-class LeadBettor:
-    """Calls to see flops, then LEADS ~half pot postflop when first to act; calls when facing a bet.
-    Stays in pots so the teacher actually faces bets (fixes RC5: the passive field never bets into us)."""
+import random as _random
 
-    def __init__(self, name: str) -> None:
+BET_SIZES = (0.33, 0.5, 0.75, 1.0, 1.5)   # vary the size so the model learns the arithmetic, not a constant
+
+
+class LeadBettor:
+    """Calls to see flops, then LEADS postflop when first to act, with a VARIED bet size; calls when
+    facing a bet. Stays in pots so the teacher faces bets (fixes RC5). The size menu avoids a single-size
+    fingerprint that would make the hero's need% a memorizable constant (Fable pitfall)."""
+
+    def __init__(self, name: str, seed: int = 0) -> None:
         self.name = name
+        self.rng = _random.Random(f"{name}:{seed}")
 
     def _choose(self, ctx):
         L = ctx.legal
@@ -45,7 +52,8 @@ class LeadBettor:
             return Decision("check") if L.can_check else Decision("call")
         if L.can_check:
             if L.raise_type:
-                amt = min(L.max_raise_to, max(L.min_raise_to, round(ctx.pot * 0.5)))
+                frac = self.rng.choice(BET_SIZES)
+                amt = min(L.max_raise_to, max(L.min_raise_to, round(ctx.pot * frac)))
                 return Decision(L.raise_type, amt)
             return Decision("check")
         return Decision("call")
@@ -65,7 +73,7 @@ def _villains(seed, rng):
     seats = {}
     for i, arch in plan.items():
         if arch == "bettor":
-            seats[i] = LeadBettor(f"seat{i}")
+            seats[i] = LeadBettor(f"seat{i}", seed)
         elif arch == "shover" and ShoverPlayer is not None:
             seats[i] = ShoverPlayer(f"seat{i}")
         else:

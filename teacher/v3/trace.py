@@ -102,7 +102,9 @@ def render(p: Plan, *, button: int, me: int, sb_seat: int, bb_seat: int, n: int,
     spot_label = "first to act" if p.first_to_act else "checked to me"
     if p.plan_word == "check":
         behind = pos_io == "in position" and not p.first_to_act  # "check behind" needs to be last to act
-        plan_line = f"Plan: check{' behind' if behind else ''}."
+        suppressed = p.tight and (p.tier in ("medium", "weak") or bool(p.draw_text))
+        tight_note = f" ({p.tight_reason}, so value only)" if suppressed else ""
+        plan_line = f"Plan: check{' behind' if behind else ''}{tight_note}."
     else:
         clause = {"value": "bet to get called by worse", "protection": "bet to deny a free card",
                   "semi-bluff": "bet with the draw"}.get(p.plan_word, "")

@@ -12,12 +12,13 @@ from v3.policy import decide
 
 
 def _obs(street, pos, hole, board=(), *, pot, to_call, min_raise=None, max_raise=None,
-         stack=200, my_bet=0, opp_all_in=False, history=()):
+         stack=200, my_bet=0, opp_all_in=False, history=(), hand=15, lead=False):
+    # default: hand 15 (not early) and hero NOT chip-leader -> the "normal" (not tight) player.
     me = SeatView(seat=0, position=pos, stack=stack, bet=my_bet, in_hand=True, all_in=False)
     opp = SeatView(seat=1, position="BB", stack=0 if opp_all_in else 150, bet=0, in_hand=True, all_in=opp_all_in)
-    opp2 = SeatView(seat=2, position="SB", stack=180, bet=0, in_hand=True, all_in=False)
+    opp2 = SeatView(seat=2, position="SB", stack=50 if lead else 400, bet=0, in_hand=True, all_in=False)
     legal = LegalActions(can_fold=to_call > 0, to_call=to_call, min_raise_to=min_raise, max_raise_to=max_raise)
-    return Observation(hand_number=1, hand_count=30, seat=0, position=pos, hole_cards=tuple(hole),
+    return Observation(hand_number=hand, hand_count=30, seat=0, position=pos, hole_cards=tuple(hole),
                        board=tuple(board), street=street, pot=pot, big_blind=2,
                        seats=(me, opp, opp2), history=tuple(history), legal=legal)
 
@@ -122,6 +123,34 @@ def test_no_weak_all_in():  # #3: a non-strong tier never bets all-in
     p = decide(_obs("flop", "BTN", ["Ah", "Kd"], ["Ac", "7s", "2h"], pot=60, to_call=0,
                     min_raise=200, max_raise=200, stack=200))
     assert p.action.kind == ActionKind.CHECK, (p.action, p.tier)
+
+
+def test_tight_early_opens_tighter():  # core player: tight for the first 10 hands
+    # K7s: in the normal BTN open (K5s+) but NOT the tight BTN open (K9s+)
+    loose = decide(_obs("preflop", "BTN", ["Kh", "7h"], pot=3, to_call=2, min_raise=4, max_raise=200,
+                        history=POSTS, hand=15, lead=False))
+    assert loose.action.kind == ActionKind.RAISE and not loose.tight
+    tight = decide(_obs("preflop", "BTN", ["Kh", "7h"], pot=3, to_call=2, min_raise=4, max_raise=200,
+                        history=POSTS, hand=3))
+    assert tight.action.kind == ActionKind.FOLD and tight.tight, (tight.action, tight.tight)
+
+
+def test_tight_when_leading_allin_folds_aq():  # tight when chip-leading: all-in call is TT+/AK only
+    p = decide(_obs("preflop", "SB", ["Ah", "Qd"], pot=120, to_call=98, stack=300, opp_all_in=True,
+                    lead=True, hand=15, history=(*POSTS, ActionRecord("preflop", 1, "raise", 300))))
+    assert p.action.kind == ActionKind.FOLD and p.tight, (p.action, p.tight)
+
+
+def test_small_shove_calls_wide():  # price-aware all-in: a cheap shove is called wide
+    p = decide(_obs("preflop", "BTN", ["Kh", "Jd"], pot=30, to_call=10, stack=200, opp_all_in=True,
+                    hand=15, history=(*POSTS, ActionRecord("preflop", 1, "raise", 12))))
+    assert p.action.kind == ActionKind.CALL, (p.action, p.need)
+
+
+def test_tight_checks_medium_no_thin_bet():  # tight: value only, no thin protection bets
+    p = decide(_obs("flop", "SB", ["Ah", "Kd"], ["Ac", "7s", "2h"], pot=20, to_call=0,
+                    min_raise=4, max_raise=200, hand=3))
+    assert p.action.kind == ActionKind.CHECK and p.tight, (p.action, p.tier)
 
 
 if __name__ == "__main__":
