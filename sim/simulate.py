@@ -19,7 +19,7 @@ scratchpad, talk, 5,000/10,000 token caps), so places come from the same ranking
 
 The lineup rotates one seat per game so no bot always sits right after seat 0. Bots answer instantly, so an all-bot
 lineup runs as fast as seat 0 thinks. Logs go to --out (harness/runs/sim, git-ignored): one JSON per game, plus
-summary.json. Games already saved in --out (same seed) are reused, so a stopped run picks up where it left off: rerun
+summary.json, plus transcript-*.json: every request seat 0 sent and the reply it got, for building SFT data. Games already saved in --out (same seed) are reused, so a stopped run picks up where it left off: rerun
 the same command, with a different --parallel if you like.
 """
 
@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import copy
 import json
 import os
 import random
@@ -39,6 +40,7 @@ from typing import Any
 import httpx
 from poker_harness.completions import (
     GATEWAY_URL,
+    _tools,
     cleanup_params,
     opponent_params,
     relay_completion,
@@ -56,6 +58,34 @@ HOUSE_MODEL = "vals-hackathon/ac-vals-model"
 BASE_MODEL = "vals-hackathon/base_mihail"
 DEFAULT_LINEUP = "tag,shover,maniac,nit,calling_station"
 POLICY = "seat0"
+
+
+class Recorder:
+    """Keeps every request seat 0 sends and the reply it gets, exactly as sent: the raw material for SFT data.
+    One call per decision (in the order of seat 0's actions in the log) and one per after-hand cleanup."""
+
+    def __init__(self) -> None:
+        self.calls: list[dict[str, Any]] = []
+
+    def wrap(self, complete, kind: str):
+        async def recorded(messages):
+            entry: dict[str, Any] = {"kind": kind, "messages": copy.deepcopy(messages)}
+            self.calls.append(entry)
+            try:
+                reply = await complete(messages)
+            except Exception as exc:
+                entry["error"] = f"{type(exc).__name__}: {str(exc)[:300]}"
+                raise
+            entry["reply"] = {
+                "text": reply.text,
+                "reasoning": reply.reasoning,
+                "tool_calls": reply.tool_calls,
+                "truncated": reply.truncated,
+                "out_tokens": reply.out_tokens,
+            }
+            return reply
+
+        return recorded
 
 
 def lineup_for(lineup: list[str], game: int) -> list[str]:
@@ -92,16 +122,16 @@ async def play_game(
     params = event_params(seed, args.hands)
     rules = table_rules(params)
 
-    def model_seat(name: str, model: str, seat_params: dict[str, Any]) -> ModelSeat:
-        return ModelSeat(
-            name,
-            relay_completion(client, GATEWAY_URL, key, seat_params),
-            rules,
-            model=model,
-            cleanup_complete=relay_completion(client, GATEWAY_URL, key, cleanup_params(seat_params)),
-        )
+    def model_seat(name: str, model: str, seat_params: dict[str, Any], recorder: Recorder | None = None) -> ModelSeat:
+        complete = relay_completion(client, GATEWAY_URL, key, seat_params)
+        cleanup = relay_completion(client, GATEWAY_URL, key, cleanup_params(seat_params))
+        if recorder:
+            complete, cleanup = recorder.wrap(complete, "decision"), recorder.wrap(cleanup, "cleanup")
+        return ModelSeat(name, complete, rules, model=model, cleanup_complete=cleanup)
 
-    players: list[Any] = [model_seat(POLICY, args.model, params | {"model_label": args.model})]
+    mine = params | {"model_label": args.model}
+    recorder = Recorder()
+    players: list[Any] = [model_seat(POLICY, args.model, mine, recorder)]
     for i, entry in enumerate(seats, start=1):
         model = model_for(entry, args.opponent_model)
         if model is None:
@@ -115,6 +145,16 @@ async def play_game(
         "model": args.model,
         "lineup": dict(zip([f"seat{i}" for i in range(1, 6)], seats)),
     }
+    transcript = {
+        "game_id": log["game_id"],
+        "model": args.model,
+        "tools": _tools(mine),
+        "params": {
+            k: mine[k] for k in ("max_completion_tokens", "cleanup_max_completion_tokens", "thinking") if k in mine
+        },
+        "calls": recorder.calls,
+    }
+    (args.out / f"transcript-{game:03d}-{seed}.json").write_text(json.dumps(transcript))
     return log
 
 

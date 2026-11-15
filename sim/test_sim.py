@@ -132,6 +132,15 @@ def test_simulate_runs_games_and_writes_a_scorecard(monkeypatch, tmp_path, capsy
     assert saved["summary"]["games"] == 3 and len(list(tmp_path.glob("sim-*.json"))) == 3
     assert {g["lineup"]["seat1"] for g in saved["games"]} == {"shover", "tag", "model"}  # rotated
 
+    for path in tmp_path.glob("sim-*.json"):  # the transcript has one call per logged decision, one per cleanup
+        log = json.loads(path.read_text())
+        calls = json.loads(path.with_name(path.name.replace("sim-", "transcript-")).read_text())["calls"]
+        mine = [a for h in log["hands"] for a in h["actions"] if a["player"] == "seat0"]
+        dealt = [h for h in log["hands"] if "seat0" in h["stacks_before"]]
+        assert [c["kind"] for c in calls].count("decision") == len(mine)
+        assert [c["kind"] for c in calls].count("cleanup") == len(dealt)
+        assert all(c["messages"][0]["role"] == "system" and c["reply"]["tool_calls"] for c in calls)
+
     for g in saved["games"]:  # chips credited to opponents add up to seat 0's net
         assert sum(g["chips_by_opponent"].values()) == pytest.approx(g["net_bb"] * 2)
 
