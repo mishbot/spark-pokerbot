@@ -139,3 +139,10 @@ def test_simulate_runs_games_and_writes_a_scorecard(monkeypatch, tmp_path, capsy
     monkeypatch.setattr(sys, "argv", ["simulate.py", "--report", str(tmp_path)])
     simulate.main()
     assert "p/entry over 3 games" in capsys.readouterr().out
+
+    first = {p.name: p.stat().st_mtime_ns for p in tmp_path.glob("sim-*.json")}
+    monkeypatch.setattr(sys, "argv", [*argv, "--games", "4", "--hands", "4", "--out", str(tmp_path)])  # 3 reused
+    simulate.main()
+    out = capsys.readouterr().out
+    assert out.count("reusing") == 3 and "p/entry over 4 games" in out
+    assert all(tmp_path.joinpath(n).stat().st_mtime_ns == t for n, t in first.items())

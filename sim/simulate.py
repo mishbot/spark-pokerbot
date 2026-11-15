@@ -19,7 +19,8 @@ scratchpad, talk, 5,000/10,000 token caps), so places come from the same ranking
 
 The lineup rotates one seat per game so no bot always sits right after seat 0. Bots answer instantly, so an all-bot
 lineup runs as fast as seat 0 thinks. Logs go to --out (harness/runs/sim, git-ignored): one JSON per game, plus
-summary.json.
+summary.json. Games already saved in --out (same seed) are reused, so a stopped run picks up where it left off: rerun
+the same command, with a different --parallel if you like.
 """
 
 from __future__ import annotations
@@ -231,6 +232,16 @@ async def run(args: argparse.Namespace, lineup: list[str]) -> list[dict[str, Any
     async with httpx.AsyncClient(timeout=httpx.Timeout(600.0, connect=30.0)) as client:
 
         async def one(game: int) -> None:
+            saved = args.out / f"sim-{game:03d}-{seeds[game]}.json"
+            if saved.exists():  # same seed, same deal: a log from an earlier run of this command
+                log = json.loads(saved.read_text())
+                if log["sim"]["model"] != args.model:
+                    raise SystemExit(
+                        f"{saved} was played by {log['sim']['model']}, not {args.model}; use another --out"
+                    )
+                rows.append(game_row(log))
+                print(f"game {game}: reusing {saved.name}", flush=True)
+                return
             async with gate:
                 seats = lineup_for(lineup, game)
                 log = await play_game(client, key, args, game, seeds[game], seats)
