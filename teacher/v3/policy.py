@@ -67,8 +67,10 @@ def _chips(v) -> int:
 
 
 def _leader_or_safe(obs) -> bool:
+    """A real chip lead: STRICTLY more chips than every opponent. Tied stacks are NOT leading
+    (else hand 1, which starts even, would falsely claim 'chip-leading')."""
     me = _chips(next(v for v in obs.seats if v.seat == obs.seat))
-    return all(_chips(v) <= me for v in obs.seats if v.seat != obs.seat)
+    return all(_chips(v) < me for v in obs.seats if v.seat != obs.seat)
 
 
 def _rank(obs) -> int:
@@ -138,10 +140,17 @@ def _preflop(obs, pos, tight, reason) -> Plan:
     pre = f"{reason}, so tighten: " if tight else ""
 
     if _facing_all_in(obs):
-        need = legal.to_call / (obs.pot + legal.to_call) if (obs.pot + legal.to_call) > 0 else 0.0
+        # true price: we can call at most our stack, and chips an opponent shoved beyond what we can
+        # match are uncallable (returned), so exclude them from the pot (fixes the understated need%).
+        me_v = next(v for v in obs.seats if v.seat == obs.seat)
+        eff_call = min(legal.to_call, me_v.stack)
+        hero_total = me_v.bet + eff_call
+        excess = sum(max(v.bet - hero_total, 0) for v in obs.seats if v.seat != obs.seat)
+        eff_pot = max(obs.pot - excess, 0)
+        need = eff_call / (eff_pot + eff_call) if (eff_pot + eff_call) > 0 else 0.0
         call, rule = allin_call(h, tight, need)
         action = Action(ActionKind.CALL) if call else Action(ActionKind.FOLD)
-        risked = legal.to_call if call else 0
+        risked = eff_call if call else 0
         cls, stack = _risk(obs, risked)
         return Plan(action=action, spot="preflop facing an all-in", rule_text=rule, in_range=call,
                     need=need, risked=risked, stack=stack, risk_class=cls, rank=_rank(obs),

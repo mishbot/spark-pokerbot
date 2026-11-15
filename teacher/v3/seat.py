@@ -48,7 +48,8 @@ class V3Seat(ModelSeat):
         truth = dict(hole=list(obs.hole_cards), board=list(obs.board), pot=obs.pot,
                      to_call=obs.legal.to_call, street=obs.street, position=obs.position,
                      min_raise=obs.legal.min_raise_to, max_raise=obs.legal.max_raise_to,
-                     me_seat=ctx.seat, live_order=live_order)
+                     me_seat=ctx.seat, live_order=live_order,
+                     chips={v.seat: v.stack + v.bet for v in obs.seats})
         self._records.append({
             "messages": copy.deepcopy(self.messages),
             "trace": trace,

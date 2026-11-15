@@ -87,6 +87,15 @@ def test_i3b_catches_wrong_position():  # Opus re-vet FAIL (HU position inverted
     assert not any("I3b" in x for x in check(ok, trace, action))
 
 
+def test_catches_false_chip_lead():
+    truth, trace, action = _case(**dict(CLEAN[0][1]))  # a preflop open trace
+    bad_trace = trace.replace("Rule:", "note: chip-leading.\nRule:", 1)
+    bad = {**truth, "me_seat": 0, "chips": {0: 200, 1: 200, 2: 200}}  # tied -> claim is false
+    assert any("chip-lead" in x for x in check(bad, bad_trace, action))
+    ok = {**truth, "me_seat": 0, "chips": {0: 300, 1: 200, 2: 200}}   # truly leading
+    assert not any("chip-lead" in x for x in check(ok, bad_trace, action))
+
+
 def test_catches_equity_number():
     truth, trace, action = _case(**dict(CLEAN[1][1]))
     bad = trace + "\nEquity 76%."

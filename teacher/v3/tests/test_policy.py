@@ -12,11 +12,11 @@ from v3.policy import decide
 
 
 def _obs(street, pos, hole, board=(), *, pot, to_call, min_raise=None, max_raise=None,
-         stack=200, my_bet=0, opp_all_in=False, history=(), hand=15, lead=False):
+         stack=200, my_bet=0, opp_all_in=False, history=(), hand=15, lead=False, tied=False):
     # default: hand 15 (not early) and hero NOT chip-leader -> the "normal" (not tight) player.
     me = SeatView(seat=0, position=pos, stack=stack, bet=my_bet, in_hand=True, all_in=False)
-    opp = SeatView(seat=1, position="BB", stack=0 if opp_all_in else 150, bet=0, in_hand=True, all_in=opp_all_in)
-    opp2 = SeatView(seat=2, position="SB", stack=50 if lead else 400, bet=0, in_hand=True, all_in=False)
+    opp = SeatView(seat=1, position="BB", stack=stack if tied else (0 if opp_all_in else 150), bet=0, in_hand=True, all_in=opp_all_in)
+    opp2 = SeatView(seat=2, position="SB", stack=stack if tied else (50 if lead else 400), bet=0, in_hand=True, all_in=False)
     legal = LegalActions(can_fold=to_call > 0, to_call=to_call, min_raise_to=min_raise, max_raise_to=max_raise)
     return Observation(hand_number=hand, hand_count=30, seat=0, position=pos, hole_cards=tuple(hole),
                        board=tuple(board), street=street, pot=pot, big_blind=2,
@@ -135,10 +135,26 @@ def test_tight_early_opens_tighter():  # core player: tight for the first 10 han
     assert tight.action.kind == ActionKind.FOLD and tight.tight, (tight.action, tight.tight)
 
 
+def test_tied_stacks_not_leading():  # tied stacks are NOT a chip lead (no false "chip-leading")
+    p = decide(_obs("flop", "CO", ["Ah", "Kd"], ["Ac", "7s", "2h"], pot=20, to_call=0,
+                    min_raise=4, max_raise=200, hand=15, tied=True))
+    assert not p.tight and "chip-lead" not in p.tight_reason, (p.tight, p.tight_reason)
+
+
 def test_tight_when_leading_allin_folds_aq():  # tight when chip-leading: all-in call is TT+/AK only
     p = decide(_obs("preflop", "SB", ["Ah", "Qd"], pot=120, to_call=98, stack=300, opp_all_in=True,
                     lead=True, hand=15, history=(*POSTS, ActionRecord("preflop", 1, "raise", 300))))
     assert p.action.kind == ActionKind.FOLD and p.tight, (p.action, p.tight)
+
+
+def test_allin_need_excludes_uncallable_overshove():  # Opus: price must exclude uncallable chips
+    me = SeatView(0, "BB", 174, 0, True, False)
+    villain = SeatView(1, "SB", 0, 1022, True, True)   # shoved 1022 into our 174 stack
+    legal = LegalActions(can_fold=True, to_call=174, min_raise_to=None, max_raise_to=None)
+    obs = Observation(15, 30, 0, "BB", ("7h", "2d"), (), "preflop", 1026, 2, (me, villain),
+                      (ActionRecord("preflop", 1, "raise", 1022),), legal)
+    p = decide(obs)
+    assert 0.45 <= p.need <= 0.52, f"true price ~49%, got {p.need} (naive off the full pot ~14%)"
 
 
 def test_small_shove_calls_wide():  # price-aware all-in: a cheap shove is called wide

@@ -121,6 +121,13 @@ def check(truth: dict, trace: str, action: tuple[str, int | None]) -> list[str]:
         if verb not in allowed.get(kind, set()):
             v.append(f"I14 action-line verb '{verb}' inconsistent with submitted {kind}")
 
+    # chip-lead claim must be TRUE: if the trace says "chip-leading", we must strictly lead in chips
+    if "chip-lead" in trace and truth.get("chips") and truth.get("me_seat") is not None:
+        chips = truth["chips"]
+        mine = chips[truth["me_seat"]]
+        if not all(c < mine for s, c in chips.items() if s != truth["me_seat"]):
+            v.append("chip-lead claim false: not strictly leading in chips")
+
     # no fabricated equity NUMBER (the word "equity" in strategy prose is fine; a percent is not)
     if re.search(r"equity\D{0,8}\d+%|\d+%\s*equity", trace, re.I):
         v.append("no-equity: the trace states an equity number")
